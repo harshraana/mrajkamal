@@ -1846,7 +1846,13 @@ a:hover {
 
 @media (max-width: 767px) {
   .site-logo {
-    max-width: 132px;
+    display: flex;
+    max-width: 100%;
+    width: 200px;
+    margin: auto;
+    img {
+      margin: auto;
+    }
   }
 }
 
@@ -13594,7 +13600,7 @@ form .form-content-2 {
 .category-text {
   display: flex;
   gap: 14px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--Secondary);
   opacity: 0.5;
   -webkit-transition: all 0.5s ease;

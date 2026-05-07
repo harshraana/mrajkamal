@@ -9,15 +9,27 @@ const Header = () => {
       <header className='header  has-currencies header-sticky'>
         <div className='tf-container'>
           <div className='header-inner'>
-            <Link href='/' className='site-logo'>
-              <Image
-                height={42}
-                width={230}
-                className='logo_header'
-                alt='logo'
-                src='/my-assets/images/M-Rajkamal-logo-2.svg'
-              />
-            </Link>
+            <div className='d-flex align-items-center gap_24 header-left'>
+              <Link href='/' className='site-logo'>
+                <Image
+                  height={55}
+                  width={240}
+                  className='logo_header'
+                  alt='logo'
+                  src='/my-assets/images/M-Rajkamal-logo-2.svg'
+                />
+              </Link>
+              |
+              <Link href='/' className='site-logo'>
+                <Image
+                  height={36}
+                  width={140}
+                  className='logo_header'
+                  alt='logo'
+                  src='/my-assets/images/godrej-interio.jpg'
+                />
+              </Link>
+            </div>
             <div className='header-right d-flex align-items-center'>
               <nav className='main-menu'>
                 <ul className='navigation box-nav-menu'>

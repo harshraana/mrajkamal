@@ -13,8 +13,8 @@ const Footer = () => {
               <div className='col-lg-3 col-md-6'>
                 <Link href='/' className='site-logo'>
                   <Image
-                    height={42}
-                    width={230}
+                    height={100}
+                    width={200}
                     className='logo_header'
                     alt='logo'
                     src='/my-assets/images/M-Rajkamal-logo-light.svg'
@@ -23,9 +23,9 @@ const Footer = () => {
               </div>
               <div className='col-lg-3 col-md-6'>
                 <div className='footer-about'>
-                  <div className='h5 text-capitalize mb_24 footer-title text_white'>
+                  <h5 className=' text-capitalize mb_24 footer-title text_white'>
                     about
-                  </div>
+                  </h5>
                   <p className='text-body-default text_white mb_24'>
                     We only carry designs we believe in ethically and
                     aesthetically – original, authentic pieces that are made to
@@ -42,9 +42,7 @@ const Footer = () => {
               <div className='col-lg-5 col-md-6'>
                 <div className='wrap-footer-col-block'>
                   <div className='footer-col-block'>
-                    <div className='h5 footer-heading footer-heading-mobile footer-title text_white mb_24'>
-                      Quick Link
-                    </div>
+                    <h5 className=' text_white mb_24'>Quick Link</h5>
                     <div className='tf-collapse-content'>
                       <ul className='footer-menu-list d-grid gap_12'>
                         <li>
@@ -83,9 +81,7 @@ const Footer = () => {
                     </div>
                   </div>
                   <div className='footer-col-block'>
-                    <div className='h5 footer-heading footer-heading-mobile footer-title text_white mb_24'>
-                      Connect Us
-                    </div>
+                    <h5 className=' text_white mb_24'>Connect Us</h5>
                     <div className='tf-collapse-content'>
                       <ul className='footer-menu-list d-grid gap_12'>
                         <li>

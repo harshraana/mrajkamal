@@ -22,12 +22,12 @@ const HomePage = () => {
                     Discover sleek designs and timeless comfort — furniture made
                     to elevate your everyday space.
                   </p>
-                  <a
-                    href='shop-style-01.html'
+                  <Link
+                    href='/shop'
                     className='btn_link hover-underline-link text-body-default fw-5'
                   >
                     Browse The Collection
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -62,12 +62,12 @@ const HomePage = () => {
                     to elevate your <br className='xl-hide' /> everyday space.
                   </p>
                 </div>
-                <a
-                  href='shop-style-01.html'
+                <Link
+                  href='/shop'
                   className='text-body-default fw-5 hover-underline-link btn_link'
                 >
                   Browse The Collection
-                </a>
+                </Link>
               </div>
               <div className='col-md-6'>
                 <div className='thumbs-about'>
@@ -156,8 +156,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -180,7 +179,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -225,12 +224,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Altair Lounge Chair
-                          </a>
+                          </Link>
                           <div className='wrap-price'>
                             <div className='price-wrap text-body-default fw-5'>
                               from <span className='price-new'>$849.00</span>
@@ -287,8 +285,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -311,7 +308,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-2-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -356,12 +353,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             PIA Curved Sofa
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,249.00</span>
                           </div>
@@ -373,8 +369,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -397,7 +392,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-3.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -442,12 +437,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Oak Pendant
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$620.00</span>
                           </div>
@@ -491,8 +485,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -515,7 +508,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-4-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -560,12 +553,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Nuvola Floor Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,799.00</span>
                           </div>
@@ -620,8 +612,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -644,7 +635,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -689,12 +680,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Core Chair
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$990.00</span>
                           </div>
@@ -706,8 +696,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -730,7 +719,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-11-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -775,12 +764,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Phase Pendant Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,299.00</span>
                           </div>
@@ -821,8 +809,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -845,7 +832,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-3.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -890,12 +877,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Oak Pendant
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -937,8 +923,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -959,7 +944,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-4-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1004,12 +989,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Nuvola Floor Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1061,8 +1045,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1085,7 +1068,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-11-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1130,12 +1113,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Phase Pendant Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1147,8 +1129,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1171,7 +1152,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1216,12 +1197,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Altair Lounge Chair
-                          </a>
+                          </Link>
                           <div className='wrap-price'>
                             <div className='price-wrap text-body-default fw-5'>
                               from <span className='price-new'>$1,099.00</span>
@@ -1275,8 +1255,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1297,7 +1276,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1342,12 +1321,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Core Chair
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1359,8 +1337,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1381,7 +1358,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-2-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1426,12 +1403,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             PIA Curved Sofa
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1472,8 +1448,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1494,7 +1469,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1539,12 +1514,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Altair Lounge Chair
-                          </a>
+                          </Link>
                           <div className='wrap-price'>
                             <div className='price-wrap text-body-default fw-5'>
                               from <span className='price-new'>$1,099.00</span>
@@ -1601,8 +1575,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1623,7 +1596,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-2-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1668,12 +1641,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             PIA Curved Sofa
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1685,8 +1657,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1707,7 +1678,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1752,12 +1723,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Core Chair
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1769,8 +1739,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1791,7 +1760,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-11-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1836,12 +1805,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Phase Pendant Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1853,8 +1821,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1875,7 +1842,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-3.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -1920,12 +1887,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Oak Pendant
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -1967,8 +1933,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -1989,7 +1954,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-4-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2034,12 +1999,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Nuvola Floor Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2120,8 +2084,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2142,7 +2105,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-11-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2187,12 +2150,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Phase Pendant Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2204,8 +2166,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2226,7 +2187,7 @@ const HomePage = () => {
                               src='/assets/images/products/product-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2271,12 +2232,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Core Chair
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2288,8 +2248,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2310,7 +2269,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-4-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2355,12 +2314,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Nuvola Floor Lamp
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2412,8 +2370,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2434,7 +2391,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-2-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2479,12 +2436,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             PIA Curved Sofa
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2496,8 +2452,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2518,7 +2473,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-1-1.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2563,12 +2518,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Altair Lounge Chair
-                          </a>
+                          </Link>
                           <div className='wrap-price'>
                             <div className='price-wrap text-body-default fw-5'>
                               from <span className='price-new'>$1,099.00</span>
@@ -2622,8 +2576,7 @@ const HomePage = () => {
                     <div className='swiper-slide'>
                       <div className='card-product has-price-default'>
                         <div className='card-product_wrapper'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='product-img'
                           >
                             <Image
@@ -2644,7 +2597,7 @@ const HomePage = () => {
                               src='/assets/images/products/prd-related-3.jpg'
                               alt='Product'
                             />
-                          </a>
+                          </Link>
                           <ul className='product-action_list'>
                             <li>
                               <a
@@ -2689,12 +2642,11 @@ const HomePage = () => {
                           </ul>
                         </div>
                         <div className='card-product_info'>
-                          <a
-                            href='product-style-01.html'
+                          <Link href='/products/style-01'
                             className='name-product h6 link'
                           >
                             Oak Pendant
-                          </a>
+                          </Link>
                           <div className='price-wrap text-body-default fw-5'>
                             from <span className='price-new'>$1,099.00</span>
                           </div>
@@ -2767,7 +2719,7 @@ const HomePage = () => {
               <div className='swiper-wrapper'>
                 <div className='swiper-slide wow fadeInLeft'>
                   <div className='collection-item hover-image'>
-                    <a href='shop-style-01.html' className='img-style mb_24'>
+                    <Link href='/shop' className='img-style mb_24'>
                       <Image
                         className='img-cover'
                         width='460'
@@ -2777,26 +2729,24 @@ const HomePage = () => {
                         src='/assets/images/collection/collection-item-1.jpg'
                         alt='collection'
                       />
-                    </a>
+                    </Link>
                     <div className='content '>
-                      <a
-                        href='shop-style-01.html'
+                      <Link href='/shop'
                         className='h4 link text-capitalize d-block mb_10'
                       >
                         Modern Living
-                      </a>
-                      <a
-                        href='shop-style-01.html'
+                      </Link>
+                      <Link href='/shop'
                         className='text-body-default fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className='swiper-slide wow fadeInLeft'>
                   <div className='collection-item hover-image'>
-                    <a href='shop-style-01.html' className='img-style mb_24'>
+                    <Link href='/shop' className='img-style mb_24'>
                       <Image
                         className='img-cover'
                         width='460'
@@ -2806,26 +2756,24 @@ const HomePage = () => {
                         src='/assets/images/collection/collection-item-2.jpg'
                         alt='collection'
                       />
-                    </a>
+                    </Link>
                     <div className='content '>
-                      <a
-                        href='shop-style-01.html'
+                      <Link href='/shop'
                         className='h4 link text-capitalize d-block mb_10'
                       >
                         Cozy Corners
-                      </a>
-                      <a
-                        href='shop-style-01.html'
+                      </Link>
+                      <Link href='/shop'
                         className='text-body-default fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
                 <div className='swiper-slide wow fadeInLeft'>
                   <div className='collection-item hover-image'>
-                    <a href='shop-style-01.html' className='img-style mb_24'>
+                    <Link href='/shop' className='img-style mb_24'>
                       <Image
                         className='img-cover'
                         width='460'
@@ -2835,24 +2783,22 @@ const HomePage = () => {
                         src='/assets/images/collection/collection-item-3.jpg'
                         alt='collection'
                       />
-                    </a>
+                    </Link>
                     <div className='content '>
-                      <a
-                        href='shop-style-01.html'
+                      <Link href='/shop'
                         className='h4 link text-capitalize d-block mb_10'
                       >
                         Timeless Classics
-                      </a>
-                      <a
-                        href='shop-style-01.html'
+                      </Link>
+                      <Link href='/shop'
                         className='text-body-default fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
-                      </a>
-                    </div>
-                  </div>
+                      </Link>
                 </div>
               </div>
+            </div>
+          </div>
               <div className='sw-dots sw-pagination-layout  text-center mt_24 d-lg-none'></div>
             </div>
           </div>
@@ -2884,12 +2830,11 @@ const HomePage = () => {
                       Clever products for every corner
                     </p>
                   </div>
-                  <a
-                    href='shop-style-01.html'
+                  <Link href='/shop'
                     className='tf-btn btn-bg-white animate-fill  btn-rounded btn-px-40 '
                   >
                     Explore Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -2903,30 +2848,30 @@ const HomePage = () => {
             <div className='row justify-content-center'>
               <div className='col-lg-10'>
                 <div className='wrap-category-text'>
-                  <a href='shop-style-01.html' className='category-text'>
+                  <Link href='/shop' className='category-text'>
                     <h2>all products</h2>
                     <span className='h4 sub'>58</span>
-                  </a>
-                  <a href='shop-style-01.html' className='category-text'>
+                  </Link>
+                  <Link href='/shop' className='category-text'>
                     <h2>new in</h2>
                     <span className='h4 sub'>32</span>
-                  </a>
-                  <a href='shop-style-01.html' className='category-text'>
+                  </Link>
+                  <Link href='/shop' className='category-text'>
                     <h2>rug</h2>
                     <span className='h4 sub'>43</span>
-                  </a>
-                  <a href='shop-style-01.html' className='category-text'>
+                  </Link>
+                  <Link href='/shop' className='category-text'>
                     <h2>furniture</h2>
                     <span className='h4 sub'>26</span>
-                  </a>
-                  <a href='shop-style-01.html' className='category-text'>
+                  </Link>
+                  <Link href='/shop' className='category-text'>
                     <h2>lighting</h2>
                     <span className='h4 sub'>18</span>
-                  </a>
-                  <a href='shop-style-01.html' className='category-text'>
+                  </Link>
+                  <Link href='/shop' className='category-text'>
                     <h2>home decor</h2>
                     <span className='h4 sub'>10</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -2977,12 +2922,11 @@ const HomePage = () => {
                             </span>
                             <p className='sub text-caption-1 d-flex align-items-center gap_6'>
                               Purchased item:
-                              <a
-                                href='product-style-01.html'
+                              <Link href='/products/style-01'
                                 className='link text-body-default fw-5 text_secondary-color'
                               >
                                 Altair Lounge Chair
-                              </a>
+                              </Link>
                             </p>
                           </div>
                         </div>
@@ -3007,12 +2951,11 @@ const HomePage = () => {
                             </span>
                             <p className='sub text-caption-1 d-flex align-items-center gap_6'>
                               Purchased item:
-                              <a
-                                href='product-style-01.html'
+                              <Link href='/products/style-01'
                                 className='link text-body-default fw-5 text_secondary-color'
                               >
                                 Altair Lounge Chair
-                              </a>
+                          </Link>
                             </p>
                           </div>
                         </div>
@@ -3037,12 +2980,11 @@ const HomePage = () => {
                             </span>
                             <p className='sub text-caption-1 d-flex align-items-center gap_6'>
                               Purchased item:
-                              <a
-                                href='product-style-01.html'
+                              <Link href='/products/style-01'
                                 className='link text-body-default fw-5 text_secondary-color'
                               >
                                 Altair Lounge Chair
-                              </a>
+                          </Link>
                             </p>
                           </div>
                         </div>
@@ -3390,12 +3332,11 @@ const HomePage = () => {
                             </div>
                             <div className='content'>
                               <div className='info'>
-                                <a
-                                  href='product-style-01.html'
+                                <Link href='/products/style-01'
                                   className='text-body-default link mb_3'
                                 >
                                   Altair Lounge Chair
-                                </a>
+                          </Link>
                                 <p className='price-wrap text-md fw-medium'>
                                   <span className='text-body-default'>
                                     $29.00
@@ -3429,13 +3370,12 @@ const HomePage = () => {
                             </div>
                             <div className='content'>
                               <div className='info'>
-                                <a
-                                  href='product-style-01.html'
+                                <Link href='/products/style-01'
                                   className='text-body-default link mb_3'
                                 >
                                   Mini Elixir Ultime <br />
                                   Hydrating Hair Oil
-                                </a>
+                                </Link>
                                 <p className='price-wrap text-md fw-medium'>
                                   <span className='text-body-default'>
                                     $299.00
@@ -3482,13 +3422,12 @@ const HomePage = () => {
                             </div>
                             <div className='content'>
                               <div className='info'>
-                                <a
-                                  href='product-style-01.html'
+                                <Link href='/products/style-01'
                                   className='text-body-default link mb_3'
                                 >
                                   Mini Elixir Ultime <br />
                                   Hydrating Hair Oil
-                                </a>
+                                </Link>
                                 <p className='price-wrap text-md fw-medium'>
                                   <span className='text-body-default'>
                                     $299.00
@@ -3522,13 +3461,12 @@ const HomePage = () => {
                             </div>
                             <div className='content'>
                               <div className='info'>
-                                <a
-                                  href='product-style-01.html'
+                                <Link href='/products/style-01'
                                   className='text-body-default link mb_3'
                                 >
                                   Mini Elixir Ultime <br />
                                   Hydrating Hair Oil
-                                </a>
+                                </Link>
                                 <p className='price-wrap text-md fw-medium'>
                                   <span className='text-body-default'>
                                     $299.00
@@ -3673,13 +3611,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* item 2 */}
@@ -3695,13 +3632,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* item 3 */}
@@ -3717,13 +3653,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* item 4 */}
@@ -3739,13 +3674,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* item 5 */}
@@ -3761,13 +3695,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* item 6 */}
@@ -3783,13 +3716,12 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <a
-                    href='product-style-01.html'
+                  <Link href='/products/style-01'
                     className='box-icon hover-tooltip'
                   >
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

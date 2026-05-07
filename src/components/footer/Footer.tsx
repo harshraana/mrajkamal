@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
           <div className='tf-container'>
             <div className='row'>
               <div className='col-lg-3 col-md-6'>
-                <a href='index.html' className='site-logo'>
+                <Link href='/' className='site-logo'>
                   <Image
                     height={42}
                     width={230}
@@ -18,7 +19,7 @@ const Footer = () => {
                     alt='logo'
                     src='/my-assets/images/M-Rajkamal-logo-light.svg'
                   />
-                </a>
+                </Link>
               </div>
               <div className='col-lg-3 col-md-6'>
                 <div className='footer-about'>
@@ -30,12 +31,12 @@ const Footer = () => {
                     aesthetically – original, authentic pieces that are made to
                     last.
                   </p>
-                  <a
-                    href='about-us.html'
+                  <Link
+                    href='/about'
                     className='hover-underline-link text_white text-body-default text-capitalize'
                   >
-                    learn more
-                  </a>
+                    Learn More
+                  </Link>
                 </div>
               </div>
               <div className='col-lg-5 col-md-6'>
@@ -47,36 +48,36 @@ const Footer = () => {
                     <div className='tf-collapse-content'>
                       <ul className='footer-menu-list d-grid gap_12'>
                         <li>
-                          <a
-                            href='about-us.html'
+                          <Link
+                            href='/about'
                             className='link-2 text-body-default text_white'
                           >
                             Our Story
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            href='shop-default.html'
+                          <Link
+                            href='/shop'
                             className='link-2 text-body-default text_white'
                           >
                             Visit Our Store
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            href='contact.html'
+                          <Link
+                            href='/contact'
                             className='link-2 text-body-default text_white'
                           >
                             Contact Us
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a
-                            href='my-account.html'
+                          <Link
+                            href='/account'
                             className='link-2 text-body-default text_white'
                           >
                             Account
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -91,6 +92,7 @@ const Footer = () => {
                           <a
                             href='https://www.facebook.com/'
                             target='_blank'
+                            rel='noopener noreferrer'
                             className='link-2 text-body-default text_white'
                           >
                             Facebook
@@ -100,6 +102,7 @@ const Footer = () => {
                           <a
                             href='https://www.instagram.com/'
                             target='_blank'
+                            rel='noopener noreferrer'
                             className='link-2 text-body-default text_white'
                           >
                             Instagram
@@ -109,6 +112,7 @@ const Footer = () => {
                           <a
                             href='https://www.tiktok.com/'
                             target='_blank'
+                            rel='noopener noreferrer'
                             className='link-2 text-body-default text_white'
                           >
                             TikTok
@@ -118,6 +122,7 @@ const Footer = () => {
                           <a
                             href='https://www.pinterest.com/'
                             target='_blank'
+                            rel='noopener noreferrer'
                             className='link-2 text-body-default text_white'
                           >
                             Pinterest
@@ -238,18 +243,18 @@ const Footer = () => {
                 </li>
               </ul>
               <div className='right d-flex '>
-                <a
-                  href='terms-conditions.html'
+                <Link
+                  href='/terms'
                   className='text-body-default link-2 text_white '
                 >
                   Terms
-                </a>
-                <a
-                  href='privacy-policy.html'
+                </Link>
+                <Link
+                  href='/privacy'
                   className='text-body-default link-2 text_white'
                 >
                   Privacy
-                </a>
+                </Link>
               </div>
             </div>
           </div>

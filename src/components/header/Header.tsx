@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
       <header className='header  has-currencies header-sticky'>
         <div className='tf-container'>
           <div className='header-inner'>
-            <a href='index.html' className='site-logo'>
+            <Link href='/' className='site-logo'>
               <Image
                 height={42}
                 width={230}
@@ -16,7 +17,7 @@ const Header = () => {
                 alt='logo'
                 src='/my-assets/images/M-Rajkamal-logo-2.svg'
               />
-            </a>
+            </Link>
             <div className='header-right d-flex align-items-center'>
               <nav className='main-menu'>
                 <ul className='navigation box-nav-menu'>
@@ -45,61 +46,61 @@ const Header = () => {
                             </div>
                             <ul className='sub-menu_list d-grid gap_10'>
                               <li>
-                                <a
-                                  href='product-style-01.html'
+                                <Link
+                                  href='/products/style-01'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 1
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-style-02.html'
+                                <Link
+                                  href='/products/style-02'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 2
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-style-03.html'
+                                <Link
+                                  href='/products/style-03'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 3
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-style-04.html'
+                                <Link
+                                  href='/products/style-04'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 4
                                   <span className='tag hot demo-label text-small-2 '>
                                     Hot
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-style-05.html'
+                                <Link
+                                  href='/products/style-05'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 5
                                   <span className='tag trending demo-label text-small-2 '>
                                     Trending
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-style-06.html'
+                                <Link
+                                  href='/products/style-06'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Style 6
                                   <span className='tag trending demo-label text-small-2 '>
                                     Trending
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -109,28 +110,28 @@ const Header = () => {
                             </div>
                             <ul className='sub-menu_list d-grid gap_10'>
                               <li>
-                                <a
-                                  href='product-description-side-dropdown.html'
+                                <Link
+                                  href='/products/description-side-dropdown'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Description Side Dropdown
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-description-side-full-accordion.html'
+                                <Link
+                                  href='/products/description-side-full-accordion'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Description Full Accordions
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-description-side-drawer.html'
+                                <Link
+                                  href='/products/description-side-drawer'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Description Side Drawer
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -140,28 +141,28 @@ const Header = () => {
                             </div>
                             <ul className='sub-menu_list d-grid gap_10'>
                               <li>
-                                <a
-                                  href='product-inner-zoom.html'
+                                <Link
+                                  href='/products/product-inner-zoom'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Inner Zoom
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-inner-circle-zoom.html'
+                                <Link
+                                  href='/products/product-inner-circle-zoom'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product Inner Circle Zoom
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-no-zoom.html'
+                                <Link
+                                  href='/products/product-no-zoom'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Product No Zoom
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -171,39 +172,39 @@ const Header = () => {
                             </div>
                             <ul className='sub-menu_list d-grid gap_10'>
                               <li>
-                                <a
-                                  href='product-pickup-available.html'
+                                <Link
+                                  href='/products/pickup-available'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Pickup Available
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-swatch-image.html'
+                                <Link
+                                  href='/products/swatch-image'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Swatch Image
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-together.html'
+                                <Link
+                                  href='/products/buy-together'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Buy Together
                                   <span className='tag new demo-label text-small-2 '>
                                     New
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href='product-volume-discount.html'
+                                <Link
+                                  href='/products/volume-discount'
                                   className='link text-body-default text_heading-color sub-menu_link'
                                 >
                                   Volume Discount
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -231,12 +232,12 @@ const Header = () => {
                                 </a>
                               </div>
                               <div className=''>
-                                <a
-                                  href='shop-style-01.html'
+                                <Link
+                                  href='/shop'
                                   className='h6 link text_heading-color mb_5'
                                 >
                                   Cub Chair
-                                </a>
+                                </Link>
                                 <div className='price'>
                                   <span className='text-body-2'>$2,499.00</span>
                                   <span className='old-price'>$2,899.00</span>
@@ -264,12 +265,12 @@ const Header = () => {
                                 </a>
                               </div>
                               <div className=''>
-                                <a
-                                  href='shop-style-01.html'
+                                <Link
+                                  href='/shop'
                                   className='h6 link  text_heading-color mb_5'
                                 >
                                   Virgule Armchair
-                                </a>
+                                </Link>
                                 <div className='price'>
                                   <span className='text-body-2'>$2,499.00</span>
                                 </div>
@@ -311,9 +312,9 @@ const Header = () => {
                   </a>
                 </li> */}
                 <li className='d-none d-sm-flex position-relative'>
-                  <a className='nav-icon-item link' href='wishlist.html'>
+                  <Link href='/wishlist' className='nav-icon-item link'>
                     <i className='icon icon-heart'></i>
-                  </a>
+                  </Link>
                   <span className='count'>7</span>
                 </li>
                 {/* <li

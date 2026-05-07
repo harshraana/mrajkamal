@@ -5,7 +5,6 @@ import React from "react";
 const HomePage = () => {
   return (
     <>
-      {" "}
       {/* page-title */}
       <div className='hero-banner-v01'>
         <div className='hero-content'>

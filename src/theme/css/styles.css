@@ -1764,6 +1764,7 @@ a:hover {
 #goTop.show {
   opacity: 1;
   visibility: visible;
+  animation: iconBounce 2s linear 0s infinite;
 }
 
 #goTop .icon {
@@ -1774,7 +1775,6 @@ a:hover {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   color: var(--Primary);
-  animation: iconBounce 2s linear 0s infinite;
 }
 
 #goTop .icon-arrow-right-2 {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -34,29 +35,29 @@ const Header = () => {
               <nav className='main-menu'>
                 <ul className='navigation box-nav-menu'>
                   <li className='text-menu menu-item'>
-                    <Link
+                    <a
                       href='/'
                       className='link-no-action toggle splitting item-link'
                     >
                       Home
-                    </Link>
+                    </a>
                   </li>
 
                   <li className='text-menu menu-item '>
-                    <Link
+                    <a
                       href='/products'
                       className='link-no-action toggle splitting item-link'
                     >
                       Products
-                    </Link>
+                    </a>
                   </li>
                   <li className='text-menu menu-item'>
-                    <Link
+                    <a
                       href='/about'
                       className='link-no-action toggle splitting item-link'
                     >
                       About Us
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </nav>

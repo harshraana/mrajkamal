@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import ScrollTop from "@/components/scrollTop/ScrollTop";
@@ -7,6 +7,8 @@ import TopBar from "@/components/topBar/TopBar";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import Scripts from "@/components/scripts/Scripts";
+import MobileMenu from "@/components/mobileMenu/MobileMenu";
+import MiscControls from "@/components/miscControls/MiscControls";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -25,7 +27,11 @@ export const metadata: Metadata = {
   keywords:
     "furniture, premium furniture, home decor, office furniture, M Rajkamal, elegant designs, quality craftsmanship",
   authors: [{ name: "M Rajkamal Team" }],
-  viewport: "width=device-width, initial-scale=1.0",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
@@ -55,6 +61,9 @@ export default function RootLayout({
           {/* Scripts */}
           <Scripts></Scripts>
         </div>
+
+        <MobileMenu></MobileMenu>
+        <MiscControls></MiscControls>
       </body>
     </html>
   );

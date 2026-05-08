@@ -23,7 +23,7 @@ const ProductsPage = () => {
           <div className='tf-container w-1548'>
             <div className='tf-shop-control mb_10 border-0'>
               <div className='row align-items-center mb_32'>
-                <div className='col-md-5 col-6'>
+                <div className='col-md-6 col-6'>
                   <div className='tf-control-filter justify-content-between pe-xxl-30'>
                     <a
                       href='#filterShop'
@@ -35,41 +35,8 @@ const ProductsPage = () => {
                     </a>
                   </div>
                 </div>
-                <div className='col-md-2 md-hide'>
-                  <ul className='tf-control-layout justify-content-center'>
-                    <li
-                      className='tf-view-layout-switch sw-layout-2 d-none d-md-flex'
-                      data-value-layout='tf-col-2'
-                    >
-                      <div className='item icon-grid-2'>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </li>
-                    <li
-                      className='tf-view-layout-switch sw-layout-3 active d-none d-md-flex'
-                      data-value-layout='tf-col-3'
-                    >
-                      <div className='item icon-grid-3'>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </li>
-                    <li
-                      className='tf-view-layout-switch sw-layout-4 d-none  d-xl-flex '
-                      data-value-layout='tf-col-4'
-                    >
-                      <div className='item icon-grid-4'>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className='col-md-5 col-6'>
+
+                <div className='col-md-6 col-6'>
                   <div className='tf-group-layout justify-content-end'>
                     <div className='tf-dropdown-sort' data-bs-toggle='dropdown'>
                       <div className='btn-select'>
@@ -130,7 +97,7 @@ const ProductsPage = () => {
                 </div>
                 <div className='row'>
                   <div
-                    className='wrapper-shop tf-grid-layout tf-col-3'
+                    className='wrapper-shop tf-grid-layout lg-col-3 tf-col-2 '
                     id='gridLayout'
                   >
                     {/* Product 1 */}

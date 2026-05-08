@@ -7796,7 +7796,7 @@
               FileList: !1,
               HTMLAllCollection: !1,
               HTMLCollection: !1,
-              HTMLFormElement: !1,
+              htmlFormElement: !1,
               HTMLSelectElement: !1,
               MediaList: !0,
               MimeTypeArray: !1,

@@ -1845,14 +1845,18 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+  .header .header-inner .header-left {
+    gap: 12px;
+  }
   .site-logo {
     display: flex;
     max-width: 100%;
-    width: 200px;
+    width: 130px;
     margin: auto;
-    img {
-      margin: auto;
-    }
+  }
+  .header .site-logo:last-child {
+    width: 86px;
+    padding: 4px 0 4px;
   }
 }
 
@@ -2347,6 +2351,13 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .header .site-logo {

@@ -10,8 +10,8 @@ const Header = () => {
       <header className='header  has-currencies header-sticky'>
         <div className='tf-container'>
           <div className='header-inner'>
-            <div className='d-flex align-items-center gap_24 header-left'>
-              <Link href='/' className='site-logo'>
+            <div className='header-left'>
+              <a href='/' className='site-logo'>
                 <Image
                   height={55}
                   width={240}
@@ -19,9 +19,9 @@ const Header = () => {
                   alt='logo'
                   src='/my-assets/images/M-Rajkamal-logo-2.svg'
                 />
-              </Link>
+              </a>
               |
-              <Link href='/' className='site-logo'>
+              <a href='/' className='site-logo'>
                 <Image
                   height={36}
                   width={140}
@@ -29,7 +29,7 @@ const Header = () => {
                   alt='logo'
                   src='/my-assets/images/godrej-interio.jpg'
                 />
-              </Link>
+              </a>
             </div>
             <div className='header-right d-flex align-items-center'>
               <nav className='main-menu'>

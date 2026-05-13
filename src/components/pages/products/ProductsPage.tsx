@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import useScriptReinit from "@/hooks/useScriptReinit";
 
 const ProductsPage = () => {
+  useScriptReinit();
   return (
     <>
       {/* page-title */}
@@ -22,79 +26,7 @@ const ProductsPage = () => {
         <div className='tf-spacing-10'>
           <div className='tf-container w-1548'>
             <div className='tf-shop-control mb_10 border-0'>
-              <div className='row align-items-center mb_32'>
-                <div className='col-md-6 col-6'>
-                  <div className='tf-control-filter justify-content-between pe-xxl-30'>
-                    <a
-                      href='#filterShop'
-                      data-bs-toggle='offcanvas'
-                      className='tf-btn-filter '
-                    >
-                      <span className='icon icon-filter'></span>
-                      <span className='text'>FILTER</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div className='col-md-6 col-6'>
-                  <div className='tf-group-layout justify-content-end'>
-                    <div className='tf-dropdown-sort' data-bs-toggle='dropdown'>
-                      <div className='btn-select'>
-                        <span className='text-sort-value'>Best selling</span>
-                        <span className='icon icon-arrow-down'></span>
-                      </div>
-                      <div className='dropdown-menu'>
-                        <div
-                          className='select-item active'
-                          data-sort-value='best-selling'
-                        >
-                          <span className='text-value-item'>Best selling</span>
-                        </div>
-                        <div className='select-item' data-sort-value='a-z'>
-                          <span className='text-value-item'>
-                            Alphabetically, A-Z
-                          </span>
-                        </div>
-                        <div className='select-item' data-sort-value='z-a'>
-                          <span className='text-value-item'>
-                            Alphabetically, Z-A
-                          </span>
-                        </div>
-                        <div
-                          className='select-item'
-                          data-sort-value='price-low-high'
-                        >
-                          <span className='text-value-item'>
-                            Price, low to high
-                          </span>
-                        </div>
-                        <div
-                          className='select-item'
-                          data-sort-value='price-high-low'
-                        >
-                          <span className='text-value-item'>
-                            Price, high to low
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div className='wrapper-control-shop gridLayout-wrapper'>
-                <div className='meta-filter-shop'>
-                  <div id='product-count-grid' className='count-text'></div>
-                  <div id='product-count-list' className='count-text'></div>
-                  <div id='applied-filters'></div>
-                  <button
-                    id='remove-all'
-                    className='remove-all-filters'
-                    style={{ display: "none" }}
-                  >
-                    Remove all
-                    <i className='icon icon-close'></i>
-                  </button>
-                </div>
                 <div className='row'>
                   <div
                     className='wrapper-shop tf-grid-layout lg-col-3 tf-col-2 '
@@ -110,7 +42,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -174,10 +106,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Core Chair
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -195,7 +124,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -259,10 +188,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           111 Lounge Chair
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -306,7 +232,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -370,10 +296,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Crystal Lounge Chair
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -429,7 +352,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -493,10 +416,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           SYD Curved Sofa
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -540,7 +460,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -604,10 +524,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           EKO Modular Sofa
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -625,7 +542,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -689,10 +606,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Sag Side Table
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -736,7 +650,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -800,10 +714,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Solace Table Lamp
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -847,7 +758,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -911,10 +822,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Oak Pendant
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -958,7 +866,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -1022,10 +930,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Altair Lounge Chair
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1043,7 +948,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -1107,10 +1012,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Tender Bed
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1166,7 +1068,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -1230,10 +1132,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Phase Table Lamp
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1251,7 +1150,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -1315,10 +1214,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Phase Pendant Lamp
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1336,7 +1232,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width={338}
@@ -1400,10 +1296,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           Solace Table Lamp
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1447,7 +1340,7 @@ const ProductsPage = () => {
                       data-style='modern'
                     >
                       <div className='card-product_wrapper'>
-                        <a href='product-style-01.html' className='product-img'>
+                        <a href='/products/1' className='product-img'>
                           <Image
                             className='img-product'
                             width='338'
@@ -1511,10 +1404,7 @@ const ProductsPage = () => {
                         </ul>
                       </div>
                       <div className='card-product_info'>
-                        <a
-                          href='product-style-01.html'
-                          className='name-product h6 link'
-                        >
+                        <a href='/products/1' className='name-product h6 link'>
                           SYD Curved Sofa
                         </a>
                         <div className='price-wrap text-body-default fw-5'>
@@ -1586,7 +1476,7 @@ const ProductsPage = () => {
           </div>
           <div className='wg-map d-flex'>
             <iframe
-              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7880.148272329334!2d151.20657421407668!3d-33.858885268389294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae682c546039%3A0x16da940d587922a1!2sCircular%20Quay!5e0!3m2!1sen!2s!4v1745205798630!5m2!1sen!2s'
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9269159149285!2d72.83575527691664!3d19.022941853632894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec542443581%3A0x2bf3f57a345df79a!2sGodrej%20Interio%20-%20M%20Rajkamal%20Furniture!5e0!3m2!1sen!2sin!4v1778680164102!5m2!1sen!2sin'
               width='1440'
               height='589'
               style={{ border: "0" }}
@@ -1594,121 +1484,8 @@ const ProductsPage = () => {
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
             ></iframe>
-            <div className='content'>
-              <div className='h5 mb_24 text-uppercase'>Vinfur Store</div>
-              <ul className='mb_24'>
-                <li className='text-body-default text_secondary-color mb_4'>
-                  15 Yarran st, Punchbowl, NSW 2196
-                </li>
-                <li className='text-body-default text_secondary-color mb_4'>
-                  <a href='#' className='link'>
-                    support@vinfur.com
-                  </a>
-                </li>
-                <li className='text-body-default text_secondary-color'>
-                  (01) 245 2451
-                </li>
-              </ul>
-              <ul className='mb_24'>
-                <li className='text-body-default text_secondary-color mb_4'>
-                  Mon - Fri: 8am - 5pm
-                </li>
-                <li className='text-body-default text_secondary-color'>
-                  Weekend: 9am - 3pm
-                </li>
-              </ul>
-              <a
-                href=''
-                className=' hover-underline-link text-caption-1 d-flex align-items-center gap_4'
-              >
-                See location
-                <i className='icon-arrow-right-up2'></i>
-              </a>
-            </div>
           </div>
         </div>
-
-        {/* s-customer-services  */}
-        <div className='s-customer-services tf-spacing-2 sw-layout'>
-          <div className='tf-container w-1462 '>
-            <div
-              className='swiper'
-              data-screen-xl='4'
-              data-preview='3'
-              data-tablet='2'
-              data-mobile-sm='2'
-              data-mobile='1'
-              data-space-lg='48'
-              data-space-md='20'
-              data-space='15'
-            >
-              <div className='swiper-wrapper'>
-                <div className='swiper-slide'>
-                  <div className='box-icon_v01'>
-                    <div className='icon'>
-                      <i className='icon-shipping'></i>
-                    </div>
-                    <div className='content'>
-                      <div className='h5 mb_10 text-uppercase'>
-                        Free Shipping
-                      </div>
-                      <p className='text-body-default lh-26  '>
-                        Enjoy free shipping on all orders
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide'>
-                  <div className='box-icon_v01'>
-                    <div className='icon'>
-                      <i className='icon-payment'></i>
-                    </div>
-                    <div className='content'>
-                      <div className='h5 mb_10 text-uppercase'>
-                        flexible payment
-                      </div>
-                      <p className='text-body-default lh-26  '>
-                        Multi creadit cards applied
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide'>
-                  <div className='box-icon_v01'>
-                    <div className='icon'>
-                      <i className='icon-box-return'></i>
-                    </div>
-                    <div className='content'>
-                      <div className='h5 mb_10 text-uppercase'>
-                        30 days return
-                      </div>
-                      <p className='text-body-default lh-26  '>
-                        Within 14 days for an return
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide'>
-                  <div className='box-icon_v01'>
-                    <div className='icon'>
-                      <i className='icon-support'></i>
-                    </div>
-                    <div className='content'>
-                      <div className='h5 mb_10 text-uppercase'>
-                        Support Online
-                      </div>
-                      <p className='text-body-default lh-26  '>
-                        Outstanding premium support
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className='sw-dots sw-pagination-layout text-center mt_24'></div>
-            </div>
-          </div>
-        </div>
-        {/* /s-customer-services  */}
       </div>
       {/* /main-content */}
     </>

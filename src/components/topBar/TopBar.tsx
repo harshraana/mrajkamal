@@ -4,7 +4,7 @@ const TopBar = () => {
   return (
     <>
       {/* .top-bar */}
-      <div className='top-bar style-default d-flex align-items-center justify-content-center'>
+      <div className='top-bar style-default'>
         <div>
           WINTER SALE 75% OFF. Ends in:
           <div className='tf-countdown style-default'>

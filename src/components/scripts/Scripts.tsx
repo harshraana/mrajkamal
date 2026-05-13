@@ -24,8 +24,8 @@ const Scripts = () => {
         dangerouslySetInnerHTML={{ __html: "window.loaded = true;" }}
       />
       <Script src='/assets/js/infinityslide.js' strategy='afterInteractive' />
-      <Script src='/assets/js/main.js' strategy='afterInteractive' />
       <Script src='/assets/js/sibforms.js' strategy='afterInteractive' />
+      <Script src='/assets/js/main.js' strategy='afterInteractive' />
       {/* /Javascript */}
     </>
   );

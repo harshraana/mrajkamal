@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useScriptReinit from "@/hooks/useScriptReinit";
+import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
 
 const HomePage = () => {
+  useScriptReinit();
   return (
     <>
       {/* page-title */}
@@ -39,7 +44,7 @@ const HomePage = () => {
             sizes={"100vh"}
             loading='eager'
             decoding='async'
-            src='/assets/images/sections/hero-banner-1.jpg'
+            src='/my-assets/banners/main-banner.png'
             alt='hero-banner'
           />
         </div>
@@ -71,15 +76,14 @@ const HomePage = () => {
               <div className='col-md-6'>
                 <div className='thumbs-about'>
                   <Image
-                    height={598}
+                    height={358}
                     width={460}
                     sizes={"(max-width: 768px) 100vw, 50vw"}
                     className='wow fadeInRight'
                     loading='lazy'
                     decoding='async'
-                    src='/assets/images/sections/s-about-1.png'
+                    src='/my-assets/banners/locker-ad.png'
                     alt='about'
-                    style={{ width: "100%", height: "auto" }}
                   />
                   <div className='shape-1'></div>
                   <div className='shape-2'></div>
@@ -2773,20 +2777,20 @@ const HomePage = () => {
                         height='608'
                         loading='lazy'
                         decoding='async'
-                        src='/assets/images/collection/collection-item-1.jpg'
+                        src='/my-assets/ProductCat/cupboards.jpg'
                         alt='collection'
                       />
                     </Link>
                     <div className='content '>
                       <Link
                         href='/shop'
-                        className='h4 link text-capitalize d-block mb_10'
+                        className='h4 link text-capitalize d-block mb_0'
                       >
-                        Modern Living
+                        <h5>Premium Cupboards</h5>
                       </Link>
                       <Link
                         href='/shop'
-                        className='text-body-default fw-5 hover-underline-link btn_link'
+                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
                       </Link>
@@ -2802,20 +2806,20 @@ const HomePage = () => {
                         height='608'
                         loading='lazy'
                         decoding='async'
-                        src='/assets/images/collection/collection-item-2.jpg'
+                        src='/my-assets/ProductCat/locker.jpg'
                         alt='collection'
                       />
                     </Link>
                     <div className='content '>
                       <Link
                         href='/shop'
-                        className='h4 link text-capitalize d-block mb_10'
+                        className='h4 link text-capitalize d-block mb_0'
                       >
-                        Cozy Corners
+                        <h5>Safe Lockers by Godrej</h5>
                       </Link>
                       <Link
                         href='/shop'
-                        className='text-body-default fw-5 hover-underline-link btn_link'
+                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
                       </Link>
@@ -2831,20 +2835,20 @@ const HomePage = () => {
                         height='608'
                         loading='lazy'
                         decoding='async'
-                        src='/assets/images/collection/collection-item-3.jpg'
+                        src='/my-assets/ProductCat/Sofa-bed.jpg'
                         alt='collection'
                       />
                     </Link>
                     <div className='content '>
                       <Link
                         href='/shop'
-                        className='h4 link text-capitalize d-block mb_10'
+                        className='h4 link text-capitalize d-block mb_0'
                       >
-                        Timeless Classics
+                        <h5>Sofa cum Bed</h5>
                       </Link>
                       <Link
                         href='/shop'
-                        className='text-body-default fw-5 hover-underline-link btn_link'
+                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
                       >
                         Explore the Collection
                       </Link>
@@ -2865,10 +2869,10 @@ const HomePage = () => {
               <Image
                 className='img-cover'
                 width='1920'
-                height='792'
+                height='420'
                 loading='eager'
                 decoding='async'
-                src='/assets/images/sections/banner-2.jpg'
+                src='/my-assets/banners/sofa-banner.png'
                 alt='banner'
               />
             </div>
@@ -2876,10 +2880,8 @@ const HomePage = () => {
               <div className='tf-container w-1462'>
                 <div className='wow fadeInUp'>
                   <div className='title mb_40'>
-                    <h2 className='text-white text-capitalize mb_24'>
-                      elevate your home
-                    </h2>
-                    <p className='text-body-default text-white'>
+                    <h2 className='text-capitalize mb_24'>elevate your home</h2>
+                    <p className='text-body-default'>
                       Clever products for every corner
                     </p>
                   </div>
@@ -2896,455 +2898,16 @@ const HomePage = () => {
         </section>
         {/* /s-banner */}
 
-        {/* s-categories */}
-        <section className='tf-container w-1462'>
-          <div className='s-categories-v01 pt-0 tf-spacing-1'>
-            <div className='row justify-content-center'>
-              <div className='col-lg-10'>
-                <div className='wrap-category-text'>
-                  <Link href='/shop' className='category-text'>
-                    <h2>all products</h2>
-                    <span className='h4 sub'>58</span>
-                  </Link>
-                  <Link href='/shop' className='category-text'>
-                    <h2>new in</h2>
-                    <span className='h4 sub'>32</span>
-                  </Link>
-                  <Link href='/shop' className='category-text'>
-                    <h2>rug</h2>
-                    <span className='h4 sub'>43</span>
-                  </Link>
-                  <Link href='/shop' className='category-text'>
-                    <h2>furniture</h2>
-                    <span className='h4 sub'>26</span>
-                  </Link>
-                  <Link href='/shop' className='category-text'>
-                    <h2>lighting</h2>
-                    <span className='h4 sub'>18</span>
-                  </Link>
-                  <Link href='/shop' className='category-text'>
-                    <h2>home decor</h2>
-                    <span className='h4 sub'>10</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* /s-categories */}
-
         {/* s-testimonials */}
-        <section className='s-testimonials tf-spacing-1 sw-layout'>
-          <div className='tf-container'>
-            <div className='row align-items-center'>
-              <div className='col-lg-7 col-md-6'>
-                <div className='content-inner'>
-                  <div className='heading'>
-                    <div className='icon'>
-                      <i className='icon-quote'></i>
-                    </div>
-                    <h2 className='text-capitalize'>testimonials</h2>
-                  </div>
-                  <div
-                    className='swiper'
-                    data-preview='1'
-                    data-tablet='1'
-                    data-mobile-sm='1'
-                    data-mobile='1'
-                    data-space-lg='15'
-                    data-space-md='15'
-                    data-space='15'
-                  >
-                    <div className='swiper-wrapper'>
-                      <div className='swiper-slide'>
-                        <div className='testimonial-item'>
-                          <div className='rating d-flex gap_5 '>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                          </div>
-                          <h5 className=' fw-4 desc'>
-                            Beautiful craftsmanship and fast delivery! The sofa
-                            looks even better in person — super comfortable and
-                            exactly what I was hoping for.
-                          </h5>
-                          <div className='author'>
-                            <span className='name mb_4 text-body-default fw-5'>
-                              Emily R.
-                            </span>
-                            <p className='sub text-caption-1 d-flex align-items-center gap_6'>
-                              Purchased item:
-                              <Link
-                                href='/products/style-01'
-                                className='link text-body-default fw-5 text_secondary-color'
-                              >
-                                Altair Lounge Chair
-                              </Link>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className='swiper-slide'>
-                        <div className='testimonial-item'>
-                          <div className='rating d-flex gap_5 '>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                          </div>
-                          <h5 className=' fw-4 desc'>
-                            Beautiful craftsmanship and fast delivery! The sofa
-                            looks even better in person — super comfortable and
-                            exactly what I was hoping for.
-                          </h5>
-                          <div className='author'>
-                            <span className='name mb_4 text-body-default fw-5'>
-                              Emily R.
-                            </span>
-                            <p className='sub text-caption-1 d-flex align-items-center gap_6'>
-                              Purchased item:
-                              <Link
-                                href='/products/style-01'
-                                className='link text-body-default fw-5 text_secondary-color'
-                              >
-                                Altair Lounge Chair
-                              </Link>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className='swiper-slide'>
-                        <div className='testimonial-item'>
-                          <div className='rating d-flex gap_5 '>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                            <i className='icon-star'></i>
-                          </div>
-                          <h5 className=' fw-4 desc'>
-                            Beautiful craftsmanship and fast delivery! The sofa
-                            looks even better in person — super comfortable and
-                            exactly what I was hoping for.
-                          </h5>
-                          <div className='author'>
-                            <span className='name mb_4 text-body-default fw-5'>
-                              Emily R.
-                            </span>
-                            <p className='sub text-caption-1 d-flex align-items-center gap_6'>
-                              Purchased item:
-                              <Link
-                                href='/products/style-01'
-                                className='link text-body-default fw-5 text_secondary-color'
-                              >
-                                Altair Lounge Chair
-                              </Link>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='wrap-sw-button d-flex gap_15'>
-                      <div className='sw-button style-border nav-prev-layout'>
-                        <i className='icon-caret-left'></i>
-                      </div>
-                      <div className='sw-button style-border nav-next-layout'>
-                        <i className='icon-caret-right'></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className='col-lg-5 col-md-6'>
-                <div className='wrap-gallery tf-grid-layout sm-col-2 '>
-                  <div className='infiniteslide' data-clone='2' data-style='up'>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className='infiniteslide'
-                    data-clone='2'
-                    data-style='down'
-                  >
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-1.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-2.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-3.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                    <div className='gallery'>
-                      <Image
-                        className='img-cover'
-                        width='284'
-                        height='425'
-                        loading='lazy'
-                        decoding='async'
-                        src='/assets/images/sections/s-testimonials-4.jpg'
-                        alt='testimonials'
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection />
         {/* /s-testimonials */}
 
         {/* s-banner-lookbook */}
         <section className='tf-spacing-3 s-banner-lookbook sw-layout '>
+          <div className='heading-seciton mb_57 text-center'>
+            <h2 className='title'>Shop the look</h2>
+          </div>
           <div className=' tf-container position-relative'>
-            <div className='heading-seciton mb_57 text-center'>
-              <h2 className='title'>Shop the look</h2>
-            </div>
             <div
               className='swiper'
               data-preview='1'
@@ -3363,89 +2926,10 @@ const HomePage = () => {
                       width={1}
                       sizes={"100vh"}
                       className='img-banner'
-                      src='/assets/images/sections/s-lookbook-1.jpg'
+                      src='/my-assets/banners/10X-stronger.png'
                       data-src='/assets/images/banner/furniture.jpg'
                       alt=''
                     />
-                    <div className='lookbook-item position1'>
-                      <div className='dropdown dropup-center dropdown-custom'>
-                        <div
-                          role='button'
-                          className='tf-pin-btn'
-                          data-bs-toggle='dropdown'
-                          aria-expanded='false'
-                        >
-                          <span></span>
-                        </div>
-                        <div className='dropdown-menu'>
-                          <div className='loobook-product style-row'>
-                            <div className='img-style'>
-                              <Image
-                                height='71'
-                                width='71'
-                                src='/assets/images/sections/lookbook-item-1.jpg'
-                                alt='img'
-                              />
-                            </div>
-                            <div className='content'>
-                              <div className='info'>
-                                <Link
-                                  href='/products/style-01'
-                                  className='text-body-default link mb_3'
-                                >
-                                  Altair Lounge Chair
-                                </Link>
-                                <p className='price-wrap text-md fw-medium'>
-                                  <span className='text-body-default'>
-                                    $29.00
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='lookbook-item position2'>
-                      <div className='dropdown dropup-center dropdown-custom'>
-                        <div
-                          role='dialog'
-                          className='tf-pin-btn'
-                          data-bs-toggle='dropdown'
-                          aria-expanded='false'
-                        >
-                          <span></span>
-                        </div>
-                        <div className='dropdown-menu'>
-                          <div className='loobook-product style-row'>
-                            <div className='img-style'>
-                              <Image
-                                height='71'
-                                width='71'
-                                src='/assets/images/sections/lookbook-item-2.jpg'
-                                alt='img'
-                              />
-                            </div>
-                            <div className='content'>
-                              <div className='info'>
-                                <Link
-                                  href='/products/style-01'
-                                  className='text-body-default link mb_3'
-                                >
-                                  Mini Elixir Ultime <br />
-                                  Hydrating Hair Oil
-                                </Link>
-                                <p className='price-wrap text-md fw-medium'>
-                                  <span className='text-body-default'>
-                                    $299.00
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className='swiper-slide'>
@@ -3455,90 +2939,36 @@ const HomePage = () => {
                       width={1}
                       sizes={"100vh"}
                       className='img-banner'
-                      src='/assets/images/sections/s-lookbook-1.jpg'
+                      src='/my-assets/banners/100X-stronger.png'
                       data-src='/assets/images/banner/furniture.jpg'
                       alt=''
                     />
-                    <div className='lookbook-item position1'>
-                      <div className='dropdown dropup-center dropdown-custom'>
-                        <div
-                          role='dialog'
-                          className='tf-pin-btn'
-                          data-bs-toggle='dropdown'
-                          aria-expanded='false'
-                        >
-                          <span></span>
-                        </div>
-                        <div className='dropdown-menu'>
-                          <div className='loobook-product style-row'>
-                            <div className='img-style'>
-                              <Image
-                                height='71'
-                                width='71'
-                                src='/assets/images/sections/lookbook-item-1.jpg'
-                                alt='img'
-                              />
-                            </div>
-                            <div className='content'>
-                              <div className='info'>
-                                <Link
-                                  href='/products/style-01'
-                                  className='text-body-default link mb_3'
-                                >
-                                  Mini Elixir Ultime <br />
-                                  Hydrating Hair Oil
-                                </Link>
-                                <p className='price-wrap text-md fw-medium'>
-                                  <span className='text-body-default'>
-                                    $299.00
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='lookbook-item position2'>
-                      <div className='dropdown dropup-center dropdown-custom'>
-                        <div
-                          role='dialog'
-                          className='tf-pin-btn'
-                          data-bs-toggle='dropdown'
-                          aria-expanded='false'
-                        >
-                          <span></span>
-                        </div>
-                        <div className='dropdown-menu'>
-                          <div className='loobook-product style-row'>
-                            <div className='img-style'>
-                              <Image
-                                height='71'
-                                width='71'
-                                src='/assets/images/sections/lookbook-item-2.jpg'
-                                alt='img'
-                              />
-                            </div>
-                            <div className='content'>
-                              <div className='info'>
-                                <Link
-                                  href='/products/style-01'
-                                  className='text-body-default link mb_3'
-                                >
-                                  Mini Elixir Ultime <br />
-                                  Hydrating Hair Oil
-                                </Link>
-                                <p className='price-wrap text-md fw-medium'>
-                                  <span className='text-body-default'>
-                                    $299.00
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  </div>
+                </div>
+                <div className='swiper-slide'>
+                  <div className='position-relative'>
+                    <Image
+                      height={1}
+                      width={1}
+                      sizes={"100vh"}
+                      className='img-banner'
+                      src='/my-assets/banners/250X-stronger.png'
+                      data-src='/assets/images/banner/furniture.jpg'
+                      alt=''
+                    />
+                  </div>
+                </div>
+                <div className='swiper-slide'>
+                  <div className='position-relative'>
+                    <Image
+                      height={1}
+                      width={1}
+                      sizes={"100vh"}
+                      className='img-banner'
+                      src='/my-assets/banners/Fire-resistant.png'
+                      data-src='/assets/images/banner/furniture.jpg'
+                      alt=''
+                    />
                   </div>
                 </div>
               </div>
@@ -3557,7 +2987,7 @@ const HomePage = () => {
 
         {/* s-customer-services */}
         <div className='s-customer-services-v01 tf-spacing-3 sw-layout'>
-          <div className='tf-container w-1462 '>
+          <div className='tf-container  w-1462 '>
             <div
               className='swiper'
               data-preview='4'
@@ -3568,16 +2998,16 @@ const HomePage = () => {
               data-space-md='20'
               data-space='15'
             >
-              <div className='swiper-wrapper'>
+              <div className='swiper-wrapper justify-content-center'>
                 <div className='swiper-slide wow fadeInLeft'>
-                  <div className='box-icon_v01 style-col'>
+                  <div className='box-icon_v01  style-col'>
                     <div className='icon'>
                       <i className='icon-shipping'></i>
                     </div>
                     <div className='content'>
-                      <h5 className=' mb_10 text-capitalize'>
+                      <p className=' mb_10 fw-7 text-capitalize'>
                         Fast & Free Delivery
-                      </h5>
+                      </p>
                       <p className='text-body-default fw-3'>
                         We offer free shipping with ground delivery worldwide
                       </p>
@@ -3585,12 +3015,14 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className='swiper-slide wow fadeInLeft'>
-                  <div className='box-icon_v01 style-col'>
+                  <div className='box-icon_v01  style-col'>
                     <div className='icon'>
                       <i className='icon-box-return'></i>
                     </div>
                     <div className='content'>
-                      <h5 className=' mb_10 text-capitalize'>30 days return</h5>
+                      <p className=' mb_10 fw-7 text-capitalize'>
+                        30 days return
+                      </p>
                       <p className='text-body-default fw-3'>
                         Exchange or return items free of charge within 30 days.
                       </p>
@@ -3598,28 +3030,14 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className='swiper-slide wow fadeInLeft'>
-                  <div className='box-icon_v01 style-col'>
-                    <div className='icon'>
-                      <i className='icon-payment'></i>
-                    </div>
-                    <div className='content'>
-                      <h5 className=' mb_10 text-capitalize'>
-                        flexible payment
-                      </h5>
-                      <p className='text-body-default fw-3'>
-                        Pay conveniently using multiple credit cards for added
-                        flexibility.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide wow fadeInLeft'>
-                  <div className='box-icon_v01 style-col'>
+                  <div className='box-icon_v01  style-col'>
                     <div className='icon'>
                       <i className='icon-support'></i>
                     </div>
                     <div className='content'>
-                      <h5 className='mb_12 text-capitalize'>online support</h5>
+                      <p className='mb_12 text-capitalize fw-7'>
+                        online support
+                      </p>
                       <p className='text-body-default fw-3'>
                         Online Support24 hours a day,{" "}
                         <br className='d-none d-xxl-block' /> 7 days a week.

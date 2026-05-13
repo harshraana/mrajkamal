@@ -21,10 +21,10 @@ const Header = () => {
                 />
               </a>
               |
-              <a href='/' className='site-logo'>
+              <a href='/' className='site-logo pb-0 pt-2'>
                 <Image
                   height={36}
-                  width={140}
+                  width={90}
                   className='logo_header'
                   alt='logo'
                   src='/my-assets/images/godrej-interio.jpg'

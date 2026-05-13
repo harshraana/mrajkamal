@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -48,7 +48,7 @@
 /*---------- Reset css styles ----------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -1692,6 +1692,7 @@ a:hover {
 .img-cover {
   width: 100%;
   height: 100%;
+  height: 500px;
   object-fit: cover;
 }
 
@@ -2276,7 +2277,7 @@ a:hover {
 /*------------ header ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -2329,6 +2330,7 @@ a:hover {
   background-color: var(--Secondary);
   color: var(--White);
   gap: 4px;
+  display: none;
 }
 
 .top-bar.top-bar-color-1 {
@@ -2361,7 +2363,7 @@ a:hover {
 }
 
 .header .site-logo {
-  padding: 4px 0 16px;
+  padding: 4px 0 18px;
 }
 
 .header .header-top {
@@ -3213,7 +3215,7 @@ header.header-sticky.tf-header-landing {
 /*------------ footer ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -3366,7 +3368,7 @@ header.header-sticky.tf-header-landing {
 /*------------ tabs ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -3606,7 +3608,7 @@ header.header-sticky.tf-header-landing {
 /*------------ button ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -3853,7 +3855,7 @@ button.animate-btn::after,
 /*------------ range slider ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -4174,7 +4176,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 /*------------ form ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -5151,7 +5153,7 @@ form .form-content-2 {
 /*------------ slider ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -5343,7 +5345,7 @@ form .form-content-2 {
 /*------------ off canvas ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -6849,7 +6851,7 @@ form .form-content-2 {
 
 @media (max-width: 1199px) {
   .tf-toolbar-bottom {
-    display: flex;
+    /* display: flex; */
   }
 }
 
@@ -7016,7 +7018,7 @@ form .form-content-2 {
 /*------------ hover ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -7045,6 +7047,9 @@ form .form-content-2 {
 .hover-image .img-style {
   position: relative;
   overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hover-image .img-style img {
@@ -7238,7 +7243,7 @@ form .form-content-2 {
 /*------------ blog ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -7699,7 +7704,7 @@ form .form-content-2 {
 /*------------ testimonial ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -7847,7 +7852,7 @@ form .form-content-2 {
   margin-bottom: 25px;
 }
 
-.s-testimonials .wrap-sw-button {
+/* .s-testimonials .wrap-sw-button {
   margin-top: 24px;
 }
 
@@ -7855,7 +7860,7 @@ form .form-content-2 {
   .s-testimonials .wrap-sw-button {
     margin-top: 52px;
   }
-}
+} */
 
 @media (min-width: 992px) {
   .s-testimonials .content-inner {
@@ -7895,7 +7900,7 @@ form .form-content-2 {
 /*------------ accordion ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -8025,7 +8030,7 @@ form .form-content-2 {
 /*------------ shop ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -9430,7 +9435,7 @@ form .form-content-2 {
 /*------------ map ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -9475,7 +9480,7 @@ form .form-content-2 {
 /*------------ product ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -12088,7 +12093,7 @@ form .form-content-2 {
 /*------------ nice-select ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -12365,7 +12370,7 @@ form .form-content-2 {
 /*------------ cart ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -12596,7 +12601,7 @@ form .form-content-2 {
 /*------------ hero ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -12615,6 +12620,9 @@ form .form-content-2 {
  ------------------------------------------------------------------------------ */
 
 /*--------- Abstracts variable ---------- */
+.hero-banner-v01 {
+  position: relative;
+}
 
 .hero-banner-v01 .hero-content {
   padding-top: 82px;
@@ -12791,7 +12799,7 @@ form .form-content-2 {
 /*------------ zoom ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -13002,7 +13010,7 @@ form .form-content-2 {
 /*------------ animation ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -13166,7 +13174,7 @@ form .form-content-2 {
 /*------------ lookbock ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -13386,20 +13394,6 @@ form .form-content-2 {
   transform: translateX(-50%);
 }
 
-.lookbook-item .dropdown-menu {
-  --bs-dropdown-min-width: 314px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background-color: transparent;
-}
-
-.lookbook-item.style-2 > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .s-banner-lookbook {
   position: relative;
   overflow: hidden;
@@ -13408,35 +13402,13 @@ form .form-content-2 {
 
 .s-banner-lookbook img {
   width: 100%;
-  object-fit: cover;
-}
-
-.s-banner-lookbook .img-banner {
-  min-height: 450px;
-}
-
-.s-banner-lookbook .lookbook-item {
-  position: absolute;
-  --hotspot-width: 19px;
-  inset-inline-start: var(--hotspot-x);
-  inset-block-start: var(--hotspot-y);
-  margin-inline-start: calc(var(--hotspot-width) / -2);
-  margin-block-start: calc(var(--hotspot-width) / -2);
-}
-
-.s-banner-lookbook .lookbook-item.position1 {
-  --hotspot-x: 18%;
-  --hotspot-y: 24%;
-}
-
-.s-banner-lookbook .lookbook-item.position2 {
-  --hotspot-x: 67%;
-  --hotspot-y: 86%;
+  object-fit: contain;
 }
 
 .s-banner-lookbook .sw-button {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
 }
 
 .s-banner-lookbook .sw-button.nav-prev-layout {
@@ -13445,34 +13417,6 @@ form .form-content-2 {
 
 .s-banner-lookbook .sw-button.nav-next-layout {
   right: -60px;
-}
-
-.s-banner-lookbook-v02 .lookbook-item {
-  position: relative;
-}
-
-.s-banner-lookbook-v02 .lookbook-item .tf-pin-btn {
-  position: absolute;
-  --hotspot-width: 19px;
-  inset-inline-start: var(--hotspot-x);
-  inset-block-start: var(--hotspot-y);
-  margin-inline-start: calc(var(--hotspot-width) / -2);
-  margin-block-start: calc(var(--hotspot-width) / -2);
-}
-
-.s-banner-lookbook-v02 .lookbook-item.position1 .tf-pin-btn {
-  --hotspot-x: 64%;
-  --hotspot-y: 61%;
-}
-
-.s-banner-lookbook-v02 .lookbook-item.position2 .tf-pin-btn {
-  --hotspot-x: 55%;
-  --hotspot-y: 49%;
-}
-
-.s-banner-lookbook-v02 .lookbook-item.position3 .tf-pin-btn {
-  --hotspot-x: 32%;
-  --hotspot-y: 63%;
 }
 
 .s-banner-lookbook-v02 .loobook-product {
@@ -13497,7 +13441,7 @@ form .form-content-2 {
 /*------------ widgets ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -13565,8 +13509,8 @@ form .form-content-2 {
 
 @media (min-width: 576px) {
   .box-icon_v01.style-col {
-    align-items: start;
-    text-align: start;
+    /* align-items: start;
+    text-align: start; */
   }
 }
 
@@ -13661,6 +13605,7 @@ form .form-content-2 {
 
 .gallery-item .image {
   position: relative;
+  width: 100%;
 }
 
 .gallery-item .image img {
@@ -14337,7 +14282,7 @@ form .form-content-2 {
 /*------------ sections ---------------- */
 
 /* ---------------------------------------------------------
-    * Name: Vinfur - HTML
+    * Name: MRajkamal - HTML
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -15211,25 +15156,6 @@ form .form-content-2 {
   height: 34px;
   width: 34px;
   border: 11px solid var(--White);
-}
-
-.s-lookbook .lookbook-item {
-  position: absolute;
-  --hotspot-width: 19px;
-  inset-inline-start: var(--hotspot-x);
-  inset-block-start: var(--hotspot-y);
-  margin-inline-start: calc(var(--hotspot-width) / -2);
-  margin-block-start: calc(var(--hotspot-width) / -2);
-}
-
-.s-lookbook .lookbook-item.position1 {
-  --hotspot-x: 31%;
-  --hotspot-y: 59%;
-}
-
-.s-lookbook .lookbook-item.position2 {
-  --hotspot-x: 80%;
-  --hotspot-y: 42.5%;
 }
 
 .s-lookbook .sw-button {

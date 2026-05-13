@@ -24,19 +24,13 @@ const Footer = () => {
               <div className='col-lg-3 col-md-6'>
                 <div className='footer-about'>
                   <h5 className=' text-capitalize mb_24 footer-title text_white'>
-                    about
+                    Store Address
                   </h5>
                   <p className='text-body-default text_white mb_24'>
-                    We only carry designs we believe in ethically and
-                    aesthetically – original, authentic pieces that are made to
-                    last.
+                    7, Haji Ebrahim Patel Trust Building Junction of Gokhale
+                    Road, and, Ranade Rd, Dadar West, Dadar, Mumbai, Maharashtra
+                    400028
                   </p>
-                  <Link
-                    href='/about'
-                    className='hover-underline-link text_white text-body-default text-capitalize'
-                  >
-                    Learn More
-                  </Link>
                 </div>
               </div>
               <div className='col-lg-5 col-md-6'>
@@ -135,109 +129,8 @@ const Footer = () => {
         <div className='footer-bottom'>
           <div className='tf-container'>
             <div className='wrap-footer-bottom'>
-              <p className='text_white'>All Rights Reserved 2026 Vinfur.</p>
-              <ul className='payment-method-list d-flex gap_8 justify-content-center flex-wrap'>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/amex.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-1.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-2.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-3.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-4.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-5.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-6.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-7.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-8.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <Image
-                      width='40'
-                      height='25'
-                      src='/assets/images/payment/payment-9.png'
-                      alt=''
-                    />
-                  </a>
-                </li>
-              </ul>
+              <p className='text_white'>All Rights Reserved 2026 MRajkamal.</p>
+
               <div className='right d-flex '>
                 <Link
                   href='/terms'

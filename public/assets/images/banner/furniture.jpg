@@ -10,11 +10,11 @@
     {/*[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><![endif]*/}
 
     <meta name="author" content="themesflat.com">
-    <title>VinFur - Modern Furniture</title>
+    <title>MRajkamal - Modern Furniture</title>
     <meta name="description"
-        content="VinFur offers modern, durable furniture from Vietnam — stylish sofas, dining sets, storage, and decor at fair prices with fast delivery.">
+        content="MRajkamal offers modern, durable furniture from Vietnam — stylish sofas, dining sets, storage, and decor at fair prices with fast delivery.">
     <meta name="keywords"
-        content="VinFur, furniture, modern furniture, home decor, sofas, dining sets, storage solutions, affordable furniture, stylish interiors">
+        content="MRajkamal, furniture, modern furniture, home decor, sofas, dining sets, storage solutions, affordable furniture, stylish interiors">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -670,7 +670,7 @@
             <div className="footer-bottom">
                 <div className="tf-container">
                     <div className="wrap-footer-bottom">
-                        <p className="text_white">All Rights Reserved 2026 Vinfur.</p>
+                        <p className="text_white">All Rights Reserved 2026 MRajkamal.</p>
                         <ul className="payment-method-list d-flex gap_8 justify-content-center flex-wrap">
                             <li>
                                 <a href="#"><img width="40" height="25" src="images/payment/amex.png" alt=""></a>
@@ -1772,8 +1772,8 @@
                     <div className="bottom ">
                         <div className="checkbox-wrap align-items-start">
                             <input type="checkbox" className="tf-check" id="checksave2">
-                            <p className="text-caption-1">Yes, sign me up for the Vinfur Newsletter. I confirm I am over 16
-                                years old. I would like to receive digital communications (email and SMS) from Vinfur
+                            <p className="text-caption-1">Yes, sign me up for the MRajkamal Newsletter. I confirm I am over 16
+                                years old. I would like to receive digital communications (email and SMS) from MRajkamal
                                 about products and exclusive offers.</p>
                         </div>
                     </div>

@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import useScriptReinit from "@/hooks/useScriptReinit";
 
 const MiscControls = () => {
+  useScriptReinit();
   return (
     <>
       {/* Toolbar */}
@@ -1860,9 +1864,9 @@ const MiscControls = () => {
                 <div className='checkbox-wrap align-items-start'>
                   <input type='checkbox' className='tf-check' id='checksave1' />
                   <p className='text-caption-1'>
-                    Yes, sign me up for the Vinfur Newsletter. I confirm I am
+                    Yes, sign me up for the MRajkamal Newsletter. I confirm I am
                     over 16 years old. I would like to receive digital
-                    communications (email and SMS) from Vinfur about products
+                    communications (email and SMS) from MRajkamal about products
                     and exclusive offers.
                   </p>
                 </div>

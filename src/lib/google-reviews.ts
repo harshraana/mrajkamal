@@ -58,14 +58,16 @@ function transformReviews(
  * Load fallback reviews from JSON data
  * These are excellent real reviews from Google Business Profile
  */
-const FALLBACK_REVIEWS: GoogleReview[] = reviewsData.reviews.map((review: any) => ({
-  author: review.author,
-  rating: review.rating,
-  text: review.text,
-  publishedAtMs: review.publishedAtMs,
-  reviewId: review.reviewId,
-  profilePhotoUrl: review.profilePhotoUrl,
-}));
+const FALLBACK_REVIEWS: GoogleReview[] = reviewsData.reviews.map(
+  (review: any) => ({
+    author: review.author,
+    rating: review.rating,
+    text: review.text,
+    publishedAtMs: review.publishedAtMs,
+    reviewId: review.reviewId,
+    profilePhotoUrl: review.profilePhotoUrl,
+  }),
+);
 
 /**
  * Fetch Google reviews for a business location.
@@ -139,7 +141,10 @@ export async function fetchGoogleReviews(): Promise<GoogleReview[]> {
     if (allReviews.length < FALLBACK_REVIEWS.length) {
       // Add remaining curated reviews to supplement
       const remainingSlots = FALLBACK_REVIEWS.length - allReviews.length;
-      const fallbackToAdd = FALLBACK_REVIEWS.slice(reviews.length, reviews.length + remainingSlots);
+      const fallbackToAdd = FALLBACK_REVIEWS.slice(
+        reviews.length,
+        reviews.length + remainingSlots,
+      );
       allReviews = [...allReviews, ...fallbackToAdd];
     }
 
@@ -155,7 +160,9 @@ export async function fetchGoogleReviews(): Promise<GoogleReview[]> {
     return allReviews;
   } catch (error) {
     console.error("[Google Reviews] Fetch error:", error);
-    console.log("[Google Reviews] Using curated reviews from JSON due to fetch error.");
+    console.log(
+      "[Google Reviews] Using curated reviews from JSON due to fetch error.",
+    );
     return FALLBACK_REVIEWS;
   }
 }

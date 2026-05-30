@@ -1825,21 +1825,6 @@ const ProductDetail = () => {
                 <div className='swiper-slide'>
                   <div className='box-icon_v01'>
                     <div className='icon'>
-                      <i className='icon-box-return'></i>
-                    </div>
-                    <div className='content'>
-                      <div className='h5 mb_10 text-uppercase'>
-                        30 days return
-                      </div>
-                      <p className='text-body-default lh-26  '>
-                        Within 14 days for an return
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide'>
-                  <div className='box-icon_v01'>
-                    <div className='icon'>
                       <i className='icon-support'></i>
                     </div>
                     <div className='content'>

@@ -32,7 +32,7 @@ const Header = () => {
               </a>
             </div>
             <div className='header-right d-flex align-items-center'>
-              <nav className='main-menu'>
+              {/* <nav className='main-menu'>
                 <ul className='navigation box-nav-menu'>
                   <li className='text-menu menu-item'>
                     <a
@@ -60,7 +60,7 @@ const Header = () => {
                     </a>
                   </li>
                 </ul>
-              </nav>
+              </nav> */}
               <ul className='nav-icon-list'>
                 {/* <li className='d-none d-md-flex'>
                   <a
@@ -81,12 +81,12 @@ const Header = () => {
                     <i className='icon icon-user'></i>
                   </a>
                 </li> */}
-                <li className='d-none d-sm-flex position-relative'>
+               {/*  <li className='d-none d-sm-flex position-relative'>
                   <Link href='/wishlist' className='nav-icon-item link'>
                     <i className='icon icon-heart'></i>
                   </Link>
                   <span className='count'>7</span>
-                </li>
+                </li> */}
                 {/* <li
                   className='shop-cart'
                   data-bs-toggle='modal'
@@ -102,7 +102,7 @@ const Header = () => {
                   <span className='count'>4</span>
                 </li> */}
               </ul>
-              <a
+              {/* <a
                 href='#mobileMenu'
                 data-bs-toggle='offcanvas'
                 className='mobile-button d-xl-none'
@@ -112,7 +112,7 @@ const Header = () => {
                   <span></span>
                   <span></span>
                 </div>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

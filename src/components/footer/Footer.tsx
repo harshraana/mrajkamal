@@ -36,9 +36,9 @@ const Footer = () => {
               <div className='col-lg-5 col-md-6'>
                 <div className='wrap-footer-col-block'>
                   <div className='footer-col-block'>
-                    <h5 className=' text_white mb_24'>Quick Link</h5>
+                    {/* <h5 className=' text_white mb_24'>Quick Link</h5> */}
                     <div className='tf-collapse-content'>
-                      <ul className='footer-menu-list d-grid gap_12'>
+                      {/*  <ul className='footer-menu-list d-grid gap_12'>
                         <li>
                           <Link
                             href='/about'
@@ -71,7 +71,7 @@ const Footer = () => {
                             Account
                           </Link>
                         </li>
-                      </ul>
+                      </ul> */}
                     </div>
                   </div>
                   <div className='footer-col-block'>
@@ -80,42 +80,12 @@ const Footer = () => {
                       <ul className='footer-menu-list d-grid gap_12'>
                         <li>
                           <a
-                            href='https://www.facebook.com/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Facebook
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href='https://www.instagram.com/'
+                            href='https://www.instagram.com/mrajkamalfurniture/'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='link-2 text-body-default text_white'
                           >
                             Instagram
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href='https://www.tiktok.com/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='link-2 text-body-default text_white'
-                          >
-                            TikTok
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href='https://www.pinterest.com/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Pinterest
                           </a>
                         </li>
                       </ul>
@@ -129,9 +99,11 @@ const Footer = () => {
         <div className='footer-bottom'>
           <div className='tf-container'>
             <div className='wrap-footer-bottom'>
-              <p className='text_white'>All Rights Reserved 2026 MRajkamal.</p>
+              <p className='text_white'>
+                All Rights Reserved 2026 M Rajkamal Furniture.
+              </p>
 
-              <div className='right d-flex '>
+              {/* <div className='right d-flex '>
                 <Link
                   href='/terms'
                   className='text-body-default link-2 text_white '
@@ -144,7 +116,7 @@ const Footer = () => {
                 >
                   Privacy
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

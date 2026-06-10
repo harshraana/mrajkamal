@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const MobileMenu = () => {
@@ -11,15 +12,16 @@ const MobileMenu = () => {
           <i className='icon-close'></i>
         </span>
         <div className='canvas-header'>
-          <a href='index.html' className='site-logo'>
+          <Link href='/' className='site-logo'>
             <Image
               className='logo_header'
-              alt='logo'
+              alt='M Rajkamal logo'
               width={165}
-              height={32}
+              height={33}
+              style={{ height: "auto" }}
               src='/assets/images/logo/logo.svg'
             />
-          </a>
+          </Link>
           <a
             href='#login'
             data-bs-toggle='offcanvas'
@@ -35,10 +37,10 @@ const MobileMenu = () => {
             <ul className='nav-ul-mb' id='wrapper-menu-navigation'></ul>
           </div>
           <div className='group-btn'>
-            <a href='wishlist.html' className='tf-btn btn-bg-primary style-2'>
-              Wishlist
+            <Link href='/products' className='tf-btn btn-bg-primary style-2'>
+              View Products
               <i className='icon icon-heart'></i>
-            </a>
+            </Link>
             <div data-bs-dismiss='offcanvas'>
               <a
                 href='#search'
@@ -159,8 +161,12 @@ const MobileMenu = () => {
               className='tf-dropdown-select style-default type-currencies'
               defaultValue='USD'
             >
-              <option data-thumbnail='images/country/us.png'>USD</option>
-              <option data-thumbnail='images/country/vie.png'>VND</option>
+              <option data-thumbnail='/assets/images/country/us.png'>
+                USD
+              </option>
+              <option data-thumbnail='/assets/images/country/vie.png'>
+                VND
+              </option>
             </select>
           </div>
           <span className='br-line'></span>

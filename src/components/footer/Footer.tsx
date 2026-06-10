@@ -13,10 +13,11 @@ const Footer = () => {
               <div className='col-lg-3 col-md-6'>
                 <Link href='/' className='site-logo'>
                   <Image
-                    height={100}
+                    height={141}
                     width={200}
+                    style={{ height: "auto" }}
                     className='logo_header'
-                    alt='logo'
+                    alt='M Rajkamal logo'
                     src='/my-assets/images/M-Rajkamal-logo-light.svg'
                   />
                 </Link>
@@ -100,7 +101,7 @@ const Footer = () => {
           <div className='tf-container'>
             <div className='wrap-footer-bottom'>
               <p className='text_white'>
-                All Rights Reserved 2026 M Rajkamal Furniture.
+                Copyright © 2026 mrajkamalfurniture.com - All Rights Reserved.
               </p>
 
               {/* <div className='right d-flex '>

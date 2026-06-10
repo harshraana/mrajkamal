@@ -16,16 +16,13 @@ const Scripts = () => {
         src='/assets/js/swiper-bundle.min.js'
         strategy='afterInteractive'
       />
-      <Script src='/assets/js/carousel.js' strategy='afterInteractive' />
       <Script src='/assets/js/count-down.js' strategy='afterInteractive' />
-      <Script
-        id='set-window-loaded'
-        strategy='afterInteractive'
-        dangerouslySetInnerHTML={{ __html: "window.loaded = true;" }}
-      />
       <Script src='/assets/js/infinityslide.js' strategy='afterInteractive' />
       <Script src='/assets/js/sibforms.js' strategy='afterInteractive' />
-      <Script src='/assets/js/main.js' strategy='afterInteractive' />
+      {/* carousel.js and main.js are lazyOnload so they run after React hydration,
+          preventing WOW.js / Swiper DOM mutations from causing hydration mismatches. */}
+      <Script src='/assets/js/carousel.js' strategy='lazyOnload' />
+      <Script src='/assets/js/main.js' strategy='lazyOnload' />
       {/* /Javascript */}
     </>
   );

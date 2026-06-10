@@ -5,10 +5,21 @@ import Link from "next/link";
 import React from "react";
 import useScriptReinit from "@/hooks/useScriptReinit";
 import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
-import NewInSection from "@/components/pages/home/NewInSection";
+import type { HomeContentDTO, ProductListItemDTO } from "@/types";
 
-const HomePage = () => {
+interface HomePageProps {
+  homeContent: HomeContentDTO;
+  featuredProducts: ProductListItemDTO[];
+}
+
+const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
   useScriptReinit();
+
+  const heroTitleParts = homeContent.heroTitle.split(",").map((s) => s.trim());
+  const aboutDescription =
+    homeContent.lockerAdText ||
+    homeContent.heroSubtitle;
+
   return (
     <>
       {/* page-title */}
@@ -18,17 +29,21 @@ const HomePage = () => {
             <div className='row align-items-end'>
               <div className='col-lg-7'>
                 <h1 className='hero-banner_title text-capitalize mb_16 mb-lg-0'>
-                  Modern Living, <br className='lg-hide' /> Redefined
+                  {heroTitleParts.length > 1 ? (
+                    <>
+                      {heroTitleParts[0]}, <br className='lg-hide' />{" "}
+                      {heroTitleParts.slice(1).join(", ")}
+                    </>
+                  ) : (
+                    homeContent.heroTitle
+                  )}
                 </h1>
               </div>
               <div className='col-lg-5 '>
                 <div className='content'>
-                  <p className=' mb_40'>
-                    Discover sleek designs and timeless comfort — furniture made
-                    to elevate your everyday space.
-                  </p>
+                  <p className=' mb_40'>{homeContent.heroSubtitle}</p>
                   {/*  <Link
-                    href='/shop'
+                    href='/products'
                     className='btn_link hover-underline-link text-body-default fw-5'
                   >
                     Browse The Collection
@@ -42,10 +57,10 @@ const HomePage = () => {
           <Image
             height={673}
             width={1920}
-            sizes={"100vh"}
-            loading='eager'
+            sizes={"100vw"}
+            priority
             decoding='async'
-            src='/my-assets/banners/main-banner.png'
+            src={homeContent.heroBannerUrl}
             alt='hero-banner'
           />
         </div>
@@ -62,13 +77,10 @@ const HomePage = () => {
                   <h2 className='title text-capitalize  '>
                     featured collections
                   </h2>
-                  <p className='desc'>
-                    Discover sleek designs and timeless comfort — furniture made
-                    to elevate your <br className='xl-hide' /> everyday space.
-                  </p>
+                  <p className='desc'>{aboutDescription}</p>
                 </div>
                 {/* <Link
-                  href='/shop'
+                  href='/products'
                   className='text-body-default fw-5 hover-underline-link btn_link'
                 >
                   Browse The Collection
@@ -77,14 +89,15 @@ const HomePage = () => {
               <div className='col-md-6'>
                 <div className='thumbs-about'>
                   <Image
-                    height={358}
+                    height={616}
                     width={460}
+                    style={{ height: "auto" }}
                     sizes={"(max-width: 768px) 100vw, 50vw"}
                     className='wow fadeInRight'
                     loading='lazy'
                     decoding='async'
-                    src='/my-assets/banners/locker-ad.png'
-                    alt='about'
+                    src={homeContent.lockerAdUrl}
+                    alt='Godrej Interio locker display'
                   />
                   <div className='shape-1'></div>
                   <div className='shape-2'></div>
@@ -96,7 +109,61 @@ const HomePage = () => {
         {/* /s-about */}
 
         {/* Product Main */}
-        {/* <NewInSection /> */}
+        {featuredProducts.length > 0 && (
+          <section className='flat-spacing-10'>
+            <div className='tf-container'>
+              <div className='heading-section mb_48 text-center'>
+                <h2 className='text-uppercase'>Featured Products</h2>
+              </div>
+              <div className='tf-grid-layout lg-col-3 tf-col-2'>
+                {featuredProducts.map((product) => (
+                  <div
+                    key={product._id}
+                    className='card-product has-price-default loadItem grid'
+                  >
+                    <div className='card-product_wrapper'>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className='product-img'
+                      >
+                        <Image
+                          className='img-product'
+                          width={338}
+                          height={338}
+                          loading='lazy'
+                          decoding='async'
+                          src={product.thumbnailImage}
+                          alt={product.name}
+                          sizes='(max-width: 768px) 100vw, 338px'
+                        />
+                      </Link>
+                    </div>
+                    <div className='card-product_info'>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className='name-product h6 link d-block'
+                      >
+                        {product.name}
+                      </Link>
+                      <div className='price-wrap text-body-default fw-5'>
+                        {product.priceLabel ||
+                          `₹${product.price.toLocaleString("en-IN")}`}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className='text-center mt_40'>
+                <Link
+                  href='/products'
+                  className='btn-style-1 tf-btn btn-xl radius-3 fw-6 fs-16'
+                >
+                  View All Products
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
         {/* /Product Main */}
 
         {/* s-colection */}
@@ -116,93 +183,34 @@ const HomePage = () => {
               data-space='15'
             >
               <div className='swiper-wrapper'>
-                <div className='swiper-slide wow fadeInLeft'>
-                  <div className='collection-item hover-image'>
-                    <Link href='/shop' className='img-style mb_24'>
-                      <Image
-                        className='img-cover'
-                        width='460'
-                        height='608'
-                        loading='lazy'
-                        decoding='async'
-                        src='/my-assets/ProductCat/cupboards.png'
-                        alt='collection'
-                      />
-                    </Link>
-                    <div className='content '>
-                      <Link
-                        href='/shop'
-                        className='h4 link text-capitalize d-block mb_0'
-                      >
-                        <h5>Premium Cupboards</h5>
+                {homeContent.featuredCategoryImages.map((category, index) => (
+                  <div
+                    key={`${category.label}-${index}`}
+                    className='swiper-slide wow fadeInLeft'
+                  >
+                    <div className='collection-item hover-image'>
+                      <Link href={category.href} className='img-style mb_24'>
+                        <Image
+                          className='img-cover'
+                          width='460'
+                          height='608'
+                          loading='lazy'
+                          decoding='async'
+                          src={category.imageUrl}
+                          alt={category.label}
+                        />
                       </Link>
-                      {/* <Link
-                        href='/shop'
-                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
-                      >
-                        Explore the Collection
-                      </Link> */}
+                      <div className='content '>
+                        <Link
+                          href={category.href}
+                          className='h4 link text-capitalize d-block mb_0'
+                        >
+                          <h5>{category.label}</h5>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className='swiper-slide wow fadeInLeft'>
-                  <div className='collection-item hover-image'>
-                    <Link href='/shop' className='img-style mb_24'>
-                      <Image
-                        className='img-cover'
-                        width='460'
-                        height='608'
-                        loading='lazy'
-                        decoding='async'
-                        src='/my-assets/ProductCat/locker.jpg'
-                        alt='collection'
-                      />
-                    </Link>
-                    <div className='content '>
-                      <Link
-                        href='/shop'
-                        className='h4 link text-capitalize d-block mb_0'
-                      >
-                        <h5>Safe Lockers by Godrej</h5>
-                      </Link>
-                      {/* <Link
-                        href='/shop'
-                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
-                      >
-                        Explore the Collection
-                      </Link> */}
-                    </div>
-                  </div>
-                </div>
-                <div className='swiper-slide wow fadeInLeft'>
-                  <div className='collection-item hover-image'>
-                    <Link href='/shop' className='img-style mb_24'>
-                      <Image
-                        className='img-cover'
-                        width='460'
-                        height='608'
-                        loading='lazy'
-                        decoding='async'
-                        src='/my-assets/ProductCat/Sofa-bed.jpg'
-                        alt='collection'
-                      />
-                    </Link>
-                    <div className='content '>
-                      <Link
-                        href='/shop'
-                        className='h4 link text-capitalize d-block mb_0'
-                      >
-                        <h5>Sofa cum Bed</h5>
-                      </Link>
-                      {/* <Link
-                        href='/shop'
-                        className='text-body-default text-body-tertiary fw-5 hover-underline-link btn_link'
-                      >
-                        Explore the Collection
-                      </Link> */}
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
               <div className='sw-dots sw-pagination-layout  text-center mt_24 d-lg-none'></div>
             </div>
@@ -234,7 +242,7 @@ const HomePage = () => {
                     </p>
                   </div>
                   <Link
-                    href='/shop'
+                    href='/products'
                     className='tf-btn btn-bg-white animate-fill  btn-rounded btn-px-40 '
                   >
                     Explore Now
@@ -272,7 +280,7 @@ const HomePage = () => {
                     <Image
                       height={1}
                       width={1}
-                      sizes={"100vh"}
+                      sizes={"100vw"}
                       className='img-banner'
                       src='/my-assets/banners/10X-stronger.png'
                       data-src='/assets/images/banner/furniture.jpg'
@@ -285,7 +293,7 @@ const HomePage = () => {
                     <Image
                       height={1}
                       width={1}
-                      sizes={"100vh"}
+                      sizes={"100vw"}
                       className='img-banner'
                       src='/my-assets/banners/100X-stronger.png'
                       data-src='/assets/images/banner/furniture.jpg'
@@ -298,7 +306,7 @@ const HomePage = () => {
                     <Image
                       height={1}
                       width={1}
-                      sizes={"100vh"}
+                      sizes={"100vw"}
                       className='img-banner'
                       src='/my-assets/banners/250X-stronger.png'
                       data-src='/assets/images/banner/furniture.jpg'
@@ -311,7 +319,7 @@ const HomePage = () => {
                     <Image
                       height={1}
                       width={1}
-                      sizes={"100vh"}
+                      sizes={"100vw"}
                       className='img-banner'
                       src='/my-assets/banners/Fire-resistant.png'
                       data-src='/assets/images/banner/furniture.jpg'
@@ -337,12 +345,12 @@ const HomePage = () => {
           <div className='heading-section mb_48 text-center'>
             <h2 className='text-uppercase '>visit our store</h2>
           </div>
-          <div className='wg-map d-flex'>
+          <div className='wg-map'>
             <iframe
               src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9269159149285!2d72.83575527691664!3d19.022941853632894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec542443581%3A0x2bf3f57a345df79a!2sGodrej%20Interio%20-%20M%20Rajkamal%20Furniture!5e0!3m2!1sen!2sin!4v1778680164102!5m2!1sen!2sin'
               width='1440'
               height='589'
-              style={{ border: "0" }}
+              style={{ border: "0", width: "100%" }}
               allowFullScreen={true}
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
@@ -436,10 +444,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>
@@ -458,10 +463,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>
@@ -480,10 +482,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>
@@ -502,10 +501,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>
@@ -524,10 +520,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>
@@ -546,10 +539,7 @@ const HomePage = () => {
                       alt='Image'
                     />
                   </div>
-                  <Link
-                    href='/products/style-01'
-                    className='box-icon hover-tooltip'
-                  >
+                  <Link href='/products' className='box-icon hover-tooltip'>
                     <span className='icon icon-instagram'></span>
                     <span className='tooltip'>View product</span>
                   </Link>

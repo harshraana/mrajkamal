@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# M Rajkamal – Premium Furniture Store
+
+Next.js 16 marketing and catalogue website for **M Rajkamal**, an authorised Godrej Interio dealer in Dadar West, Mumbai. Includes a MongoDB-backed admin CMS for products and home page content.
+
+## Stack
+
+- Next.js 16 (App Router, React Server Components)
+- React 19, TypeScript
+- MongoDB + Mongoose
+- NextAuth v5 (credentials admin login)
+- ImageKit (product/home image uploads)
+- Google Places API (customer reviews, optional)
 
 ## Getting Started
 
-First, run the development server:
+1. Copy environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Fill in required values in `.env.local` (see [Environment Variables](#environment-variables)).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Install dependencies and run the dev server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) for the public site and [http://localhost:3000/admin/login](http://localhost:3000/admin/login) for the admin panel.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Required | Scope | Purpose |
+|----------|----------|-------|---------|
+| `MONGODB_URI` | Yes | Server | MongoDB connection string |
+| `AUTH_SECRET` | Yes | Server | NextAuth JWT signing secret |
+| `ADMIN_EMAIL` | Yes | Server | Admin login email |
+| `ADMIN_PASSWORD_HASH` | Yes | Server | bcrypt hash of admin password |
+| `IMAGEKIT_PRIVATE_KEY` | Yes* | Server | Image uploads in admin |
+| `NEXT_PUBLIC_TINYMCE_API_KEY` | Yes* | Client | Rich text editor in admin |
+| `NEXT_PUBLIC_SITE_URL` | Yes | Client | Product sharing URLs |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Client | WhatsApp inquiry button |
+| `GOOGLE_PLACES_API_KEY` | No | Server | Live Google reviews |
+| `GOOGLE_PLACE_ID` | No | Server | Business Place ID for reviews |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+\*Required for full admin functionality (product/home content editing).
 
-## Deploy on Vercel
+Generate an admin password hash:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+node -e "console.log(require('bcryptjs').hashSync('your-password', 10))"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Routes
+
+| Route | Purpose |
+|-------|---------|
+| `/` | Home page (CMS-managed hero, categories; DB featured products) |
+| `/products` | Product catalogue (`?category=sofa` filter supported) |
+| `/products/[slug]` | Product detail |
+| `/about` | Store information |
+| `/admin/login` | Admin sign-in |
+| `/admin/products` | Product management |
+| `/admin/home` | Home page CMS |
+
+## Scripts
+
+```bash
+npm run dev      # Development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint
+```
+
+## Admin Panel
+
+1. Set `ADMIN_EMAIL` and `ADMIN_PASSWORD_HASH` in `.env.local`.
+2. Sign in at `/admin/login`.
+3. Manage products at `/admin/products` and home content at `/admin/home`.
+
+Mutations use **Server Actions** (`src/app/actions/`). Image uploads use `/api/admin/upload`.
+
+## Deployment
+
+1. Set all required environment variables on your hosting platform.
+2. Run `npm run build` — the app uses dynamic rendering for DB-backed pages.
+3. Ensure MongoDB and ImageKit are reachable from the deployment environment.
+
+For Copilot/AI coding guidelines, see [`.github/copilot-instructions.md`](.github/copilot-instructions.md).

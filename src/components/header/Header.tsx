@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -11,56 +11,49 @@ const Header = () => {
         <div className='tf-container'>
           <div className='header-inner'>
             <div className='header-left'>
-              <a href='/' className='site-logo'>
+              <Link href='/' className='site-logo'>
                 <Image
-                  height={55}
+                  height={64}
                   width={240}
+                  style={{ height: "auto" }}
                   className='logo_header'
-                  alt='logo'
+                  alt='M Rajkamal logo'
                   src='/my-assets/images/M-Rajkamal-logo-2.svg'
                 />
-              </a>
+              </Link>
               |
-              <a href='/' className='site-logo pb-0 pt-2'>
+              <Link href='/' className='site-logo pb-0 pt-2'>
                 <Image
-                  height={36}
+                  height={47}
                   width={90}
+                  style={{ height: "auto" }}
                   className='logo_header'
-                  alt='logo'
+                  alt='Godrej Interio authorised dealer'
                   src='/my-assets/images/godrej-interio.jpg'
                 />
-              </a>
+              </Link>
             </div>
             <div className='header-right d-flex align-items-center'>
-              {/* <nav className='main-menu'>
+              <nav className='main-menu'>
                 <ul className='navigation box-nav-menu'>
                   <li className='text-menu menu-item'>
-                    <a
-                      href='/'
-                      className='link-no-action toggle splitting item-link'
-                    >
+                    <a href='/' className='item-link'>
                       Home
                     </a>
                   </li>
 
-                  <li className='text-menu menu-item '>
-                    <a
-                      href='/products'
-                      className='link-no-action toggle splitting item-link'
-                    >
+                  {/*   <li className='text-menu menu-item'>
+                    <a href='/products' className='item-link'>
                       Products
                     </a>
-                  </li>
+                  </li> */}
                   <li className='text-menu menu-item'>
-                    <a
-                      href='/about'
-                      className='link-no-action toggle splitting item-link'
-                    >
+                    <a href='/about' className='item-link'>
                       About Us
                     </a>
                   </li>
                 </ul>
-              </nav> */}
+              </nav>
               <ul className='nav-icon-list'>
                 {/* <li className='d-none d-md-flex'>
                   <a
@@ -81,7 +74,7 @@ const Header = () => {
                     <i className='icon icon-user'></i>
                   </a>
                 </li> */}
-               {/*  <li className='d-none d-sm-flex position-relative'>
+                {/*  <li className='d-none d-sm-flex position-relative'>
                   <Link href='/wishlist' className='nav-icon-item link'>
                     <i className='icon icon-heart'></i>
                   </Link>

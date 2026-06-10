@@ -1,9 +1,9 @@
-@import url("../theme/css/bootstrap.css");
-@import url("../theme/css/animate.min.css");
-@import url("../theme/css/swiper-bundle.min.css");
-@import url("../theme/css/sib-styles.css");
-@import url("../theme/css/styles.css");
-@import url("../theme/icons/icomoon/style.css");
+@import "../theme/css/bootstrap.css";
+@import "../theme/css/animate.min.css";
+@import "../theme/css/swiper-bundle.min.css";
+@import "../theme/css/sib-styles.css";
+@import "../theme/css/styles.css";
+@import "../theme/icons/icomoon/style.css";
 
 * {
   box-sizing: border-box;

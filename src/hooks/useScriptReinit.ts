@@ -4,11 +4,11 @@ import { useEffect } from "react";
 
 const useScriptReinit = () => {
   useEffect(() => {
-    // Small delay to ensure DOM is fully rendered
+    // Delay to ensure DOM and all async chunks are fully rendered before
+    // re-triggering legacy jQuery/Swiper initialization via synthetic load event
     const timer = setTimeout(() => {
-      // Trigger window load event to reinitialize scripts
       window.dispatchEvent(new Event("load"));
-    }, 100);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, []);

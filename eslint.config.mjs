@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Legacy theme/vendor assets (not application source)
+    "public/**",
   ]),
 ]);
 

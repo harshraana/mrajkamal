@@ -58,16 +58,34 @@ function transformReviews(
  * Load fallback reviews from JSON data
  * These are excellent real reviews from Google Business Profile
  */
-const FALLBACK_REVIEWS: GoogleReview[] = reviewsData.reviews.map(
-  (review: any) => ({
+interface FallbackReviewEntry {
+  author: string;
+  rating: number;
+  text: string;
+  publishedAtMs: number;
+  reviewId?: string;
+  profilePhotoUrl?: string;
+}
+
+const FALLBACK_REVIEWS: GoogleReview[] = (
+  reviewsData.reviews as FallbackReviewEntry[]
+).map((review) => ({
     author: review.author,
     rating: review.rating,
     text: review.text,
     publishedAtMs: review.publishedAtMs,
     reviewId: review.reviewId,
     profilePhotoUrl: review.profilePhotoUrl,
-  }),
-);
+  }));
+
+type ReviewsGlobalCache = typeof globalThis & {
+  godrej_positive_reviews_cache?: GoogleReview[];
+  godrej_positive_reviews_cache_expiry?: number;
+};
+
+function getReviewsCache(): ReviewsGlobalCache {
+  return globalThis as ReviewsGlobalCache;
+}
 
 /**
  * Fetch Google reviews for a business location.
@@ -76,10 +94,8 @@ const FALLBACK_REVIEWS: GoogleReview[] = reviewsData.reviews.map(
  * Falls back to curated JSON reviews if API returns fewer than 5 reviews.
  */
 export async function fetchGoogleReviews(): Promise<GoogleReview[]> {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID;
-  const cacheKey = "godrej_positive_reviews_cache";
-  const cacheExpiryKey = "godrej_positive_reviews_cache_expiry";
+  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+  const placeId = process.env.GOOGLE_PLACE_ID;
   const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 
   if (!apiKey || !placeId) {
@@ -89,17 +105,15 @@ export async function fetchGoogleReviews(): Promise<GoogleReview[]> {
     return FALLBACK_REVIEWS;
   }
 
-  // Check if we have cached reviews and they're still valid
-  if (typeof globalThis !== "undefined") {
-    const cached = (globalThis as any)[cacheKey];
-    const cacheExpiry = (globalThis as any)[cacheExpiryKey];
+  const cache = getReviewsCache();
+  const cached = cache.godrej_positive_reviews_cache;
+  const cacheExpiry = cache.godrej_positive_reviews_cache_expiry;
 
-    if (cached && cacheExpiry && Date.now() < cacheExpiry) {
-      console.log(
-        `[Google Reviews] Using cached reviews (${cached.length} reviews)`,
-      );
-      return cached;
-    }
+  if (cached && cacheExpiry && Date.now() < cacheExpiry) {
+    console.log(
+      `[Google Reviews] Using cached reviews (${cached.length} reviews)`,
+    );
+    return cached;
   }
 
   try {
@@ -149,10 +163,9 @@ export async function fetchGoogleReviews(): Promise<GoogleReview[]> {
     }
 
     // Cache the reviews in memory
-    if (typeof globalThis !== "undefined") {
-      (globalThis as any)[cacheKey] = allReviews;
-      (globalThis as any)[cacheExpiryKey] = Date.now() + CACHE_DURATION_MS;
-    }
+    cache.godrej_positive_reviews_cache = allReviews;
+    cache.godrej_positive_reviews_cache_expiry =
+      Date.now() + CACHE_DURATION_MS;
 
     console.log(
       `[Google Reviews] Fetched ${reviews.length} from Google + ${allReviews.length - reviews.length} curated reviews = ${allReviews.length} total`,

@@ -8,7 +8,7 @@ const Header = () => {
     <>
       {/* .header */}
       <header className='header  has-currencies header-sticky'>
-        <div className='tf-container'>
+        <div className='tf-container w-1246'>
           <div className='header-inner'>
             <div className='header-left'>
               <Link href='/' className='site-logo'>

@@ -8,7 +8,7 @@ const Footer = () => {
       {/* Footer */}
       <footer className='footer'>
         <div className='footer-body'>
-          <div className='tf-container'>
+          <div className='tf-container w-1246'>
             <div className='row'>
               <div className='col-lg-3 col-md-6'>
                 <Link href='/' className='site-logo'>
@@ -98,7 +98,7 @@ const Footer = () => {
           </div>
         </div>
         <div className='footer-bottom'>
-          <div className='tf-container'>
+          <div className='tf-container w-1246'>
             <div className='wrap-footer-bottom'>
               <p className='text_white'>
                 Copyright © 2026 mrajkamalfurniture.com - All Rights Reserved.

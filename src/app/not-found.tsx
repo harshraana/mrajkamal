@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className='main-content tf-spacing-10'>
-      <div className='tf-container'>
+      <div className='tf-container w-1246'>
         <div className='text-center'>
           <h2 className='title text-capitalize mb_24'>Page not found</h2>
           <p className='text-body-default mb_40'>

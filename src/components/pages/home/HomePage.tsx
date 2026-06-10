@@ -16,16 +16,14 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
   useScriptReinit();
 
   const heroTitleParts = homeContent.heroTitle.split(",").map((s) => s.trim());
-  const aboutDescription =
-    homeContent.lockerAdText ||
-    homeContent.heroSubtitle;
+  const aboutDescription = homeContent.lockerAdText || homeContent.heroSubtitle;
 
   return (
     <>
       {/* page-title */}
       <div className='hero-banner-v01'>
         <div className='hero-content'>
-          <div className='tf-container'>
+          <div className='tf-container w-1246'>
             <div className='row align-items-end'>
               <div className='col-lg-7'>
                 <h1 className='hero-banner_title text-capitalize mb_16 mb-lg-0'>
@@ -70,7 +68,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
       <div className='main-content'>
         {/* s-about */}
         <section className='s-about-v01 tf-spacing-11'>
-          <div className='tf-container'>
+          <div className='tf-container w-1246'>
             <div className='row align-items-center'>
               <div className='col-md-6 mb-md-0 mb_40'>
                 <div className='heading-section mb_40 wow fadeInUp '>
@@ -111,7 +109,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
         {/* Product Main */}
         {featuredProducts.length > 0 && (
           <section className='flat-spacing-10'>
-            <div className='tf-container'>
+            <div className='tf-container w-1246'>
               <div className='heading-section mb_48 text-center'>
                 <h2 className='text-uppercase'>Featured Products</h2>
               </div>
@@ -168,7 +166,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
 
         {/* s-colection */}
         <section className='s-colection-v01 '>
-          <div className='tf-container w-1462  sw-layout'>
+          <div className='tf-container w-1246 w-1462  sw-layout'>
             <div className='heading-section mb_48 wow fadeInUp'>
               <h2 className='text-capitalize'>Featured collections</h2>
             </div>
@@ -233,7 +231,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
               />
             </div>
             <div className='content'>
-              <div className='tf-container w-1462'>
+              <div className='tf-container w-1246 w-1462'>
                 <div className='wow fadeInUp'>
                   <div className='title mb_40'>
                     <h2 className='text-capitalize mb_24'>elevate your home</h2>
@@ -261,9 +259,9 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
         {/* s-banner-lookbook */}
         <section className='tf-spacing-3 s-banner-lookbook sw-layout'>
           <div className='heading-seciton mb_57 text-center'>
-            <h2 className='title'>Shop the look</h2>
+            <h2 className='title'>Lockers specifications</h2>
           </div>
-          <div className=' tf-container position-relative'>
+          <div className=' tf-container w-1246 position-relative'>
             <div
               className='swiper'
               data-preview='1'
@@ -341,7 +339,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
         </section>
         {/* /s-banner-lookbook */}
 
-        <div className='tf-container w-1548 tf-spacing-10'>
+        <div className='tf-container w-1246 w-1548 tf-spacing-10'>
           <div className='heading-section mb_48 text-center'>
             <h2 className='text-uppercase '>visit our store</h2>
           </div>
@@ -360,7 +358,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
 
         {/* s-customer-services */}
         <div className='s-customer-services-v01 tf-spacing-10 sw-layout'>
-          <div className='tf-container  w-1462 '>
+          <div className='tf-container w-1246  w-1462 '>
             <div
               className='swiper'
               data-preview='4'

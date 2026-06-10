@@ -59,7 +59,7 @@ export default function TestimonialsSection() {
   return (
     <>
       <section className='s-testimonials tf-spacing-1 sw-layout'>
-        <div className='tf-container'>
+        <div className='tf-container w-1246'>
           <div className='row align-items-center'>
             {/* ── Left: Slider ── */}
             <div className='col-lg-7 col-md-6'>

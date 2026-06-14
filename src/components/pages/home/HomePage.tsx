@@ -380,7 +380,7 @@ const HomePage = ({ homeContent, featuredProducts }: HomePageProps) => {
                         Fast & Free Delivery
                       </p>
                       <p className='text-body-default fw-3'>
-                        We offer free shipping with ground delivery worldwide
+                        We offer free shipping with ground delivery
                       </p>
                     </div>
                   </div>

@@ -1,129 +1,137 @@
-import Image from "next/image";
 import React from "react";
+import MRajKamalLogo from "@/assets/svg/main-m-rajkamal-logo.svg";
 import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <>
-      {/* Footer */}
-      <footer className='footer'>
-        <div className='footer-body'>
-          <div className='tf-container w-1246'>
-            <div className='row'>
-              <div className='col-lg-3 col-md-6'>
-                <Link href='/' className='site-logo'>
-                  <Image
-                    height={141}
-                    width={200}
-                    style={{ height: "auto" }}
-                    className='logo_header'
-                    alt='M Rajkamal logo'
-                    src='/my-assets/images/M-Rajkamal-logo-light.svg'
-                  />
-                </Link>
+    <footer className='p-4 sm:p-6'>
+      <div className='bg-gradient-to-t rounded-b-4xl from-orange-200/60 to-transparent px-6 pt-6'>
+        <div className='max-w-[1200px] mx-auto'>
+          <div className='flex gap-4 flex-wrap flex-col sm:flex-row'>
+            <div className='main-logo flex-2'>
+              <MRajKamalLogo className='sm:w-full mx-auto my-6 sm:my-0' />
+            </div>
+            <div className='flex flex-3 gap-4'>
+              <div className='flex-1'>
+                <h6 className='font-heading text-xl uppercase mb-4'>
+                  Quick links
+                </h6>
+                <ul className='space-y-2'>
+                  <li>
+                    <Link className='font-light' href={"/"}>
+                      Sofa cum Beds
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className='font-light' href={"/"}>
+                      Lockers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className='font-light' href={"/"}>
+                      Cupboards
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <div className='col-lg-3 col-md-6'>
-                <div className='footer-about'>
-                  <h5 className=' text-capitalize mb_24 footer-title text_white'>
-                    Store Address
-                  </h5>
-                  <p className='text-body-default text_white mb_24'>
-                    7, Haji Ebrahim Patel Trust Building Junction of Gokhale
-                    Road, and, Ranade Rd, Dadar West, Dadar, Mumbai, Maharashtra
-                    400028
+              <div className='flex-1'>
+                <h6 className='font-heading text-xl uppercase mb-4'>
+                  Find us on
+                </h6>
+                <ul className='space-y-2'>
+                  <li>
+                    <a
+                      className='font-light underline'
+                      target='_blank'
+                      href={
+                        "https://www.justdial.com/Mumbai/M-Rajkamal-Furniture-Dadar-West/022PXX22-XX22-160924164449-R7S2_BZDET"
+                      }
+                    >
+                      Just Dial
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className='font-light underline'
+                      target='_blank'
+                      href={"https://www.instagram.com/mrajkamalfurniture/"}
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className='font-light underline'
+                      target='_blank'
+                      href={
+                        "https://interio.com/furniture-stores/Maharashtra/Mumbai/Near-Sena-Bhawan/WDX004801"
+                      }
+                    >
+                      Interio by Godreg
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className='font-light underline'
+                      target='_blank'
+                      href={"https://www.indiamart.com/m-rajkamal-furniture/"}
+                    >
+                      IndiaMart
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className='flex-1 mb-6 sm:mb-0'>
+              <h6 className='font-heading text-xl uppercase mb-4'>Contact</h6>
+              <ul className='space-y-2'>
+                <li>
+                  <p className='flex gap-x-2 items-center'>
+                    <Phone size={16} className='shrink-0'></Phone>
+                    <a
+                      className='font-light whitespace-nowrap'
+                      href={"tel:+91 983 353 3076"}
+                    >
+                      +91 983 353 3076
+                    </a>
                   </p>
-                </div>
-              </div>
-              <div className='col-lg-5 col-md-6'>
-                <div className='wrap-footer-col-block'>
-                  <div className='footer-col-block'>
-                    {/* <h5 className=' text_white mb_24'>Quick Link</h5> */}
-                    <div className='tf-collapse-content'>
-                      {/*  <ul className='footer-menu-list d-grid gap_12'>
-                        <li>
-                          <Link
-                            href='/about'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Our Story
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href='/shop'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Visit Our Store
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href='/contact'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Contact Us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href='/account'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Account
-                          </Link>
-                        </li>
-                      </ul> */}
-                    </div>
-                  </div>
-                  <div className='footer-col-block'>
-                    <h5 className=' text_white mb_24'>Connect Us</h5>
-                    <div className='tf-collapse-content'>
-                      <ul className='footer-menu-list d-grid gap_12'>
-                        <li>
-                          <a
-                            href='https://www.instagram.com/mrajkamalfurniture/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='link-2 text-body-default text_white'
-                          >
-                            Instagram
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </li>
+                <li>
+                  <p className='flex gap-x-2 items-center'>
+                    <Mail size={16} className='shrink-0'></Mail>
+                    <a
+                      className='font-light whitespace-nowrap'
+                      href={"mailto:mrajkamalfurniture@gmail.com"}
+                    >
+                      mrajkamalfurniture@gmail.com
+                    </a>
+                  </p>
+                </li>
+              </ul>
             </div>
-          </div>
-        </div>
-        <div className='footer-bottom'>
-          <div className='tf-container w-1246'>
-            <div className='wrap-footer-bottom'>
-              <p className='text_white'>
-                Copyright © 2026 mrajkamalfurniture.com - All Rights Reserved.
+            <div className='flex-2'>
+              <h6 className='font-heading text-xl uppercase mb-2'>
+                Shop Address
+              </h6>
+              <p className='mb-4 font-light leading-6'>
+                7, Haji Ebrahim Patel Trust Building Junction of Gokhale Road,
+                and, Ranade Rd, Dadar West, Dadar, Mumbai, Maharashtra 400028
               </p>
-
-              {/* <div className='right d-flex '>
-                <Link
-                  href='/terms'
-                  className='text-body-default link-2 text_white '
-                >
-                  Terms
-                </Link>
-                <Link
-                  href='/privacy'
-                  className='text-body-default link-2 text_white'
-                >
-                  Privacy
-                </Link>
-              </div> */}
+              <p className='italic font-light'>
+                Opens: 10am - 8pm (Tue to Sun)
+              </p>
             </div>
           </div>
         </div>
-      </footer>
-      {/* /Footer */}
-    </>
+
+        <div className='text-center py-6'>
+          <p className='my-0 text-orange-600 text-sm font-light italic'>
+            Copyright © 2026 mrajkamalfurniture.com - All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 };
 

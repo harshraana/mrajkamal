@@ -51,7 +51,15 @@ export default function RootLayout({
         "h-full",
       )}
     >
-      <body className='h-full bg-background'>{children}</body>
+      <body className='h-full bg-background'>
+        {/* No-JS / failed-bundle safety net: scroll-reveal sections render at
+            opacity:0 until Framer Motion animates them in. Without JS they would
+            stay invisible, so force them visible when scripting is disabled. */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

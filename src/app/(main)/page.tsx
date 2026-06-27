@@ -4,13 +4,16 @@ import GodrejInterioLogo from "@/assets/svg/godrej-interio.svg";
 import FeaturedProducts from "@/components/featured-products/FeaturedProducts";
 import InstagramReels from "@/components/instagram-reel/InstagramReels";
 import CustomerReviews from "@/components/customer-reviews-slider/CustomerReviews";
+import Reveal from "@/components/animations/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 const MainPage = () => {
   return (
     <div className='main-page'>
-      <section className='flex flex-col h-[100svh]'>
-        {/* Section-2 The Intro */}
+      {/* Section-1 The Intro — above the fold, so it animates in on LOAD with a
+          CSS-only entrance (not a scroll reveal). Pure CSS keeps the LCP <h1>
+          out of the JS hydration path and visible even without JavaScript. */}
+      <section className='flex flex-col h-[100svh] animate-in fade-in slide-in-from-bottom-6 duration-700 ease-out motion-reduce:animate-none'>
         <h1 className='font-heading italic text-4xl text-center py-8 bg-orange-100 mt-[140px]'>
           M Rajkamal: Your Destination for Fine Living Since 1962.
         </h1>
@@ -60,8 +63,8 @@ const MainPage = () => {
           </div>
         </div>
       </section>
-      {/* Section-3 Authorised Partner */}
-      <section className='py-[90px] bg-orange-100'>
+      {/* Section-2 Authorised Partner */}
+      <Reveal className='py-[90px] bg-orange-100'>
         <div className='max-w-[1200px] px-2 mx-auto text-center'>
           <div className='flex flex-col gap-6'>
             <h3 className='font-heading italic text-[42px]'>
@@ -90,9 +93,9 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-4 Featured Products*/}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto text-center'>
           <div className='flex flex-col gap-10'>
             <h3 className='font-heading italic text-[42px]'>
@@ -102,9 +105,9 @@ const MainPage = () => {
             <FeaturedProducts></FeaturedProducts>
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-5 Materials */}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto text-center'>
           <div className='flex items-center flex-row-reverse'>
             <div className='flex-1'>
@@ -126,9 +129,9 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-6 Services we provide */}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto text-center'>
           <div className='flex flex-col gap-10'>
             <h3 className='font-heading italic text-[42px]'>
@@ -190,9 +193,9 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-7 Experience */}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto text-center'>
           <div className='flex items-center '>
             <div className='flex-1'>
@@ -213,9 +216,9 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-8 Instagram Reels */}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto'>
           <div className='flex justify-between items-end'>
             <div>
@@ -240,9 +243,9 @@ const MainPage = () => {
             <InstagramReels />
           </div>
         </div>
-      </section>
+      </Reveal>
       {/* Section-9 Customer Reviews */}
-      <section className='my-[145px]'>
+      <Reveal className='my-[145px]'>
         <div className='max-w-[1200px] px-2 mx-auto'>
           <h3 className='font-heading italic text-center text-[42px]'>
             Customer reviews
@@ -252,7 +255,7 @@ const MainPage = () => {
             <CustomerReviews />
           </div>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 };

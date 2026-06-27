@@ -6,7 +6,49 @@ import InstagramReels from "@/components/instagram-reel/InstagramReels";
 import CustomerReviews from "@/components/customer-reviews-slider/CustomerReviews";
 import Reveal from "@/components/animations/Reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  CreditCard,
+  Headset,
+  Ruler,
+  ShieldCheck,
+  Truck,
+  Wrench,
+} from "lucide-react";
+
+const services = [
+  {
+    icon: Truck,
+    title: "Fast & Free delivery*",
+    desc: "Enjoy free delivery based on your location, ensuring your furniture arrives in pristine condition",
+  },
+  {
+    icon: Ruler,
+    title: "Home measurements*",
+    desc: "Ensure a perfect fit for your new furniture before you buy. Schedule a complimentary home visit by our team",
+  },
+  {
+    icon: Wrench,
+    title: "Professional Installation",
+    desc: "Our expert team provides seamless, hassle-free installation for all your furniture pieces.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Comprehensive Warranty",
+    desc: "Rest assured with our extensive warranty coverage against manufacturing defects for peace of mind.",
+  },
+  {
+    icon: Headset,
+    title: "Timely support",
+    desc: "Our friendly team is here to assist you with selection, product care, and any after-sales queries.",
+  },
+  {
+    icon: CreditCard,
+    title: "Flexible EMI Options",
+    desc: "Available affordable and easy monthly instalment plans available with leading banks.",
+  },
+];
+
 const MainPage = () => {
   return (
     <div className='main-page'>
@@ -138,58 +180,15 @@ const MainPage = () => {
               Services We Provide
             </h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-[80px] mt-8'>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>Fast & Free delivery*</h6>
-                <p className='font-light text-gray-600'>
-                  Enjoy free delivery based on your location, ensuring your
-                  furniture arrives in pristine condition
-                </p>
-              </div>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>Home measurements*</h6>
-                <p className='font-light text-gray-600'>
-                  Ensure a perfect fit for your new furniture before you buy.
-                  Schedule a complimentary home visit by our team
-                </p>
-              </div>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>
-                  Professional Installation
-                </h6>
-                <p className='font-light text-gray-600'>
-                  Our expert team provides seamless, hassle-free installation
-                  for all your furniture pieces.
-                </p>
-              </div>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>
-                  Comprehensive Warranty
-                </h6>
-                <p className='font-light text-gray-600'>
-                  Rest assured with our extensive warranty coverage against
-                  manufacturing defects for peace of mind.
-                </p>
-              </div>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>Timely support</h6>
-                <p className='font-light text-gray-600'>
-                  Our friendly team is here to assist you with selection,
-                  product care, and any after-sales queries.
-                </p>
-              </div>
-              <div className='space-y-3'>
-                <div className='rounded-2xl bg-gray-200 h-[60px] w-[60px] mx-auto'></div>
-                <h6 className='font-semibold text-lg'>Flexible EMI Options</h6>
-                <p className='font-light text-gray-600'>
-                  Available affordable and easy monthly instalment plans
-                  available with leading banks.
-                </p>
-              </div>
+              {services.map(({ icon: Icon, title, desc }) => (
+                <div key={title} className='space-y-3'>
+                  <div className='mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-primary/10 text-primary'>
+                    <Icon size={28} strokeWidth={1.5} />
+                  </div>
+                  <h6 className='font-semibold text-lg'>{title}</h6>
+                  <p className='font-light text-gray-600'>{desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

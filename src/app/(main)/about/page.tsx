@@ -1,13 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import RevealGroup from "@/components/animations/RevealGroup";
+import RevealItem from "@/components/animations/RevealItem";
 
 const AboutPage = () => {
   return (
     <div className='about-m-rajkamal mt-20'>
       <div className='max-w-[1200px] px-4 mx-auto'>
         <section className='py-12 md:py-16 lg:py-[80px]'>
-          <div className='flex flex-col-reverse md:flex-row gap-8 md:gap-4 md:items-center'>
-            <div className='w-full md:flex-2'>
+          <RevealGroup
+            className='flex flex-col-reverse md:flex-row gap-8 md:gap-4 md:items-center'
+            stagger={0.18}
+          >
+            <RevealItem className='w-full md:flex-2' from='left'>
               <div className='content-wrapper max-w-[600px]'>
                 <h1 className='font-heading italic text-3xl sm:text-4xl mb-6 leading-snug lg:leading-14'>
                   M Rajkamal – Authorised Godrej Interio Dealer
@@ -53,8 +58,8 @@ const AboutPage = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className='w-full md:flex-1'>
+            </RevealItem>
+            <RevealItem className='w-full md:flex-1' from='right'>
               <div className='image-wrapper border-3 border-primary rounded-full p-2 shadow-2xl max-w-[280px] sm:max-w-[360px] mx-auto md:max-w-none'>
                 <img
                   src='/images/about-mrajkamal.png'
@@ -62,12 +67,15 @@ const AboutPage = () => {
                   className='w-full aspect-square sm:aspect-auto object-cover rounded-full'
                 />
               </div>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
         </section>
         <section className='py-12 md:py-16 lg:py-[80px]'>
-          <div className='flex flex-col md:flex-row gap-8 md:gap-4 md:items-center'>
-            <div className='w-full md:flex-2 md:pr-6'>
+          <RevealGroup
+            className='flex flex-col md:flex-row gap-8 md:gap-4 md:items-center'
+            stagger={0.18}
+          >
+            <RevealItem className='w-full md:flex-2 md:pr-6' from='left'>
               <div className='map-wrapper'>
                 <iframe
                   src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9269159149285!2d72.83575527691664!3d19.022941853632894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec542443581%3A0x2bf3f57a345df79a!2sGodrej%20Interio%20-%20M%20Rajkamal%20Furniture!5e0!3m2!1sen!2sin!4v1778680164102!5m2!1sen!2sin'
@@ -78,8 +86,8 @@ const AboutPage = () => {
                   className='rounded-2xl shadow-2xl h-[320px] md:h-[450px] lg:h-[500px] w-full'
                 ></iframe>
               </div>
-            </div>
-            <div className='w-full md:flex-1'>
+            </RevealItem>
+            <RevealItem className='w-full md:flex-1' from='right'>
               <div className='content-wrapper md:pl-4'>
                 <h4 className='text-2xl sm:text-3xl font-heading italic mb-6'>
                   Visit Our Store
@@ -122,8 +130,8 @@ const AboutPage = () => {
                   </a>
                 </p>
               </div>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
         </section>
       </div>
     </div>

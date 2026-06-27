@@ -24,6 +24,8 @@ export type Reel = {
   height: number;
   /** Dominant color of the cover, used as a placeholder while the image loads. */
   bgColor: string;
+  /** Direct MP4 for hover playback (Instagram CDN — signed URL that can expire). */
+  videoUrl: string | null;
 };
 
 type BeholdSize = { width: number; height: number; mediaUrl: string };
@@ -34,6 +36,7 @@ type BeholdPost = {
   caption?: string;
   prunedCaption?: string;
   thumbnailUrl?: string;
+  mediaUrl?: string;
   isReel?: boolean;
   colorPalette?: { dominant?: string };
   sizes?: {
@@ -73,6 +76,7 @@ export async function getInstagramReels(limit = 8): Promise<Reel[]> {
           bgColor: p.colorPalette?.dominant
             ? `rgb(${p.colorPalette.dominant})`
             : "#e5e5e5",
+          videoUrl: p.mediaUrl ?? null,
         };
       })
       .filter((r) => r.thumbnailUrl);

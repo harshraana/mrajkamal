@@ -3,14 +3,21 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import {
+  directionOffset,
+  REVEAL_EASE,
+  type RevealDirection,
+} from "./motion-helpers";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
   /** Element to render. Defaults to a semantic <section>. */
   as?: "section" | "div";
-  /** Vertical distance (px) the content travels while fading in. */
-  y?: number;
+  /** The side the content travels in FROM (default: bottom). */
+  from?: RevealDirection;
+  /** Distance (px) the content travels while fading in. */
+  distance?: number;
   /** Seconds to wait before the animation starts — handy for staggering siblings. */
   delay?: number;
   /** Animation duration in seconds. */
@@ -20,40 +27,43 @@ type RevealProps = {
   /**
    * How far the element must scroll up into the viewport before it animates,
    * as a percentage of viewport height measured from the bottom edge.
-   * e.g. 25 ≈ wait until the element is a quarter of the way up the screen, so
-   * the fade/slide is actually visible instead of finishing at the bottom edge.
    */
   triggerOffset?: number;
 };
 
 /**
  * Fades + slides its children into view the first time they are scrolled into
- * the viewport. Keep the parent a Server Component and pass the section markup
- * as children — only this wrapper crosses the client boundary.
+ * the viewport, optionally from a chosen direction. Keep the parent a Server
+ * Component and pass the markup as children — only this wrapper is client-side.
  *
- * Respects the user's "prefers-reduced-motion" setting by skipping the movement.
+ * Respects "prefers-reduced-motion" by skipping the movement.
  */
 const Reveal = ({
   children,
   className,
   as = "section",
-  y = 24,
+  from = "bottom",
+  distance = 24,
   delay = 0,
   duration = 0.6,
   repeat = false,
-  triggerOffset = 35,
+  triggerOffset = 30,
 }: RevealProps) => {
   const prefersReducedMotion = useReducedMotion();
 
   const variants: Variants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : y },
+    hidden: {
+      opacity: 0,
+      ...(prefersReducedMotion ? {} : directionOffset(from, distance)),
+    },
     visible: {
       opacity: 1,
+      x: 0,
       y: 0,
       transition: {
         duration: prefersReducedMotion ? 0 : duration,
         delay: prefersReducedMotion ? 0 : delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: REVEAL_EASE,
       },
     },
   };

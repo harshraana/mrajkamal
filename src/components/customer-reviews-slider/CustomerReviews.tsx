@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import { getGoogleReviews } from "@/lib/reviews";
 import CustomerReviewsSlider from "./CustomerReviewsSlider";
 import GoogleG from "@/assets/svg/google-g.svg";
+import { Button } from "../ui/button";
 
 const CustomerReviews = async () => {
   const data = await getGoogleReviews();
@@ -37,6 +38,9 @@ const CustomerReviews = async () => {
             · {data.totalCount} Google reviews
           </span>
         </div>
+      </div>
+      <CustomerReviewsSlider reviews={data.reviews} />
+      <div className='text-center'>
         {data.writeReviewUrl && (
           <a
             target='_blank'
@@ -44,12 +48,12 @@ const CustomerReviews = async () => {
             href={data.writeReviewUrl}
             className='text-sm text-primary underline'
           >
-            Write a review
+            <Button size={"lg"} className={"px-6 py-5"}>
+              Write your review
+            </Button>
           </a>
         )}
       </div>
-
-      <CustomerReviewsSlider reviews={data.reviews} />
     </div>
   );
 };

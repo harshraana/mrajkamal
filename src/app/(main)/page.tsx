@@ -4,7 +4,10 @@ import GodrejInterioLogo from "@/assets/svg/godrej-interio.svg";
 import FeaturedProducts from "@/components/featured-products/FeaturedProducts";
 import InstagramReels from "@/components/instagram-reel/InstagramReels";
 import CustomerReviews from "@/components/customer-reviews-slider/CustomerReviews";
+import Clients from "@/components/clients/Clients";
 import Reveal from "@/components/animations/Reveal";
+import RevealGroup from "@/components/animations/RevealGroup";
+import RevealItem from "@/components/animations/RevealItem";
 import {
   ArrowRight,
   CreditCard,
@@ -54,14 +57,17 @@ const MainPage = () => {
       {/* Section-1 The Intro — above the fold, so it animates in on LOAD with a
           CSS-only entrance (not a scroll reveal). Pure CSS keeps the LCP <h1>
           out of the JS hydration path and visible even without JavaScript. */}
-      <section className='flex flex-col min-h-[100svh] md:h-[100svh] animate-in fade-in slide-in-from-bottom-6 duration-700 ease-out motion-reduce:animate-none'>
-        <h1 className='font-heading italic text-2xl sm:text-3xl lg:text-4xl text-center py-6 sm:py-8 bg-orange-100 mt-24 md:mt-[140px]'>
+      <section className='flex flex-col min-h-[100svh] md:h-[100svh]'>
+        <h1 className='font-heading italic text-2xl sm:text-3xl lg:text-4xl text-center py-6 sm:py-8 bg-orange-100 mt-24 md:mt-[140px] animate-in fade-in slide-in-from-top-3 duration-700 ease-out fill-mode-backwards motion-reduce:animate-none'>
           M Rajkamal: Your Destination for Fine Living Since 1962.
         </h1>
         <div className='flex items-center flex-1'>
           <div className='max-w-[1200px] w-full px-4 sm:px-6 lg:px-8 mx-auto'>
             <div className='flex flex-col md:flex-row gap-10 md:gap-12 py-10 md:py-0'>
-              <div className='flex flex-1 flex-col gap-y-6'>
+              <div
+                className='flex flex-1 flex-col gap-y-6 animate-in fade-in slide-in-from-left-6 duration-700 ease-out fill-mode-backwards motion-reduce:animate-none'
+                style={{ animationDelay: "0.15s" }}
+              >
                 <div className='article-header space-y-6'>
                   <h2 className='font-heading italic text-3xl sm:text-4xl lg:text-5xl font-medium'>
                     Furniture
@@ -81,7 +87,10 @@ const MainPage = () => {
                   />
                 </div>
               </div>
-              <div className='flex flex-1 flex-col md:text-right md:flex-col-reverse gap-y-6'>
+              <div
+                className='flex flex-1 flex-col md:text-right md:flex-col-reverse gap-y-6 animate-in fade-in slide-in-from-right-6 duration-700 ease-out fill-mode-backwards motion-reduce:animate-none'
+                style={{ animationDelay: "0.3s" }}
+              >
                 <div className='article-header space-y-6'>
                   <h2 className='font-heading italic text-3xl sm:text-4xl lg:text-5xl font-medium'>
                     Home Lockers
@@ -105,21 +114,27 @@ const MainPage = () => {
         </div>
       </section>
       {/* Section-2 Authorised Partner */}
-      <Reveal className='py-14 md:py-20 lg:py-[90px] bg-orange-100'>
+      <RevealGroup
+        as='section'
+        className='py-14 md:py-20 lg:py-[90px] bg-orange-100'
+        stagger={0.15}
+      >
         <div className='max-w-[1200px] px-4 mx-auto text-center'>
           <div className='flex flex-col gap-6'>
-            <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
-              Authorised Partner of
-            </h3>
-            <div className='flex flex-wrap justify-center items-center gap-4'>
+            <RevealItem>
+              <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
+                Authorised Partner of
+              </h3>
+            </RevealItem>
+            <RevealItem className='flex flex-wrap justify-center items-center gap-4'>
               <GodrejInterioLogo className='w-40 sm:w-52 lg:w-60 h-auto mix-blend-darken' />
               <img
                 src={"/images/authorised-partner.png"}
                 alt='authorised-badge'
                 className='h-14 sm:h-16 lg:h-20 w-auto'
               />
-            </div>
-            <div className='text-center'>
+            </RevealItem>
+            <RevealItem className='text-center'>
               <a
                 target='_blank'
                 href='https://interio.com/furniture-stores/Maharashtra/Mumbai/Near-Sena-Bhawan/WDX004801'
@@ -127,10 +142,10 @@ const MainPage = () => {
               >
                 Interio by Godreg <ArrowRight size={16} />
               </a>
-            </div>
+            </RevealItem>
           </div>
         </div>
-      </Reveal>
+      </RevealGroup>
       {/* Section-4 Featured Products*/}
       <Reveal className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto text-center'>
@@ -144,17 +159,23 @@ const MainPage = () => {
         </div>
       </Reveal>
       {/* Section-5 Materials */}
-      <Reveal className='my-20 md:my-28 lg:my-[145px]'>
+      <section className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto text-center'>
-          <div className='flex flex-col md:flex-row md:items-center md:flex-row-reverse gap-8'>
-            <div className='w-full md:flex-1'>
+          <RevealGroup
+            className='flex flex-col md:flex-row md:items-center md:flex-row-reverse gap-8'
+            stagger={0.2}
+          >
+            <RevealItem className='w-full md:flex-1' from='right'>
               <img
                 src='/images/home-1.png'
                 alt='finest material'
                 className='w-full h-auto rounded-2xl'
               />
-            </div>
-            <div className='w-full md:flex-1 text-left space-y-4 md:pr-10'>
+            </RevealItem>
+            <RevealItem
+              className='w-full md:flex-1 text-left space-y-4 md:pr-10'
+              from='left'
+            >
               <p className='uppercase tracking-widest text-destructive font-bold'>
                 Materials
               </p>
@@ -167,43 +188,55 @@ const MainPage = () => {
                 across the globe. Our dedication to material quality ensures
                 long-lasting durability and absolute safety for your family.
               </p>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
         </div>
-      </Reveal>
+      </section>
       {/* Section-6 Services we provide */}
-      <Reveal className='my-20 md:my-28 lg:my-[145px]'>
+      <section className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto text-center'>
           <div className='flex flex-col gap-10'>
-            <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
-              Services We Provide
-            </h3>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-[80px] mt-8'>
+            <Reveal as='div'>
+              <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
+                Services We Provide
+              </h3>
+            </Reveal>
+            <RevealGroup
+              as='div'
+              className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10 md:gap-y-[80px] mt-8'
+              stagger={0.1}
+            >
               {services.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className='space-y-3'>
+                <RevealItem key={title} className='space-y-3'>
                   <div className='mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-primary/10 text-primary'>
                     <Icon size={28} strokeWidth={1.5} />
                   </div>
                   <h6 className='font-semibold text-lg'>{title}</h6>
                   <p className='font-light text-gray-600'>{desc}</p>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </div>
         </div>
-      </Reveal>
+      </section>
       {/* Section-7 Experience */}
-      <Reveal className='my-20 md:my-28 lg:my-[145px]'>
+      <section className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto text-center'>
-          <div className='flex flex-col md:flex-row md:items-center gap-8'>
-            <div className='w-full md:flex-1'>
+          <RevealGroup
+            className='flex flex-col md:flex-row md:items-center gap-8'
+            stagger={0.2}
+          >
+            <RevealItem className='w-full md:flex-1' from='left'>
               <img
                 src='/images/home-2.png'
                 alt='finest material'
                 className='w-full h-auto rounded-2xl'
               />
-            </div>
-            <div className='w-full md:flex-1 text-left space-y-4 md:pl-10'>
+            </RevealItem>
+            <RevealItem
+              className='w-full md:flex-1 text-left space-y-4 md:pl-10'
+              from='right'
+            >
               <p className='uppercase tracking-widest text-destructive font-bold'>
                 Experiences
               </p>
@@ -215,11 +248,23 @@ const MainPage = () => {
                 to seamless service, we ensure a delightful experience and
                 furniture that makes your house a true home.
               </p>
-            </div>
+            </RevealItem>
+          </RevealGroup>
+        </div>
+      </section>
+      {/* Section-8 Our Clients */}
+      <Reveal className='my-20 md:my-28 lg:my-[145px]'>
+        <div className='text-center'>
+          <div className='flex flex-col gap-10'>
+            <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
+              Our Clients
+            </h3>
+
+            <Clients />
           </div>
         </div>
       </Reveal>
-      {/* Section-8 Instagram Reels */}
+      {/* Section-9 Instagram Reels */}
       <Reveal className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto'>
           <div className='flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-end'>
@@ -234,7 +279,7 @@ const MainPage = () => {
             <a
               target='_blank'
               href={"https://www.instagram.com/mrajkamalfurniture/"}
-              className='inline-flex items-center gap-x-2 bg-gradient-to-r from-[#fd1d1d] to-[#833ab4] text-background w-fit rounded-full px-8 pt-2 pb-2.5 font-semibold font-heading text-lg hover:no-underline'
+              className='inline-flex items-center gap-x-2 bg-gradient-to-r from-[#fd1d1d] to-[#833ab4] text-background w-fit rounded-full px-8 pt-2 pb-2.5 font-semibold font-heading text-lg hover:no-underline hover:shadow-2xl transition'
             >
               Open Instagram
               <ArrowRight size={16} strokeWidth={3} className='mt-1' />
@@ -246,7 +291,7 @@ const MainPage = () => {
           </div>
         </div>
       </Reveal>
-      {/* Section-9 Customer Reviews */}
+      {/* Section-10 Customer Reviews */}
       <Reveal className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto'>
           <h3 className='font-heading italic text-center text-3xl sm:text-4xl lg:text-[42px]'>

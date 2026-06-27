@@ -205,3 +205,26 @@
     @apply underline text-primary transition-all;
   }
 }
+
+/* "Our Clients" ticker — seamless, constant-speed, never-stopping marquee.
+   The track holds the names twice and slides exactly one copy (-50%), so the
+   loop point is visually identical (no glitch) and it never pauses. */
+@keyframes clients-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: clients-marquee var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

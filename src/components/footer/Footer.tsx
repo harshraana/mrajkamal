@@ -20,11 +20,6 @@ const Footer = () => {
                 <ul className='space-y-2'>
                   <li>
                     <Link className='font-light' href={"/"}>
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className='font-light' href={"/"}>
                       Sofa cum Beds
                     </Link>
                   </li>
@@ -88,7 +83,7 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className='flex-1'>
+            <div className='flex-1 mb-6 sm:mb-0'>
               <h6 className='font-heading text-xl uppercase mb-4'>Contact</h6>
               <ul className='space-y-2'>
                 <li>

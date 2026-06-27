@@ -4,32 +4,32 @@ import ProductThumbnail from "../product-thumbnail/ProductThumbnail";
 
 const FeaturedProducts = () => {
   return (
-    <>
-      <div>
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={4}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          <SwiperSlide>
-            <ProductThumbnail />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductThumbnail />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductThumbnail />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductThumbnail />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductThumbnail />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-    </>
+    <Swiper
+      className='w-full min-w-0'
+      spaceBetween={16}
+      slidesPerView={1.3}
+      breakpoints={{
+        640: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 },
+      }}
+    >
+      <SwiperSlide>
+        <ProductThumbnail />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ProductThumbnail />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ProductThumbnail />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ProductThumbnail />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ProductThumbnail />
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

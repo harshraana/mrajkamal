@@ -6,9 +6,9 @@ import type { Reel } from "@/lib/instagram";
 const InstagramReelsSlider = ({ reels }: { reels: Reel[] }) => {
   return (
     <Swiper
-      spaceBetween={16}
+      spaceBetween={6}
       slidesPerView={2.2}
-      breakpoints={{ 768: { slidesPerView: 4 } }}
+      breakpoints={{ 768: { slidesPerView: 4, spaceBetween: 16 } }}
     >
       {reels.map((reel) => (
         <SwiperSlide key={reel.id}>

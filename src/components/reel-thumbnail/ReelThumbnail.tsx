@@ -10,7 +10,7 @@ const ReelThumbnail = ({ reel }: { reel: Reel }) => {
       rel='noopener noreferrer'
       aria-label='Watch this reel on Instagram'
       style={{ backgroundColor: reel.bgColor }}
-      className='group relative block aspect-9/16 overflow-hidden rounded-2xl border hover:no-underline'
+      className='group relative block aspect-9/16 overflow-hidden rounded-md md:rounded-2xl border hover:no-underline'
     >
       <img
         src={reel.thumbnailUrl}

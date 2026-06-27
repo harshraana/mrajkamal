@@ -11,7 +11,7 @@
   --card-foreground: rgb(32, 32, 32);
   --popover: rgb(252, 252, 252);
   --popover-foreground: rgb(32, 32, 32);
-  --primary: rgb(255, 93, 88);
+  --primary: rgb(245 74 0);
   --primary-foreground: rgb(255, 255, 255);
   --secondary: rgb(255, 188, 94);
   --secondary-foreground: rgb(70, 37, 23);
@@ -23,8 +23,8 @@
   --destructive-foreground: rgb(255, 255, 255);
   --border: rgb(216, 216, 216);
   --input: rgb(216, 216, 216);
-  --ring: rgb(255, 93, 88);
-  --chart-1: rgb(255, 93, 88);
+  --ring: rgb(245 74 0);
+  --chart-1: rgb(245 74 0);
   --chart-2: rgb(255, 188, 94);
   --chart-3: rgb(232, 232, 232);
   --chart-4: rgb(255, 194, 106);
@@ -182,7 +182,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-foreground font-body text-sm;
+    @apply text-foreground font-body text-sm overflow-x-hidden;
   }
 
   ::selection {

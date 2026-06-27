@@ -2,7 +2,7 @@
 import React from "react";
 import StarRattings from "../star-ratting/StarRattings";
 import { Button } from "../ui/button";
-import { Phone } from "lucide-react";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 
 const ProductThumbnail = () => {
   return (
@@ -12,7 +12,7 @@ const ProductThumbnail = () => {
           <img
             src='/products/product-1.png'
             alt='product'
-            className='rounded-lg'
+            className='w-full rounded-lg'
           />
         </div>
         <div className='product-info flex justify-between text-left px-3 py-2.5'>
@@ -27,8 +27,12 @@ const ProductThumbnail = () => {
               <StarRattings />
             </div>
           </div>
-          <Button size={"icon-lg"} className={"bg-green-400"}>
-            <Phone fill='#FFF'></Phone>
+          <Button
+            variant={"link"}
+            className={"p-0 h-auto"}
+            aria-label='Chat on WhatsApp'
+          >
+            <WhatsappIcon size={40} />
           </Button>
         </div>
       </div>

@@ -147,17 +147,17 @@ const MainPage = () => {
         </div>
       </RevealGroup>
       {/* Section-4 Featured Products*/}
-      <Reveal className='my-20 md:my-28 lg:my-[145px]'>
-        <div className='max-w-[1200px] px-4 mx-auto text-center'>
-          <div className='flex flex-col gap-10'>
-            <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
+      {/* <Reveal className='my-20 md:my-28 lg:my-[145px]'> */}
+      <div className='max-w-[1200px] px-4 mx-auto text-center'>
+        <div className='flex flex-col gap-10'>
+          {/* <h3 className='font-heading italic text-3xl sm:text-4xl lg:text-[42px]'>
               Featured Products
-            </h3>
-            {/* Featured Products Slider */}
-            <FeaturedProducts></FeaturedProducts>
-          </div>
+            </h3> */}
+          {/* Featured Products Slider */}
+          {/* <FeaturedProducts></FeaturedProducts> */}
         </div>
-      </Reveal>
+      </div>
+      {/* </Reveal> */}
       {/* Section-5 Materials */}
       <section className='my-20 md:my-28 lg:my-[145px]'>
         <div className='max-w-[1200px] px-4 mx-auto text-center'>

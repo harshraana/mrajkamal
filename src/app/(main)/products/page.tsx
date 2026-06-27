@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 const ProductsPage = () => {
@@ -11,6 +13,11 @@ const ProductsPage = () => {
           Our full furniture catalogue is on its way. In the meantime, explore
           our featured pieces on the home page or get in touch with our team.
         </p>
+        <Link href={"/about#contactUs"}>
+          <Button className={"my-6 px-6 py-5"} size={"lg"}>
+            Contact Us
+          </Button>
+        </Link>
       </div>
     </div>
   );

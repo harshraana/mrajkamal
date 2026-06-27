@@ -70,7 +70,7 @@ const AboutPage = () => {
             </RevealItem>
           </RevealGroup>
         </section>
-        <section className='py-12 md:py-16 lg:py-[80px]'>
+        <section className='py-12 md:py-16 lg:py-[80px]' id='contactUs'>
           <RevealGroup
             className='flex flex-col md:flex-row gap-8 md:gap-4 md:items-center'
             stagger={0.18}

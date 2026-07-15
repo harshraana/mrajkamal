@@ -1,19 +1,36 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
+
+import Image from "next/image";
 import { Play, Volume2, VolumeX } from "lucide-react";
-import { useRef, useState, type MouseEvent } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Reel } from "@/lib/instagram";
 
-const ReelThumbnail = ({ reel }: { reel: Reel }) => {
+export default function ReelThumbnail({ reel }: { reel: Reel }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
 
-  const handleEnter = () => {
+  /**
+   * Stop playback when this is torn down or hidden.
+   *
+   * `cacheComponents` enables React `<Activity>`, which hides a route with
+   * `display: none` instead of unmounting it — and `display: none` does NOT stop
+   * a <video>. Without this, navigating away from the home page while a reel is
+   * playing leaves it playing, audio and all, from a page you can no longer see.
+   */
+  useLayoutEffect(() => {
+    const video = videoRef.current;
+    return () => {
+      video?.pause();
+    };
+  }, []);
+
+  const startPreview = () => {
     const video = videoRef.current;
     if (!video) return;
     video.currentTime = 0;
-    // Hover preview always starts muted (muted autoplay is always allowed).
+    // A hover preview always starts muted — muted autoplay is the only kind
+    // browsers allow without a user gesture.
     video.muted = true;
     setMuted(true);
     video
@@ -22,7 +39,7 @@ const ReelThumbnail = ({ reel }: { reel: Reel }) => {
       .catch(() => {});
   };
 
-  const handleLeave = () => {
+  const stopPreview = () => {
     const video = videoRef.current;
     if (!video) return;
     video.pause();
@@ -32,52 +49,89 @@ const ReelThumbnail = ({ reel }: { reel: Reel }) => {
     setPlaying(false);
   };
 
-  const toggleMute = (e: MouseEvent<HTMLButtonElement>) => {
-    // Toggle sound without following the reel's link.
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleMute = () => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = !video.muted;
     setMuted(video.muted);
   };
 
+  const hoverProps = reel.videoUrl
+    ? { onMouseEnter: startPreview, onMouseLeave: stopPreview }
+    : {};
+
   return (
-    <a
-      href={reel.permalink}
-      target='_blank'
-      rel='noopener noreferrer'
-      aria-label='Watch this reel on Instagram'
+    /**
+     * The wrapper carries the hover behaviour, and the mute button is a SIBLING
+     * of the link — not a child of it.
+     *
+     * It used to sit inside the <a>, which is nested interactive content and is
+     * forbidden by the HTML spec: a <button> inside an <a> has no defined
+     * activation behaviour, and assistive technology reports it inconsistently.
+     * The old code worked around the ambiguity with preventDefault/stopPropagation,
+     * which is a sign the markup was wrong rather than a fix for it.
+     */
+    <div
+      className='group relative aspect-9/16 overflow-hidden rounded-md border border-border md:rounded-2xl'
       style={{ backgroundColor: reel.bgColor }}
-      className='group relative block aspect-9/16 overflow-hidden rounded-md md:rounded-2xl border hover:no-underline'
-      onMouseEnter={reel.videoUrl ? handleEnter : undefined}
-      onMouseLeave={reel.videoUrl ? handleLeave : undefined}
+      {...hoverProps}
     >
-      <img
-        src={reel.thumbnailUrl}
-        alt={reel.caption ? reel.caption.slice(0, 80) : "Instagram reel"}
-        loading='lazy'
-        width={reel.width}
-        height={reel.height}
-        className='h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105'
-      />
-
-      {reel.videoUrl && (
-        <video
-          ref={videoRef}
-          src={reel.videoUrl}
-          poster={reel.thumbnailUrl}
-          loop
-          muted
-          playsInline
-          preload='none'
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-            playing ? "opacity-100" : "opacity-0"
-          }`}
+      <a
+        href={reel.permalink}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label={
+          reel.caption
+            ? `Watch on Instagram: ${reel.caption.slice(0, 60)}`
+            : "Watch this reel on Instagram"
+        }
+        className='absolute inset-0 block hover:no-underline'
+      >
+        <Image
+          src={reel.thumbnailUrl}
+          alt=''
+          width={reel.width}
+          height={reel.height}
+          loading='lazy'
+          sizes='(max-width: 768px) 45vw, 25vw'
+          className='h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105'
         />
-      )}
 
-      {/* mute / unmute toggle — shown while the reel is playing */}
+        {reel.videoUrl && (
+          <video
+            ref={videoRef}
+            src={reel.videoUrl}
+            poster={reel.thumbnailUrl}
+            loop
+            muted
+            playsInline
+            preload='none'
+            aria-hidden='true'
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+              playing ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+
+        <span className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent' />
+
+        <span
+          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+            playing ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <span className='flex h-12 w-12 items-center justify-center rounded-full bg-black/35 backdrop-blur-sm transition group-hover:scale-110 group-hover:bg-black/55'>
+            <Play size={20} fill='white' className='ml-0.5 text-white' />
+          </span>
+        </span>
+
+        {reel.caption && (
+          <p className='absolute inset-x-0 bottom-0 line-clamp-2 px-3 pb-3 text-left text-xs leading-snug font-light text-white'>
+            {reel.caption}
+          </p>
+        )}
+      </a>
+
       {reel.videoUrl && playing && (
         <button
           type='button'
@@ -88,26 +142,6 @@ const ReelThumbnail = ({ reel }: { reel: Reel }) => {
           {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>
       )}
-
-      {/* darken the bottom for caption legibility */}
-      <span className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent' />
-      {/* play affordance — hidden while the video is playing */}
-      <span
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-          playing ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <span className='flex h-12 w-12 items-center justify-center rounded-full bg-black/35 backdrop-blur-sm transition group-hover:scale-110 group-hover:bg-black/55'>
-          <Play size={20} fill='white' className='ml-0.5 text-white' />
-        </span>
-      </span>
-      {reel.caption && (
-        <p className='absolute inset-x-0 bottom-0 line-clamp-2 px-3 pb-3 text-left text-xs font-light leading-snug text-white'>
-          {reel.caption}
-        </p>
-      )}
-    </a>
+    </div>
   );
-};
-
-export default ReelThumbnail;
+}

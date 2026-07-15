@@ -1,36 +1,33 @@
-"use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ProductThumbnail from "../product-thumbnail/ProductThumbnail";
+import Link from "next/link";
+import { getFeaturedProducts } from "@/lib/products";
+import FeaturedProductsSlider from "./FeaturedProductsSlider";
+import { Button } from "@/components/ui/button";
 
-const FeaturedProducts = () => {
+/**
+ * An async Server Component that fetches, then hands plain data to a thin client
+ * slider — the same shape as <CustomerReviews> and <InstagramReels>. The Swiper
+ * is the only thing that has to be client-side.
+ *
+ * Renders nothing at all when there are no featured products, rather than an
+ * empty carousel. The section heading lives here too, so it disappears with it.
+ */
+export default async function FeaturedProducts({ heading }: { heading: string }) {
+  const products = await getFeaturedProducts();
+  if (products.length === 0) return null;
+
   return (
-    <Swiper
-      className='w-full min-w-0'
-      spaceBetween={16}
-      slidesPerView={1.3}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-      }}
-    >
-      <SwiperSlide>
-        <ProductThumbnail />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductThumbnail />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductThumbnail />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductThumbnail />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductThumbnail />
-      </SwiperSlide>
-    </Swiper>
-  );
-};
+    <div className='flex flex-col gap-10'>
+      <h2 className='font-heading text-3xl italic sm:text-4xl lg:text-[42px]'>{heading}</h2>
 
-export default FeaturedProducts;
+      <FeaturedProductsSlider products={products} />
+
+      <div>
+        <Link href='/products' className='hover:no-underline'>
+          <Button variant='outline' size='lg'>
+            See all products
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+}

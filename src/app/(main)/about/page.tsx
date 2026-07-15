@@ -1,141 +1,142 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
+import type { Metadata } from "next";
+import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
+import SmartImage from "@/components/media/SmartImage";
 import RevealGroup from "@/components/animations/RevealGroup";
 import RevealItem from "@/components/animations/RevealItem";
+import { getSiteContent } from "@/lib/site-content";
+import { telHref } from "@/lib/contact";
 
-const AboutPage = () => {
+export async function generateMetadata(): Promise<Metadata> {
+  const { about, seo } = await getSiteContent();
+  return {
+    title: about.heading || "About",
+    description: seo.description,
+    alternates: { canonical: "/about" },
+  };
+}
+
+export default async function AboutPage() {
+  const content = await getSiteContent();
+  const { about, footer } = content;
+
   return (
-    <div className='about-m-rajkamal mt-20'>
-      <div className='max-w-[1200px] px-4 mx-auto'>
-        <section className='py-12 md:py-16 lg:py-[80px]'>
+    <div className='mt-20'>
+      <Container>
+        <Section spacing='tight'>
           <RevealGroup
-            className='flex flex-col-reverse md:flex-row gap-8 md:gap-4 md:items-center'
+            className='flex flex-col-reverse gap-8 md:flex-row md:items-center md:gap-4'
             stagger={0.18}
           >
             <RevealItem className='w-full md:flex-2' from='left'>
-              <div className='content-wrapper max-w-[600px]'>
-                <h1 className='font-heading italic text-3xl sm:text-4xl mb-6 leading-snug lg:leading-14'>
-                  M Rajkamal – Authorised Godrej Interio Dealer
+              <div className='max-w-[600px]'>
+                <h1 className='mb-6 font-heading text-3xl leading-snug italic sm:text-4xl lg:leading-14'>
+                  {about.heading}
                 </h1>
-                <h4 className='font-heading text-xl sm:text-2xl mb-6'>
-                  Three Generations of Trust, Crafted in Steel.
-                </h4>
-                <div className='text-base leading-7 text-gray-700'>
-                  <p className='mb-6'>
-                    We are a third-generation furniture company rooted in
-                    craftsmanship, trust, and a deep passion for thoughtful
-                    living spaces. Located in Dadar West, Mumbai, M. Rajkamal
-                    has been a trusted name for premium mild steel and wrought
-                    iron furniture — built with modern designs, attractive
-                    finishes, and uncompromising quality.
-                  </p>
-                  <p className='mb-6'>
-                    Every piece we create starts with high-grade, thick steel
-                    that goes through multiple stages of cleaning, de-rusting,
-                    and anti-corrosive treatment, ensuring furniture that is
-                    built to last. Our powder-coated and wooden-finished
-                    products bring together durability and aesthetic elegance —
-                    whether it&apos;s office furniture, wall units, wardrobe
-                    sets, sofa-cum-beds, or custom storage solutions.
-                  </p>
-                  <p className='mb-6'>
-                    What truly sets us apart is our commitment to
-                    made-to-measure craftsmanship. We visit your space, take
-                    precise measurements, understand your requirements, and
-                    suggest designs that make the most of every inch — so no
-                    space ever goes to waste. Your room, your size, your style.
-                  </p>
-                  <p className='mb-6'>
-                    As an authorised Godrej Interio dealer, we also offer a
-                    curated selection of sofas, wardrobes, lockers, beds, and
-                    more — combining trusted quality with designs that elevate
-                    everyday living.
-                  </p>
-                  <p className='mb-6'>
-                    With a loyal customer base spread across Mumbai and
-                    Maharashtra, we take pride in delivering furniture that
-                    doesn&apos;t just fill a room — it completes it.
-                  </p>
-                </div>
+                <h2 className='mb-6 font-heading text-xl sm:text-2xl'>{about.subheading}</h2>
+
+                {/*
+                  Sanitized on write AND again in the DTO serializer on read, so
+                  this is safe. `prose-*` classes give the CMS-authored HTML the
+                  same rhythm the hardcoded <p className="mb-6"> paragraphs had.
+                */}
+                <div
+                  className='space-y-6 text-base leading-7 text-gray-700'
+                  dangerouslySetInnerHTML={{ __html: about.bodyHtml }}
+                />
               </div>
             </RevealItem>
+
             <RevealItem className='w-full md:flex-1' from='right'>
-              <div className='image-wrapper border-3 border-primary rounded-full p-2 shadow-2xl max-w-[280px] sm:max-w-[360px] mx-auto md:max-w-none'>
-                <img
-                  src='/images/about-mrajkamal.png'
-                  alt='M Rajkamal furniture store'
-                  className='w-full aspect-square sm:aspect-auto object-cover rounded-full'
+              <div className='mx-auto max-w-[280px] rounded-full border-3 border-primary p-2 shadow-2xl sm:max-w-[360px] md:max-w-none'>
+                <SmartImage
+                  image={about.image}
+                  alt={about.image?.alt || "M Rajkamal furniture store"}
+                  width={520}
+                  height={520}
+                  sizes='(max-width: 768px) 80vw, 33vw'
+                  className='aspect-square w-full rounded-full object-cover sm:aspect-auto'
                 />
               </div>
             </RevealItem>
           </RevealGroup>
-        </section>
-        <section className='py-12 md:py-16 lg:py-[80px]' id='contactUs'>
+        </Section>
+
+        <Section spacing='tight' id='contactUs'>
           <RevealGroup
-            className='flex flex-col md:flex-row gap-8 md:gap-4 md:items-center'
+            className='flex flex-col gap-8 md:flex-row md:items-center md:gap-4'
             stagger={0.18}
           >
             <RevealItem className='w-full md:flex-2 md:pr-6' from='left'>
-              <div className='map-wrapper'>
+              {about.mapEmbedUrl && (
+                /*
+                 * The page builds its OWN iframe around a validated URL. The CMS
+                 * stores a URL, not an HTML blob — Zod enforces the
+                 * google.com/maps/embed origin — so the admin form can never
+                 * become an arbitrary-HTML injection point.
+                 */
                 <iframe
-                  src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9269159149285!2d72.83575527691664!3d19.022941853632894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec542443581%3A0x2bf3f57a345df79a!2sGodrej%20Interio%20-%20M%20Rajkamal%20Furniture!5e0!3m2!1sen!2sin!4v1778680164102!5m2!1sen!2sin'
-                  allowFullScreen={true}
+                  src={about.mapEmbedUrl}
+                  allowFullScreen
                   loading='lazy'
                   referrerPolicy='no-referrer-when-downgrade'
                   title='M Rajkamal Furniture store location'
-                  className='rounded-2xl shadow-2xl h-[320px] md:h-[450px] lg:h-[500px] w-full'
-                ></iframe>
-              </div>
+                  className='h-[320px] w-full rounded-2xl shadow-2xl md:h-[450px] lg:h-[500px]'
+                />
+              )}
             </RevealItem>
+
             <RevealItem className='w-full md:flex-1' from='right'>
-              <div className='content-wrapper md:pl-4'>
-                <h4 className='text-2xl sm:text-3xl font-heading italic mb-6'>
-                  Visit Our Store
-                </h4>
-                <p className='text-base leading-7 mb-6'>
-                  7, Haji Ebrahim Patel Trust Building Junction of Gokhale Road,
-                  and, Ranade Rd, Dadar West, Dadar, Mumbai, Maharashtra 400028
-                </p>
-                <p className='text-base font-semibold mb-3'>
-                  Opens:
-                  <span className='ml-2 italic font-normal'>
-                    10am - 8pm (Tuesday to Sunday)
-                  </span>
-                </p>
-                <p className='text-base font-semibold mb-6'>
-                  Closed:
-                  <span className='ml-2 italic font-normal'>On Mondays</span>
-                </p>
+              <div className='md:pl-4'>
+                <h2 className='mb-6 font-heading text-2xl italic sm:text-3xl'>
+                  {about.storeHeading}
+                </h2>
+
+                <address className='mb-6 text-base leading-7 not-italic'>
+                  {about.addressText}
+                </address>
+
+                {about.storeHours.map((row) => (
+                  <p key={row.label} className='mb-3 text-base font-semibold'>
+                    {row.label}
+                    <span className='ml-2 font-normal italic'>{row.value}</span>
+                  </p>
+                ))}
 
                 <hr className='my-6' />
-                <h4 className='text-xl sm:text-2xl font-heading mb-6'>
-                  Contact
-                </h4>
-                <p className='text-base font-semibold mb-3'>
-                  Phone:
-                  <a
-                    className='ml-2 italic font-normal'
-                    href='tel:+919833533076'
-                  >
-                    +91 983 353 3076
-                  </a>
-                </p>
-                <p className='text-base font-semibold mb-6'>
-                  Email:
-                  <a
-                    className='ml-2 italic font-normal break-all'
-                    href='mailto:mrajkamalfurniture@gmail.com'
-                  >
-                    mrajkamalfurniture@gmail.com
-                  </a>
-                </p>
+
+                <h2 className='mb-6 font-heading text-xl sm:text-2xl'>
+                  {about.contactHeading}
+                </h2>
+
+                {footer.contact.phone && (
+                  <p className='mb-3 text-base font-semibold'>
+                    Phone:
+                    <a
+                      className='ml-2 font-normal italic'
+                      href={telHref(footer.contact.phone)}
+                    >
+                      {footer.contact.phone}
+                    </a>
+                  </p>
+                )}
+
+                {footer.contact.email && (
+                  <p className='mb-6 text-base font-semibold'>
+                    Email:
+                    <a
+                      className='ml-2 font-normal break-all italic'
+                      href={`mailto:${footer.contact.email}`}
+                    >
+                      {footer.contact.email}
+                    </a>
+                  </p>
+                )}
               </div>
             </RevealItem>
           </RevealGroup>
-        </section>
-      </div>
+        </Section>
+      </Container>
     </div>
   );
-};
-
-export default AboutPage;
+}

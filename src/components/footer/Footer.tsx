@@ -1,138 +1,102 @@
-import React from "react";
-import MRajKamalLogo from "@/assets/svg/main-m-rajkamal-logo.svg";
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import MRajKamalLogo from "@/assets/svg/main-m-rajkamal-logo.svg";
+import { telHref } from "@/lib/contact";
+import type { SiteContentDTO } from "@/types";
 
-const Footer = () => {
+/**
+ * Every string here used to be hardcoded. It all comes from the CMS now.
+ *
+ * The `tel:` link is built with `telHref()` rather than interpolated: the footer
+ * used `href="tel:+91 983 353 3076"` — spaces are not valid in a tel: URI (RFC
+ * 3966 allows only `-`, `.`, `(`, `)` as visual separators), and the About page
+ * had it right while the footer didn't. Now both derive from one function.
+ */
+export default function Footer({ content }: { content: SiteContentDTO }) {
+  const f = content.footer;
+
   return (
     <footer className='p-4 sm:p-6'>
-      <div className='bg-gradient-to-t rounded-b-4xl from-orange-200/60 to-transparent px-6 pt-6'>
-        <div className='max-w-[1200px] mx-auto'>
-          <div className='flex gap-4 flex-wrap flex-col sm:flex-row'>
-            <div className='main-logo flex-2'>
-              <MRajKamalLogo className='sm:w-full mx-auto my-6 sm:my-0' />
+      <div className='rounded-b-4xl bg-gradient-to-t from-orange-200/60 to-transparent px-6 pt-6'>
+        <div className='mx-auto max-w-[1200px]'>
+          <div className='flex flex-col flex-wrap gap-4 sm:flex-row'>
+            <div className='flex-2'>
+              <MRajKamalLogo className='mx-auto my-6 sm:my-0 sm:w-full' />
             </div>
+
             <div className='flex flex-3 gap-4'>
               <div className='flex-1'>
-                <h6 className='font-heading text-xl uppercase mb-4'>
-                  Quick links
-                </h6>
+                <h2 className='mb-4 font-heading text-xl uppercase'>{f.quickLinksHeading}</h2>
                 <ul className='space-y-2'>
-                  <li>
-                    <Link className='font-light' href={"/"}>
-                      Sofa cum Beds
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className='font-light' href={"/"}>
-                      Lockers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className='font-light' href={"/"}>
-                      Cupboards
-                    </Link>
-                  </li>
+                  {f.quickLinks.map((link) => (
+                    <li key={`${link.href}-${link.label}`}>
+                      <Link className='font-light' href={link.href}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
+
               <div className='flex-1'>
-                <h6 className='font-heading text-xl uppercase mb-4'>
-                  Find us on
-                </h6>
+                <h2 className='mb-4 font-heading text-xl uppercase'>{f.findUsOnHeading}</h2>
                 <ul className='space-y-2'>
-                  <li>
-                    <a
-                      className='font-light underline'
-                      target='_blank'
-                      href={
-                        "https://www.justdial.com/Mumbai/M-Rajkamal-Furniture-Dadar-West/022PXX22-XX22-160924164449-R7S2_BZDET"
-                      }
-                    >
-                      Just Dial
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className='font-light underline'
-                      target='_blank'
-                      href={"https://www.instagram.com/mrajkamalfurniture/"}
-                    >
-                      Instagram
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className='font-light underline'
-                      target='_blank'
-                      href={
-                        "https://interio.com/furniture-stores/Maharashtra/Mumbai/Near-Sena-Bhawan/WDX004801"
-                      }
-                    >
-                      Interio by Godreg
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className='font-light underline'
-                      target='_blank'
-                      href={"https://www.indiamart.com/m-rajkamal-furniture/"}
-                    >
-                      IndiaMart
-                    </a>
-                  </li>
+                  {f.findUsOn.map((link) => (
+                    <li key={`${link.href}-${link.label}`}>
+                      <a
+                        className='font-light underline'
+                        href={link.href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
-            <div className='flex-1 mb-6 sm:mb-0'>
-              <h6 className='font-heading text-xl uppercase mb-4'>Contact</h6>
+
+            <div className='mb-6 flex-1 sm:mb-0'>
+              <h2 className='mb-4 font-heading text-xl uppercase'>{f.contactHeading}</h2>
               <ul className='space-y-2'>
-                <li>
-                  <p className='flex gap-x-2 items-center'>
-                    <Phone size={16} className='shrink-0'></Phone>
+                {f.contact.phone && (
+                  <li className='flex items-center gap-x-2'>
+                    <Phone size={16} className='shrink-0' />
                     <a
                       className='font-light whitespace-nowrap'
-                      href={"tel:+91 983 353 3076"}
+                      href={telHref(f.contact.phone)}
                     >
-                      +91 983 353 3076
+                      {f.contact.phone}
                     </a>
-                  </p>
-                </li>
-                <li>
-                  <p className='flex gap-x-2 items-center'>
-                    <Mail size={16} className='shrink-0'></Mail>
+                  </li>
+                )}
+                {f.contact.email && (
+                  <li className='flex items-center gap-x-2'>
+                    <Mail size={16} className='shrink-0' />
                     <a
-                      className='font-light whitespace-nowrap'
-                      href={"mailto:mrajkamalfurniture@gmail.com"}
+                      className='font-light break-all'
+                      href={`mailto:${f.contact.email}`}
                     >
-                      mrajkamalfurniture@gmail.com
+                      {f.contact.email}
                     </a>
-                  </p>
-                </li>
+                  </li>
+                )}
               </ul>
             </div>
+
             <div className='flex-2'>
-              <h6 className='font-heading text-xl uppercase mb-2'>
-                Shop Address
-              </h6>
-              <p className='mb-4 font-light leading-6'>
-                7, Haji Ebrahim Patel Trust Building Junction of Gokhale Road,
-                and, Ranade Rd, Dadar West, Dadar, Mumbai, Maharashtra 400028
-              </p>
-              <p className='italic font-light'>
-                Opens: 10am - 8pm (Tue to Sun)
-              </p>
+              <h2 className='mb-2 font-heading text-xl uppercase'>{f.addressHeading}</h2>
+              <address className='mb-4 leading-6 font-light not-italic'>{f.address}</address>
+              <p className='font-light italic'>{f.openingHours}</p>
             </div>
           </div>
         </div>
 
-        <div className='text-center py-6'>
-          <p className='my-0 text-orange-600 text-sm font-light italic'>
-            Copyright © 2026 mrajkamalfurniture.com - All Rights Reserved.
-          </p>
+        <div className='py-6 text-center'>
+          <p className='my-0 text-sm font-light text-orange-700 italic'>{f.copyright}</p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

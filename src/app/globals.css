@@ -185,19 +185,14 @@
     @apply text-foreground font-body text-sm overflow-x-hidden;
   }
 
+  /* ::-webkit-selection and ::-ms-selection were also declared here. Neither is
+     a real selector — they have never existed in any browser. Only ::selection
+     and the legacy ::-moz-selection do. */
   ::selection {
     @apply bg-orange-200 text-foreground;
   }
 
-  ::-webkit-selection {
-    @apply bg-orange-200 text-foreground;
-  }
-
   ::-moz-selection {
-    @apply bg-orange-200 text-foreground;
-  }
-
-  ::-ms-selection {
     @apply bg-orange-200 text-foreground;
   }
 
@@ -221,6 +216,14 @@
 .marquee-track {
   animation: clients-marquee var(--marquee-duration, 60s) linear infinite;
   will-change: transform;
+}
+
+/* WCAG 2.2.2 (Pause, Stop, Hide): any animation that runs for more than five
+   seconds needs a way to stop it. Hover pauses for mouse users; :focus-within
+   (the track is focusable) pauses for keyboard users. CSS only, no JS. */
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

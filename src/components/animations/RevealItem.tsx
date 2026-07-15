@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import {
   directionOffset,
   REVEAL_EASE,
@@ -53,7 +54,12 @@ const RevealItem = ({
     as === "li" ? motion.li : as === "section" ? motion.section : motion.div;
 
   return (
-    <MotionTag className={className} variants={variants}>
+    // The `reveal` class is what the <noscript> escape hatch in app/layout.tsx
+    // targets. Only <Reveal> emitted it before, so with JavaScript disabled every
+    // RevealItem — which is the whole of /about and four sections of the home
+    // page — stayed at opacity:0 forever. The safety net existed and had a hole
+    // in it.
+    <MotionTag className={cn("reveal", className)} variants={variants}>
       {children}
     </MotionTag>
   );

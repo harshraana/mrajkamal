@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { Menu, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,61 +12,68 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/about", label: "About" },
-];
+import type { LinkDTO } from "@/types";
 
 /**
- * Mobile navigation shown below the `md` breakpoint, using the shadcn Drawer
- * (Vaul). Header.tsx stays a Server Component and just renders this.
+ * Mobile navigation below the `md` breakpoint.
+ *
+ * The links now arrive as a prop from the CMS — this used to keep its own
+ * hardcoded copy of the array that Header also hardcoded.
  */
-const MobileMenu = () => {
+export default function MobileMenu({
+  nav,
+  callHref,
+}: {
+  nav: LinkDTO[];
+  callHref: string;
+}) {
   return (
     <Drawer direction='bottom'>
       <DrawerTrigger
         aria-label='Open navigation menu'
-        className='md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground'
+        className='inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground md:hidden'
       >
         <Menu size={24} />
       </DrawerTrigger>
-      <DrawerContent className=''>
+
+      <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className='font-heading italic text-2xl'>
-            Menu
-          </DrawerTitle>
-          <DrawerDescription className='sr-only'>
-            Site navigation links
-          </DrawerDescription>
+          <DrawerTitle className='font-heading text-2xl italic'>Menu</DrawerTitle>
+          <DrawerDescription className='sr-only'>Site navigation links</DrawerDescription>
         </DrawerHeader>
-        <nav className='px-4 pb-6'>
-          <ul className='flex flex-col '>
-            {links.map((l, i) => (
+
+        <nav aria-label='Mobile' className='px-4 pb-6'>
+          <ul className='flex flex-col'>
+            {nav.map((link, i) => (
               <li
-                key={l.label}
-                className={i !== links.length - 1 ? "border-b " : ""}
+                key={`${link.href}-${link.label}`}
+                className={i !== nav.length - 1 ? "border-b" : ""}
               >
                 <DrawerClose asChild>
-                  <Link href={l.href} className='block py-3 text-md'>
-                    {l.label}
+                  <Link
+                    href={link.href}
+                    className='text-md block py-3'
+                    {...(link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {link.label}
                   </Link>
                 </DrawerClose>
               </li>
             ))}
+
             <li className='pt-4'>
-              <DrawerClose asChild>
-                <Button variant='outline' size='lg' className='w-full h-11'>
+              {/* Was a Button with no href — inert. Now a real tel: link. */}
+              <a href={callHref} className='block hover:no-underline'>
+                <Button variant='outline' size='lg' className='h-11 w-full'>
                   <Phone /> Call
                 </Button>
-              </DrawerClose>
+              </a>
             </li>
           </ul>
         </nav>
       </DrawerContent>
     </Drawer>
   );
-};
-
-export default MobileMenu;
+}

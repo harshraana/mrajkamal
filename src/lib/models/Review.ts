@@ -14,7 +14,11 @@ import mongoose, { Schema, models, type InferSchemaType, type Model } from "mong
  */
 const ReviewSchema = new Schema(
   {
-    product: { type: Schema.Types.ObjectId, ref: "Product", required: true, index: true },
+    // No standalone index here on purpose: `product` is the PREFIX of the
+    // compound index below, which already serves every `find({ product })`
+    // query. A separate `product_1` index would be redundant storage that grows
+    // with the review count — exactly what we don't want on a 512 MB cluster.
+    product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
 
     authorName: { type: String, required: true, trim: true, maxlength: 80 },
 

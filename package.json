@@ -14,6 +14,8 @@
     "//scripts": "--conditions=react-server makes the `server-only` package resolve to its empty.js stub (the same export condition Next uses in the RSC graph), so scripts can import server-only modules like the Mongoose models without the guard throwing.",
     "seed": "tsx --conditions=react-server scripts/seed.ts",
     "seed:admin": "tsx --conditions=react-server scripts/seed-admin.ts",
+    "db:stats": "tsx scripts/db-stats.ts",
+    "db:sync-indexes": "tsx --conditions=react-server scripts/sync-indexes.ts",
     "imagekit:reconcile": "tsx --conditions=react-server scripts/reconcile-imagekit.ts",
     "verify:data": "tsx --conditions=react-server scripts/verify-data-layer.ts",
     "verify:auth": "tsx --conditions=react-server scripts/verify-auth.ts",

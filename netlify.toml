@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Netlify config — M Rajkamal
+#
+# The build itself is auto-detected (Next.js runtime); this file exists only to
+# configure SECRET SCANNING. Netlify greps the build output AND the committed
+# repo for the literal value of every environment variable set in the Netlify
+# UI, and fails the build on any match. Several of our variables are PUBLIC BY
+# DESIGN and are therefore guaranteed to appear in that output — flagging them
+# is a false positive.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[build.environment]
+
+  # Keys whose values are intentionally public and WILL appear in the build
+  # output or the committed source. Excluding a KEY (not disabling scanning
+  # wholesale) means a genuinely-secret value that ever leaked would still be
+  # caught — see the list kept UNDER scanning below.
+  #
+  #   NEXT_PUBLIC_SITE_URL       Baked into the client bundle by Next (that's what
+  #                              NEXT_PUBLIC_ means); also in every canonical tag,
+  #                              OG tag, the sitemap, robots.txt and JSON-LD.
+  #   NEXT_PUBLIC_WHATSAPP_NUMBER  Public business number; inlined into every wa.me
+  #                              link and committed in the docs.
+  #   IMAGEKIT_URL_ENDPOINT      The CDN base URL embedded in every product-image
+  #                              src that gets prerendered. Not a credential — the
+  #                              PRIVATE key (kept scanned below) is the secret.
+  #   IMAGEKIT_PUBLIC_KEY        Public by design (ImageKit exposes it to browsers).
+  #   SMTP_USER / SMTP_FROM      The business Gmail address — committed in the seed
+  #                              constants, defaults and README. The app PASSWORD
+  #                              (SMTP_PASS) stays scanned below.
+  #   SMTP_HOST / SMTP_PORT      smtp.gmail.com / 465 — not secret.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_WHATSAPP_NUMBER,IMAGEKIT_URL_ENDPOINT,IMAGEKIT_PUBLIC_KEY,SMTP_USER,SMTP_FROM,SMTP_HOST,SMTP_PORT"
+
+  # Deliberately NOT omitted, so a leak of any of these still fails the build:
+  #   MONGODB_URI · AUTH_SECRET · IMAGEKIT_PRIVATE_KEY · SMTP_PASS

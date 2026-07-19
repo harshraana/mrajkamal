@@ -99,6 +99,9 @@ export default function AdminDashboard() {
         <Link href={adminPath("/site")} className='hover:no-underline'>
           <Button variant='outline'>Edit site content</Button>
         </Link>
+        <Link href={adminPath("/account")} className='hover:no-underline'>
+          <Button variant='ghost'>Change password</Button>
+        </Link>
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ const DEMO = args.has("--demo");
 
 async function main() {
   const mongoose = (await import("mongoose")).default;
+  const bcrypt = (await import("bcryptjs")).default;
   const { DEFAULT_SITE_CONTENT } = await import("../src/lib/site-content.defaults");
   const { sanitizeRichText, htmlToText } = await import("../src/lib/sanitize.core");
   const { slugCandidates, isDuplicateKeyError } = await import("../src/lib/slug");
@@ -36,6 +37,24 @@ async function main() {
   const { default: SiteContent } = await import("../src/lib/models/SiteContent");
   const { default: Product } = await import("../src/lib/models/Product");
   const { default: Review } = await import("../src/lib/models/Review");
+  const { default: AdminUser } = await import("../src/lib/models/AdminUser");
+  const { INITIAL_ADMIN_EMAIL, INITIAL_ADMIN_PASSWORD } = await import(
+    "../src/lib/constants/admin"
+  );
+
+  // ── Admin account ─────────────────────────────────────────────────────────
+  // Created only if absent — never resets an existing (possibly already-changed)
+  // password. Use `npm run seed:admin -- --force` for the recovery reset.
+  const adminEmail = INITIAL_ADMIN_EMAIL.toLowerCase();
+  if (await AdminUser.findOne({ email: adminEmail })) {
+    console.log(`• admin ${adminEmail} already exists — left untouched`);
+  } else {
+    await AdminUser.create({
+      email: adminEmail,
+      passwordHash: await bcrypt.hash(INITIAL_ADMIN_PASSWORD, 12),
+    });
+    console.log(`✓ admin ${adminEmail} created (temp password: ${INITIAL_ADMIN_PASSWORD})`);
+  }
 
   // ── Site content ──────────────────────────────────────────────────────────
   const content = {

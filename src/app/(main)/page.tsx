@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import GodrejInterioLogo from "@/assets/svg/godrej-interio.svg";
+
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
 import SectionHeading from "@/components/layout/SectionHeading";
@@ -45,7 +46,10 @@ function FeatureBlock({
           }`}
           stagger={0.2}
         >
-          <RevealItem className='w-full md:flex-1' from={flip ? "right" : "left"}>
+          <RevealItem
+            className='w-full md:flex-1'
+            from={flip ? "right" : "left"}
+          >
             <SmartImage
               image={section.image}
               alt={section.image?.alt || section.heading}
@@ -143,7 +147,12 @@ export default async function HomePage() {
             </RevealItem>
 
             <RevealItem className='flex flex-wrap items-center justify-center gap-4'>
-              <GodrejInterioLogo className='h-auto w-40 mix-blend-darken sm:w-52 lg:w-60' />
+              {/* <GodrejInterioLogo className='h-auto w-40 mix-blend-darken sm:w-52 lg:w-60' /> */}
+              <img
+                src='/images/godrej-interio.png'
+                className='h-auto w-40 sm:w-52 lg:w-60'
+                alt='GodrejInterioLogo'
+              />
               <SmartImage
                 image={home.partner.logoBadge}
                 alt={home.partner.logoBadge?.alt || "Authorised partner"}

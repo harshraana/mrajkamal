@@ -50,8 +50,13 @@ const ProductSchema = new Schema(
 
     /** TinyMCE output — ALREADY SANITIZED on write. The DB never holds raw HTML. */
     descriptionHtml: { type: String, default: "", maxlength: 60_000 },
-    /** Plaintext projection of the above. Powers admin search and meta descriptions. */
-    descriptionText: { type: String, default: "", maxlength: 20_000 },
+    /**
+     * Plaintext projection of the above, powering admin search and meta
+     * descriptions. Capped well below descriptionHtml (60k): meta needs ~160
+     * chars and JSON-LD slices to 5k, so storing a full second copy of a long
+     * description is wasted bytes on every product. Trimmed to this cap on write.
+     */
+    descriptionText: { type: String, default: "", maxlength: 5_000 },
 
     price: { type: Number, required: true, min: 0 },
     /** Optional "was" price. The strikethrough renders only when mrp > price. */
@@ -97,7 +102,10 @@ const ProductSchema = new Schema(
 ProductSchema.index({ isActive: 1, isFeatured: 1, createdAt: -1 }); // featured rail
 ProductSchema.index({ isActive: 1, category: 1, createdAt: -1 }); // catalogue + filter
 ProductSchema.index({ slugHistory: 1 }); // old-URL → canonical lookup
-ProductSchema.index({ name: "text", descriptionText: "text" }); // admin search
+// No full-text index. Admin search (one user, a small catalogue) uses an escaped
+// regex COLLSCAN instead — a text index tokenises every word of every
+// description and is the fastest-growing index in the schema, which is exactly
+// the storage we don't want to spend on a free 512 MB cluster.
 
 export type ProductDoc = InferSchemaType<typeof ProductSchema>;
 

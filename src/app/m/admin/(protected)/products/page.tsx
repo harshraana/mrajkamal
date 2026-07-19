@@ -35,7 +35,14 @@ async function ProductTable({ searchParams }: { searchParams: Promise<Search> })
   // different shape). A plain record is enough here and doesn't couple the page
   // to a type that moved between majors.
   const filter: Record<string, unknown> = {};
-  if (q.trim()) filter.$text = { $search: q.trim() }; // uses the name+description text index
+  if (q.trim()) {
+    // Substring search, case-insensitive. The query is escaped so a user typing
+    // regex metacharacters can't inject a pattern (bad matches / ReDoS). No
+    // full-text index is needed — see the note in models/Product.ts.
+    const safe = q.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const rx = new RegExp(safe, "i");
+    filter.$or = [{ name: rx }, { descriptionText: rx }];
+  }
   if (category) filter.category = category;
   if (status === "active") filter.isActive = true;
   if (status === "inactive") filter.isActive = false;

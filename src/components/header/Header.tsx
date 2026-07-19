@@ -13,7 +13,13 @@ import type { LinkDTO } from "@/types";
  * The two used to hardcode their own copies of the link list, so adding a page
  * meant remembering to edit both — and sooner or later they'd disagree.
  */
-export default function Header({ nav, callHref }: { nav: LinkDTO[]; callHref: string }) {
+export default function Header({
+  nav,
+  callHref,
+}: {
+  nav: LinkDTO[];
+  callHref: string;
+}) {
   return (
     <header className='fixed top-0 left-0 z-10 w-full bg-background py-3 shadow-2xs'>
       <Container className='flex items-center justify-between'>
@@ -22,7 +28,11 @@ export default function Header({ nav, callHref }: { nav: LinkDTO[]; callHref: st
           aria-label='M Rajkamal home'
           className='flex items-center hover:no-underline'
         >
-          <MRajKamalLogoLite height={36} width='auto' className='h-8 w-auto sm:h-9' />
+          <MRajKamalLogoLite
+            height={36}
+            width='auto'
+            className='h-8 w-auto sm:h-9'
+          />
           <span className='mx-2 block h-[20px] w-0.5 rounded-2xl bg-foreground sm:mx-4' />
           <GodrejInterioLogo
             height={32}

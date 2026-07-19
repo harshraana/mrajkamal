@@ -71,7 +71,10 @@ export async function saveProduct(
 
   // Sanitize on WRITE, so the database never holds hostile HTML.
   const descriptionHtml = sanitizeRichText(d.descriptionHtml);
-  const descriptionText = htmlToText(descriptionHtml);
+  // Cap the plaintext copy (see Product.descriptionText): meta + JSON-LD never
+  // need more, and it keeps a long description from being stored twice at full
+  // length. Also keeps us under the schema's 5k maxlength validator.
+  const descriptionText = htmlToText(descriptionHtml).slice(0, 5_000);
 
   const existing = await Product.findById(d.id).select("slug slugHistory images").lean();
 

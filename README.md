@@ -116,6 +116,8 @@ npm run dev / build / start / lint
 
 npm run seed                 # site content + admin (--force to overwrite content, --demo for sample products)
 npm run seed:admin           # create/reset the admin account (--force resets the password)
+npm run db:stats             # storage + index usage per collection (watch the free tier's 512 MB)
+npm run db:sync-indexes      # make the live DB's indexes match the schemas (creates missing, drops removed)
 npm run check-env            # validate .env.local
 npm run verify:data          # data-layer invariants, against a real database
 npm run verify:auth          # login rate limiting

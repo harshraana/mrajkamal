@@ -1,360 +1,297 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import { useActionState, useState } from "react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { Plus, X } from "lucide-react";
+import { saveProduct, discardDraftImages } from "@/app/actions/products";
+import { fieldErrors, idleState } from "@/lib/action-state";
+import { PRODUCT_CATEGORIES } from "@/lib/constants/catalog";
+import { slugify } from "@/lib/slug";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Field, FieldError, FieldLabel, FieldDescription } from "@/components/ui/field";
 import ImageUploader from "@/components/admin/ImageUploader";
+import type { ImageRefDTO, ProductDetailDTO } from "@/types";
+import { adminPath } from "@/lib/admin-paths";
 
-const CATEGORIES = [
-  { value: "sofa", label: "Sofa" },
-  { value: "wardrobe", label: "Wardrobe" },
-  { value: "locker", label: "Locker" },
-  { value: "bed", label: "Bed" },
-  { value: "chair", label: "Chair" },
-  { value: "table", label: "Table" },
-  { value: "other", label: "Other" },
-];
+// TinyMCE touches `window` on load, so it can't be server-rendered.
+// `ssr: false` is only legal inside a Client Component in Next 16 — this file is one.
+const RichTextEditor = dynamic(() => import("@/components/admin/RichTextEditor"), {
+  ssr: false,
+  loading: () => (
+    <div className='h-[380px] animate-pulse rounded-lg border border-border bg-muted' />
+  ),
+});
 
-interface ImageEntry {
-  url: string;
-  fileId: string;
-}
+type Props = {
+  /**
+   * The product id, minted SERVER-SIDE before this form ever renders.
+   *
+   * That's what lets images upload straight into /mrajkamal/products/<id>/
+   * before the product exists — no temp folder, no move-on-save, no draft rows.
+   */
+  productId: string;
+  product?: ProductDetailDTO;
+};
 
-interface ProductFormData {
-  _id?: string;
-  name?: string;
-  slug?: string;
-  description?: string;
-  price?: number;
-  priceLabel?: string;
-  category?: string;
-  images?: string[];
-  features?: string[];
-  isFeatured?: boolean;
-  isActive?: boolean;
-  whatsappMessage?: string;
-}
-
-interface ProductFormProps {
-  product?: ProductFormData;
-  action: (formData: FormData) => Promise<void>;
-  isEdit?: boolean;
-}
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-export default function ProductForm({
-  product,
-  action,
-  isEdit = false,
-}: ProductFormProps) {
-  const formRef = useRef<HTMLFormElement>(null);
+export default function ProductForm({ productId, product }: Props) {
+  const [state, formAction, pending] = useActionState(saveProduct, idleState);
 
   const [name, setName] = useState(product?.name ?? "");
-  const [description, setDescription] = useState(product?.description ?? "");
+  const [images, setImages] = useState<ImageRefDTO[]>(product?.images ?? []);
   const [features, setFeatures] = useState<string[]>(product?.features ?? [""]);
-  const [imageEntries, setImageEntries] = useState<ImageEntry[]>(
-    (product?.images ?? []).map((url) => ({ url, fileId: url })),
-  );
-  const [submitting, setSubmitting] = useState(false);
 
-  const previewSlug = isEdit ? (product?.slug ?? "") : slugify(name);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      const fd = new FormData(e.currentTarget);
-      // Inject computed fields not in native form inputs
-      fd.set("description", description);
-      fd.set("images", JSON.stringify(imageEntries.map((e) => e.url)));
-      fd.set("features", JSON.stringify(features.filter(Boolean)));
-      await action(fd);
-    } catch (err) {
-      console.error(err);
-      setSubmitting(false);
-    }
-  }
-
-  function addFeature() {
-    setFeatures((f) => [...f, ""]);
-  }
-
-  function removeFeature(i: number) {
-    setFeatures((f) => f.filter((_, idx) => idx !== i));
-  }
-
-  function updateFeature(i: number, val: string) {
-    setFeatures((f) => f.map((v, idx) => (idx === i ? val : v)));
-  }
+  const isEdit = Boolean(product);
+  const slugPreview = slugify(name) || "…";
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit}>
-      <div className='row g-4'>
-        {/* Left column */}
-        <div className='col-lg-8'>
-          {/* Name */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <h6 className='fw-semibold mb-3'>Basic Info</h6>
-              <div className='mb-3'>
-                <label htmlFor='name' className='form-label small fw-semibold'>
-                  Product Name <span className='text-danger'>*</span>
-                </label>
-                <input
-                  id='name'
-                  name='name'
-                  type='text'
-                  className='form-control'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <div className='text-muted small mt-1'>
-                  Slug: <code>{previewSlug || "auto-generated"}</code>
-                </div>
-              </div>
+    <form action={formAction} className='space-y-8'>
+      <input type='hidden' name='id' value={productId} />
+      <input type='hidden' name='images' value={JSON.stringify(images)} />
+      <input
+        type='hidden'
+        name='features'
+        value={JSON.stringify(features.map((f) => f.trim()).filter(Boolean))}
+      />
 
-              <div className='row g-3'>
-                <div className='col-md-4'>
-                  <label
-                    htmlFor='category'
-                    className='form-label small fw-semibold'
-                  >
-                    Category <span className='text-danger'>*</span>
-                  </label>
-                  <select
-                    id='category'
-                    name='category'
-                    className='form-select'
-                    defaultValue={product?.category ?? ""}
-                    required
-                  >
-                    <option value='' disabled>
-                      Select category
-                    </option>
-                    {CATEGORIES.map((c) => (
-                      <option key={c.value} value={c.value}>
-                        {c.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className='col-md-4'>
-                  <label
-                    htmlFor='price'
-                    className='form-label small fw-semibold'
-                  >
-                    Price (₹) <span className='text-danger'>*</span>
-                  </label>
-                  <input
-                    id='price'
-                    name='price'
-                    type='number'
-                    min='0'
-                    step='1'
-                    className='form-control'
-                    defaultValue={product?.price ?? ""}
-                    required
-                  />
-                </div>
-                <div className='col-md-4'>
-                  <label
-                    htmlFor='priceLabel'
-                    className='form-label small fw-semibold'
-                  >
-                    Price Label
-                  </label>
-                  <input
-                    id='priceLabel'
-                    name='priceLabel'
-                    type='text'
-                    className='form-control'
-                    defaultValue={product?.priceLabel ?? ""}
-                    placeholder='e.g. ₹45,000 onwards'
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      {state.status === "error" && (
+        <p
+          role='alert'
+          className='rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive'
+        >
+          {state.message}
+        </p>
+      )}
 
-          {/* Description */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <label className='form-label small fw-semibold mb-2'>
-                Description <span className='text-danger'>*</span>
-              </label>
-              <Editor
-                apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
-                value={description}
-                onEditorChange={(content) => setDescription(content)}
-                init={{
-                  height: 400,
-                  menubar: false,
-                  plugins: [
-                    "advlist",
-                    "autolink",
-                    "lists",
-                    "link",
-                    "image",
-                    "charmap",
-                    "preview",
-                    "anchor",
-                    "searchreplace",
-                    "visualblocks",
-                    "code",
-                    "fullscreen",
-                    "insertdatetime",
-                    "media",
-                    "table",
-                    "help",
-                    "wordcount",
-                  ],
-                  toolbar:
-                    "undo redo | formatselect | bold italic backcolor | " +
-                    "alignleft aligncenter alignright alignjustify | " +
-                    "bullist numlist outdent indent | removeformat | help",
-                  content_style:
-                    "body { font-family: Inter, sans-serif; font-size: 14px }",
-                }}
-              />
-            </div>
-          </div>
+      <section className='grid gap-6 md:grid-cols-2'>
+        <Field className='md:col-span-2'>
+          <FieldLabel htmlFor='name'>Product name</FieldLabel>
+          <Input
+            id='name'
+            name='name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <FieldDescription>
+            URL: /products/<span className='font-mono'>{slugPreview}</span>
+            {isEdit && product?.slug !== slugPreview && name
+              ? " — the old URL will keep working and redirect here."
+              : ""}
+          </FieldDescription>
+          <FieldError errors={fieldErrors(state, "name")} />
+        </Field>
 
-          {/* Features */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <h6 className='fw-semibold mb-3'>Key Features</h6>
-              {features.map((feat, i) => (
-                <div key={i} className='d-flex gap-2 mb-2'>
-                  <input
-                    type='text'
-                    className='form-control form-control-sm'
-                    value={feat}
-                    onChange={(e) => updateFeature(i, e.target.value)}
-                    placeholder={`Feature ${i + 1}`}
-                  />
-                  <button
-                    type='button'
-                    className='btn btn-outline-danger btn-sm'
-                    onClick={() => removeFeature(i)}
-                    aria-label='Remove feature'
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-              <button
-                type='button'
-                className='btn btn-outline-secondary btn-sm mt-1'
-                onClick={addFeature}
-              >
-                + Add Feature
-              </button>
-            </div>
-          </div>
-
-          {/* WhatsApp override */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <label
-                htmlFor='whatsappMessage'
-                className='form-label small fw-semibold'
-              >
-                WhatsApp Message Override{" "}
-                <span className='text-muted fw-normal'>(optional)</span>
-              </label>
-              <textarea
-                id='whatsappMessage'
-                name='whatsappMessage'
-                className='form-control'
-                rows={3}
-                defaultValue={product?.whatsappMessage ?? ""}
-                placeholder='Leave blank to use auto-generated message'
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Right column */}
-        <div className='col-lg-4'>
-          {/* Images */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <h6 className='fw-semibold mb-3'>
-                Images <span className='text-danger'>*</span>
-              </h6>
-              <ImageUploader
-                value={imageEntries}
-                onChange={setImageEntries}
-                maxImages={10}
-              />
-            </div>
-          </div>
-
-          {/* Settings */}
-          <div className='card border-0 shadow-sm mb-4'>
-            <div className='card-body'>
-              <h6 className='fw-semibold mb-3'>Settings</h6>
-              <div className='form-check mb-2'>
-                <input
-                  id='isFeatured'
-                  name='isFeatured'
-                  type='checkbox'
-                  className='form-check-input'
-                  defaultChecked={product?.isFeatured ?? false}
-                />
-                <label htmlFor='isFeatured' className='form-check-label small'>
-                  Show on home page (Featured)
-                </label>
-              </div>
-              <div className='form-check'>
-                <input
-                  id='isActive'
-                  name='isActive'
-                  type='checkbox'
-                  className='form-check-input'
-                  defaultChecked={product?.isActive ?? true}
-                />
-                <label htmlFor='isActive' className='form-check-label small'>
-                  Active (visible on site)
-                </label>
-              </div>
-            </div>
-          </div>
-
-          {/* Submit */}
-          <button
-            type='submit'
-            className='btn btn-dark w-100'
-            disabled={submitting || imageEntries.length === 0}
+        <Field>
+          <FieldLabel htmlFor='category'>Category</FieldLabel>
+          {/* A native <select>: it posts with FormData and needs no JS. */}
+          <select
+            id='category'
+            name='category'
+            defaultValue={product?.category ?? ""}
+            required
+            className='h-9 w-full rounded-lg border border-input bg-transparent px-3 text-sm'
           >
-            {submitting ? (
-              <>
-                <span
-                  className='spinner-border spinner-border-sm me-2'
-                  role='status'
-                />
-                Saving…
-              </>
-            ) : isEdit ? (
-              "Update Product"
-            ) : (
-              "Create Product"
-            )}
-          </button>
-          {imageEntries.length === 0 && (
-            <div className='text-danger small mt-2 text-center'>
-              At least one image is required
-            </div>
-          )}
+            <option value='' disabled>
+              Choose…
+            </option>
+            {PRODUCT_CATEGORIES.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+          <FieldError errors={fieldErrors(state, "category")} />
+        </Field>
+
+        <div className='grid grid-cols-2 gap-4'>
+          <Field>
+            <FieldLabel htmlFor='price'>Price (₹)</FieldLabel>
+            <Input
+              id='price'
+              name='price'
+              type='number'
+              min={0}
+              step={1}
+              defaultValue={product?.price ?? ""}
+              required
+            />
+            <FieldError errors={fieldErrors(state, "price")} />
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor='mrp'>M.R.P. (₹)</FieldLabel>
+            <Input
+              id='mrp'
+              name='mrp'
+              type='number'
+              min={0}
+              step={1}
+              defaultValue={product?.mrp ?? ""}
+              placeholder='Optional'
+            />
+            <FieldDescription>Shown struck through, only if above the price.</FieldDescription>
+            <FieldError errors={fieldErrors(state, "mrp")} />
+          </Field>
         </div>
+      </section>
+
+      <section>
+        <h2 className='mb-3 font-heading text-lg italic'>Images</h2>
+        <ImageUploader
+          value={images}
+          onChange={setImages}
+          target={{ scope: "product", productId }}
+        />
+        <FieldError errors={fieldErrors(state, "images")} />
+      </section>
+
+      <section>
+        <h2 className='mb-3 font-heading text-lg italic'>Description</h2>
+        <RichTextEditor name='descriptionHtml' defaultValue={product?.descriptionHtml ?? ""} />
+        <FieldError errors={fieldErrors(state, "descriptionHtml")} />
+      </section>
+
+      <section>
+        <h2 className='mb-3 font-heading text-lg italic'>Features</h2>
+        <ul className='space-y-2'>
+          {features.map((feature, i) => (
+            <li key={i} className='flex gap-2'>
+              <Input
+                value={feature}
+                onChange={(e) => {
+                  const next = [...features];
+                  next[i] = e.target.value;
+                  setFeatures(next);
+                }}
+                placeholder='e.g. Powder-coated steel'
+              />
+              <Button
+                type='button'
+                variant='ghost'
+                size='icon'
+                aria-label='Remove feature'
+                onClick={() => setFeatures(features.filter((_, j) => j !== i))}
+              >
+                <X size={15} />
+              </Button>
+            </li>
+          ))}
+        </ul>
+        <Button
+          type='button'
+          variant='outline'
+          size='sm'
+          className='mt-3 gap-1'
+          onClick={() => setFeatures([...features, ""])}
+        >
+          <Plus size={14} /> Add a feature
+        </Button>
+        <FieldError errors={fieldErrors(state, "features")} />
+      </section>
+
+      <section className='space-y-4'>
+        <h2 className='font-heading text-lg italic'>Visibility</h2>
+
+        <label className='flex items-start gap-3'>
+          <Checkbox
+            name='isFeatured'
+            defaultChecked={product?.isFeatured ?? false}
+            className='mt-0.5'
+          />
+          <span className='text-sm'>
+            Show on the home page
+            <span className='block text-xs text-muted-foreground'>
+              At most 10 featured products.
+            </span>
+          </span>
+        </label>
+        <FieldError errors={fieldErrors(state, "isFeatured")} />
+
+        <label className='flex items-start gap-3'>
+          <Checkbox name='isActive' defaultChecked={product?.isActive ?? true} className='mt-0.5' />
+          <span className='text-sm'>
+            Live on the site
+            <span className='block text-xs text-muted-foreground'>
+              Unchecked, it disappears from the catalogue but is not deleted.
+            </span>
+          </span>
+        </label>
+      </section>
+
+      <section className='space-y-4'>
+        <h2 className='font-heading text-lg italic'>WhatsApp &amp; SEO</h2>
+
+        <Field>
+          <FieldLabel htmlFor='whatsappMessage'>WhatsApp opening line</FieldLabel>
+          <Textarea
+            id='whatsappMessage'
+            name='whatsappMessage'
+            rows={2}
+            defaultValue={product?.whatsappMessage ?? ""}
+            placeholder="Hi! I'd like to know more about this product."
+          />
+          <FieldDescription>
+            The product name, price and link are appended automatically.
+          </FieldDescription>
+        </Field>
+
+        <Field>
+          <FieldLabel htmlFor='seoTitle'>Search title</FieldLabel>
+          <Input
+            id='seoTitle'
+            name='seoTitle'
+            defaultValue={product?.seo.title ?? ""}
+            placeholder='Defaults to the product name'
+          />
+        </Field>
+
+        <Field>
+          <FieldLabel htmlFor='seoDescription'>Search description</FieldLabel>
+          <Textarea
+            id='seoDescription'
+            name='seoDescription'
+            rows={2}
+            defaultValue={product?.seo.description ?? ""}
+            placeholder='Defaults to the start of the description'
+          />
+        </Field>
+      </section>
+
+      <div className='flex flex-wrap gap-3 border-t border-border pt-6'>
+        <Button type='submit' size='lg' disabled={pending}>
+          {pending ? "Saving…" : isEdit ? "Save changes" : "Create product"}
+        </Button>
+
+        {isEdit ? (
+          <Link href={adminPath("/products")} className='hover:no-underline'>
+            <Button type='button' variant='outline' size='lg'>
+              Cancel
+            </Button>
+          </Link>
+        ) : (
+          /*
+           * Discarding a NEW product deletes any images already uploaded into its
+           * folder — abandoning the form would otherwise leave them orphaned in
+           * ImageKit forever. The action re-checks that no product with this id
+           * exists, so it can never touch a real one.
+           *
+           * A submit button with its own `formAction`, NOT a nested <form>:
+           * <form> inside <form> is invalid HTML and the browser drops it.
+           */
+          <Button
+            type='submit'
+            variant='outline'
+            size='lg'
+            formNoValidate
+            formAction={discardDraftImages.bind(null, productId)}
+          >
+            Discard
+          </Button>
+        )}
       </div>
     </form>
   );

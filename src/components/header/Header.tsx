@@ -1,118 +1,69 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-import Image from "next/image";
-import React from "react";
 import Link from "next/link";
+import { Phone } from "lucide-react";
+import MRajKamalLogoLite from "@/assets/svg/m-rajkamal-logo-light.svg";
+import GodrejInterioLogo from "@/assets/svg/godrej-interio.svg";
+import { Button } from "@/components/ui/button";
+import MobileMenu from "./MobileMenu";
+import Container from "@/components/layout/Container";
+import type { LinkDTO } from "@/types";
 
-const Header = () => {
+/**
+ * Takes the nav from the CMS and hands the SAME array to <MobileMenu>.
+ *
+ * The two used to hardcode their own copies of the link list, so adding a page
+ * meant remembering to edit both — and sooner or later they'd disagree.
+ */
+export default function Header({ nav, callHref }: { nav: LinkDTO[]; callHref: string }) {
   return (
-    <>
-      {/* .header */}
-      <header className='header  has-currencies header-sticky'>
-        <div className='tf-container w-1246'>
-          <div className='header-inner'>
-            <div className='header-left'>
-              <Link href='/' className='site-logo'>
-                <Image
-                  height={64}
-                  width={240}
-                  style={{ height: "auto" }}
-                  className='logo_header'
-                  alt='M Rajkamal logo'
-                  src='/my-assets/images/M-Rajkamal-logo-2.svg'
-                />
-              </Link>
-              |
-              <Link href='/' className='site-logo pb-0 pt-2'>
-                <Image
-                  height={47}
-                  width={90}
-                  style={{ height: "auto" }}
-                  className='logo_header'
-                  alt='Godrej Interio authorised dealer'
-                  src='/my-assets/images/godrej-interio.jpg'
-                />
-              </Link>
-            </div>
-            <div className='header-right d-flex align-items-center'>
-              <nav className='main-menu'>
-                <ul className='navigation box-nav-menu'>
-                  <li className='text-menu menu-item'>
-                    <a href='/' className='item-link'>
-                      Home
-                    </a>
-                  </li>
+    <header className='fixed top-0 left-0 z-10 w-full bg-background py-3 shadow-2xs'>
+      <Container className='flex items-center justify-between'>
+        <Link
+          href='/'
+          aria-label='M Rajkamal home'
+          className='flex items-center hover:no-underline'
+        >
+          <MRajKamalLogoLite height={36} width='auto' className='h-8 w-auto sm:h-9' />
+          <span className='mx-2 block h-[20px] w-0.5 rounded-2xl bg-foreground sm:mx-4' />
+          <GodrejInterioLogo
+            height={32}
+            width='auto'
+            className='h-7 w-auto mix-blend-darken sm:h-8'
+          />
+        </Link>
 
-                  {/*   <li className='text-menu menu-item'>
-                    <a href='/products' className='item-link'>
-                      Products
-                    </a>
-                  </li> */}
-                  <li className='text-menu menu-item'>
-                    <a href='/about' className='item-link'>
-                      About Us
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-              <ul className='nav-icon-list'>
-                {/* <li className='d-none d-md-flex'>
-                  <a
-                    className='nav-icon-item link'
-                    href='#search'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='icon icon-magnifying-glass'></i>
-                  </a>
-                </li> */}
-                {/* <li className='d-none d-lg-flex'>
-                  <a
-                    href='#login'
-                    data-bs-toggle='offcanvas'
-                    className='nav-icon-item link'
-                  >
-                    {" "}
-                    <i className='icon icon-user'></i>
-                  </a>
-                </li> */}
-                {/*  <li className='d-none d-sm-flex position-relative'>
-                  <Link href='/wishlist' className='nav-icon-item link'>
-                    <i className='icon icon-heart'></i>
-                  </Link>
-                  <span className='count'>7</span>
-                </li> */}
-                {/* <li
-                  className='shop-cart'
-                  data-bs-toggle='modal'
-                  data-bs-target='#shoppingCart'
+        {/* A real <nav> landmark. This was <div className="nav"> — a cosmetic
+            class with no CSS rule behind it, and no landmark for screen readers. */}
+        <nav aria-label='Main' className='hidden md:block'>
+          <ul className='flex items-center gap-x-2'>
+            {nav.map((link) => (
+              <li key={`${link.href}-${link.label}`} className='px-3'>
+                <Link
+                  href={link.href}
+                  {...(link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                 >
-                  <a
-                    className='nav-icon-item link'
-                    href='#shoppingCart'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='icon icon-bag'></i>
-                  </a>
-                  <span className='count'>4</span>
-                </li> */}
-              </ul>
-              {/* <a
-                href='#mobileMenu'
-                data-bs-toggle='offcanvas'
-                className='mobile-button d-xl-none'
-              >
-                <div className='burger'>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </a> */}
-            </div>
-          </div>
-        </div>
-      </header>
-      {/* End header */}
-    </>
-  );
-};
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li className='pl-3'>
+              {/*
+                The Call button had NO href and NO handler. The primary call to
+                action on every page of a furniture shop did nothing when clicked.
+                It's a real tel: link now.
+              */}
+              <a href={callHref} className='hover:no-underline'>
+                <Button variant='outline' size='lg' className='px-5'>
+                  <Phone /> Call
+                </Button>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-export default Header;
+        <MobileMenu nav={nav} callHref={callHref} />
+      </Container>
+    </header>
+  );
+}

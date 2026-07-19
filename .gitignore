@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the template must be committed, or `cp .env.example .env.local` is
+# impossible on a fresh clone.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# TinyMCE is self-hosted: copied out of node_modules by scripts/copy-tinymce.mjs
+# on predev/prebuild. Generated, not authored.
+/public/tinymce

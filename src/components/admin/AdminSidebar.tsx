@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   ExternalLink,
+  KeyRound,
   LayoutDashboard,
   LogOut,
   Package,
@@ -23,6 +24,7 @@ const NAV = [
     icon: SlidersHorizontal,
     exact: false,
   },
+  { href: adminPath("/account"), label: "Account", icon: KeyRound, exact: false },
 ];
 
 export default function AdminSidebar({ email }: { email: string }) {

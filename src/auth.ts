@@ -1,18 +1,16 @@
 import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { checkAndRecordAttempt, clearAttempts, clientIp } from "@/lib/auth/rate-limit";
 import { ADMIN_LOGIN } from "@/lib/admin-paths";
+import { authenticateAdmin } from "@/lib/admin-user";
 
 /**
- * Single-admin authentication: ADMIN_EMAIL + ADMIN_PASSWORD_HASH from the
- * environment, JWT sessions, no user collection.
+ * Single-admin authentication against the `AdminUser` collection, JWT sessions.
  *
- * Note the hash lives in an env var, and dotenv eats unescaped `$` — so
- * `src/lib/env.schema.ts` validates its shape at boot. Without that check a
- * mangled hash presents as "every correct password is wrong", which is a
- * genuinely horrible thing to debug.
+ * The credentials used to live in env vars; they moved to the database so the
+ * password can be changed at runtime through the dashboard's OTP flow. Seed the
+ * initial admin with `npm run seed:admin`.
  */
 
 /** Distinct codes so the login page can tell "locked out" from "wrong password". */
@@ -49,20 +47,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const ip = clientIp(request);
         if (!(await checkAndRecordAttempt(ip, email))) throw new RateLimited();
 
-        const adminEmail = process.env.ADMIN_EMAIL;
-        const adminHash = process.env.ADMIN_PASSWORD_HASH;
-        if (!adminEmail || !adminHash) throw new InvalidCredentials();
-
-        // Run bcrypt even when the email is wrong, and compare both results only
-        // at the end. Short-circuiting on the email would make a wrong-email
-        // response measurably faster than a wrong-password one, which leaks
-        // which email is the admin's.
-        const passwordOk = await bcrypt.compare(password, adminHash);
-        const emailOk = email.toLowerCase() === adminEmail.toLowerCase();
-        if (!emailOk || !passwordOk) throw new InvalidCredentials();
+        // The admin now lives in the database, so the password can be changed at
+        // runtime (via the OTP flow) without a redeploy. authenticateAdmin runs
+        // bcrypt in both the found and not-found branches, so a wrong email and a
+        // wrong password take the same time.
+        const admin = await authenticateAdmin(email, password);
+        if (!admin) throw new InvalidCredentials();
 
         await clearAttempts(ip, email);
-        return { id: "admin", email: adminEmail, name: "Admin", role: "admin" };
+        return { id: String(admin._id), email: admin.email, name: "Admin", role: "admin" };
       },
     }),
   ],

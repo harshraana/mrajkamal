@@ -35,6 +35,21 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (cache.conn) return cache.conn;
 
   cache.promise ??= mongoose.connect(uri, {
+    /**
+     * Pin the database name in code. This is a single-store app and ALWAYS uses
+     * the `mrajkamal` database; the connection string only needs to carry the
+     * host and credentials.
+     *
+     * `dbName` overrides whatever database is — or isn't — named in the URI, so
+     * a connection string that omits it (e.g. Atlas's "Connect" default, which
+     * ends in `mongodb.net/?...`) can no longer silently send the app to the
+     * empty `test` database. That exact mistake blocked admin login in
+     * production: the app connected fine but found no admin, because the URI's
+     * db-name was missing. Atlas authenticates against `authSource=admin`
+     * regardless, so pinning the query database does not affect the login.
+     */
+    dbName: "mrajkamal",
+
     // Fail fast instead of queueing operations against a dead connection —
     // a hung query is much harder to diagnose than a thrown one.
     bufferCommands: false,
